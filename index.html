@@ -401,13 +401,16 @@ p:last-child{ margin-bottom:0; }
 .set-shots img{ height:92px; width:auto; max-width:44%; object-fit:contain; }
 .set-plus{ font-family:var(--mono); font-size:17px; font-weight:700; color:var(--ink-faint); flex:none; }
 
-/* 사은품 썸네일 */
-.p-gift{ display:flex; gap:13px; align-items:flex-start; }
+/* 혜택 카드 썸네일 (01·02·03 공통) */
+.p-gift{ display:flex; gap:14px; align-items:center; }
 .p-gift .gift-img{
-  flex:none; width:74px;
-  background:var(--white); border:1px solid var(--line-soft); padding:6px;
+  flex:none; width:96px; height:96px;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--white); border:1px solid var(--line-soft); padding:7px;
+  border-radius:3px;
 }
-.p-gift .gift-img img{ width:100%; }
+.p-gift .gift-img img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
+.p-gift .p-d{ flex:1; min-width:0; }
 
 /* ─────────── 제품 카드 ─────────── */
 .group-lbl{
@@ -1305,12 +1308,18 @@ footer p:last-child{ margin-bottom:0; }
     <li>
       <span class="p-cap">02 · 구매 인증 10명</span>
       <span class="p-t">수딩 롤온세럼 본품 <span class="p-val">22,900원 상당</span></span>
-      <span class="p-d">사서 인증만 해주시면 추첨에 들어갑니다. 땀띠·열감 올라올 때 쓰는 그 롤온세럼이에요.</span>
+      <div class="p-gift">
+        <span class="gift-img"><img src="img/rollon.png" alt="수딩 롤온세럼 본품" loading="lazy"></span>
+        <span class="p-d">사서 인증만 해주시면 추첨에 들어갑니다. 땀띠·열감 올라올 때 쓰는 그 롤온세럼이에요.</span>
+      </div>
     </li>
     <li>
       <span class="p-cap">03 · 최다 구매 5명</span>
       <span class="p-t">굿나잇 통잠스파 본품 <span class="p-val">23,900원 상당</span></span>
-      <span class="p-d">가장 많이 담아주신 다섯 분께 따로 드려요. 추첨이 아니라 <strong>구매 금액순</strong>이라 확실합니다.</span>
+      <div class="p-gift">
+        <span class="gift-img"><img src="img/goodnight.png" alt="굿나잇 통잠스파 본품" loading="lazy"></span>
+        <span class="p-d">가장 많이 담아주신 다섯 분께 따로 드려요. 추첨이 아니라 <strong>구매 금액순</strong>이라 확실합니다.</span>
+      </div>
     </li>
     <li class="hero">
       <span class="p-cap">04 · 2가정 한정</span>
