@@ -439,6 +439,21 @@ p:last-child{ margin-bottom:0; }
 .card-role{ font-size:12px; color:var(--green-mid); font-weight:600; margin-top:1px; }
 .card p{ font-size:14.5px; }
 
+/* ─── 접이식 상세 (릴스 유입자는 통과, 고민하는 사람만 펼침) ─── */
+.more{ margin-top:13px; border-top:1px dashed var(--line-soft); padding-top:11px; }
+.more > summary{
+  font-family:var(--mono); font-size:11.5px; font-weight:700; letter-spacing:.02em;
+  color:var(--green); cursor:pointer; list-style:none;
+  padding:7px 10px; border:1px dashed var(--green-line); border-radius:3px;
+  background:var(--green-soft); user-select:none;
+}
+.more > summary::-webkit-details-marker{ display:none; }
+.more > summary::before{ content:"▸ "; }
+.more[open] > summary::before{ content:"▾ "; }
+.more[open] > summary{ margin-bottom:11px; }
+.more > summary:hover{ border-style:solid; }
+.more .spec{ border-top:0; margin-top:0; padding-top:0; }
+
 .spec{ list-style:none; margin:12px 0 0; padding:11px 0 0; border-top:1px dashed var(--line-soft); }
 .spec li{
   font-size:13px; color:var(--ink-soft);
@@ -501,6 +516,7 @@ p:last-child{ margin-bottom:0; }
 .formula .f-out{ font-size:14px; font-weight:700; margin:0; line-height:1.6; }
 
 /* 상황별 사용법 */
+.usecase-more .usecase{ margin-top:0; }
 .usecase{ margin-top:15px; border:1px solid var(--line); background:var(--white); padding:15px 14px; border-radius:3px; }
 .usecase .u-lbl{
   font-family:var(--mono);
@@ -1030,7 +1046,7 @@ footer p:last-child{ margin-bottom:0; }
     </a>
     <p class="p-cap-m">첨부 EVIDENCE 02 · 실제 주문 내역</p>
   </div>
-  <p class="ev-caption">진정 듀오 세트 41,000원, 입욕제 세트 49,900원. <strong>결제일이 5월과 7월</strong>이에요. 미팅은 <strong>8월</strong>이었고요. 말로 "내돈내산"이라고 하는 것보다, 날짜가 찍힌 영수증 한 장이 정확하잖아요.</p>
+  <p class="ev-caption"><strong>결제는 5월·7월, 미팅은 8월이에요.</strong> 협찬받고 좋다고 하는 게 아니라, 원래 쓰던 걸 데려온 거예요.</p>
 </section>
 
 <!-- ══════════ 02 제품 ══════════ -->
@@ -1054,12 +1070,15 @@ footer p:last-child{ margin-bottom:0; }
       <p class="p-cap-m">첨부 PHOTO 01 · 수딩 스파 500g</p>
     </div>
     <p>저는 이거 만나고 <strong>목욕의 신세계</strong> 만났어요. 욕조에 하나 넣으면 끝이고, 아기를 다시 헹구지 않아도 되더라고요! 탄산 기포가 씻어내는 방식이라, <strong>이틀에 한 번은 바디워시 안 쓰고 이걸로 한 번에</strong> 씻겨요. 저녁마다 씻기고 헹구고 다시 안아 올리는 과정이 한 단계 줄어들어서 진짜 편했구요!</p>
-    <ul class="spec">
-      <li><strong>수돗물 속 잔류 염소 제거</strong> — 목욕물을 매끈하게 만들어줍니다</li>
-      <li>계면활성제가 아니라 탄산 기포가 아기 피부의 노폐물·각질을 밀어내는 방식</li>
-      <li>베타인 · 알란토인 · 트레할로오스 배합</li>
-      <li>500g · <strong>신생아부터</strong> 사용 / 개봉 후 3개월 이내</li>
-    </ul>
+    <details class="more">
+      <summary>왜 헹구지 않아도 되는지 · 성분 보기</summary>
+      <ul class="spec">
+        <li><strong>수돗물 속 잔류 염소 제거</strong> — 목욕물을 매끈하게 만들어줍니다</li>
+        <li>계면활성제가 아니라 탄산 기포가 아기 피부의 노폐물·각질을 밀어내는 방식</li>
+        <li>베타인 · 알란토인 · 트레할로오스 배합</li>
+        <li>500g · <strong>신생아부터</strong> 사용 / 개봉 후 3개월 이내</li>
+      </ul>
+    </details>
     <div class="quote">
       <span class="who">기록자 메모</span>
       <p>브랜드몰 리뷰 키워드를 세어보니 <strong>"사용하기 편해요"가 "효과가 좋아요"보다 약 2배</strong> 많았어요. 엄마들이 이걸 다시 사는 이유는 효능보다 편의라는 뜻으로 읽었습니다.</p>
@@ -1080,12 +1099,15 @@ footer p:last-child{ margin-bottom:0; }
     </div>
     <p>통잠 자던 저희 아기가 <strong>원더윅스 시작하면서 자다 깨는 시간이 많아지니</strong>, 이것저것 알아보다 알게 된 통잠스파! 이걸 쓴다고 100% 통잠을 자진 않지만, 아기에게 조금 더 편안하게 릴렉스하는 시간을 선물하고 싶어서 쓰고 있는 제품이에요.</p>
     <p>대표님과 대화하며 알게 된 건데, 제품 탄생 배경도 <strong>원더윅스로 힘들어서 울고 싶다는 엄마의 글</strong>을 보고 만들기 시작했다고 하시더라고요.</p>
-    <ul class="spec">
-      <li>엡솜솔트(마그네슘)와 오렌지 오일 — 아기 몸과 마음을 이완시켜주는 방향</li>
-      <li>브랜드 표기 기준 <strong>전성분이 식용 가능한 성분</strong>, 유기농 원료 사용</li>
-      <li>기저귀로 예민해진 엉덩이 피부 진정도 함께 소구하는 제품</li>
-      <li>400g · <strong>3개월 아기부터</strong> / 개봉 후 6개월 이내</li>
-    </ul>
+    <details class="more">
+      <summary>어떤 성분으로 이완시키는지 보기</summary>
+      <ul class="spec">
+        <li>엡솜솔트(마그네슘)와 오렌지 오일 — 아기 몸과 마음을 이완시켜주는 방향</li>
+        <li>브랜드 표기 기준 <strong>전성분이 식용 가능한 성분</strong>, 유기농 원료 사용</li>
+        <li>기저귀로 예민해진 엉덩이 피부 진정도 함께 소구하는 제품</li>
+        <li>400g · <strong>3개월 아기부터</strong> / 개봉 후 6개월 이내</li>
+      </ul>
+    </details>
   </div>
 
   <p class="group-lbl">B. 낮에 발라주는 진정 — 아기 피부에 바르는 것</p>
@@ -1094,26 +1116,53 @@ footer p:last-child{ margin-bottom:0; }
     <div class="card-head">
       <span class="card-no">3</span>
       <div>
+        <h3>수딩 롤온세럼</h3>
+        <div class="card-role">아기 땀띠·열감 케어 약산성 롤온 세럼</div>
+      </div>
+    </div>
+    <div class="p-shot">
+      <img src="img/rollon.png" alt="수딩 롤온세럼 제품 사진" width="236" height="560" loading="lazy">
+      <p class="p-cap-m">첨부 PHOTO 03 · 수딩 롤온세럼 50g</p>
+    </div>
+    <p>구슬을 굴려서 발라주는 타입이라 <strong>손을 안 대도 돼요.</strong> 여름에 아기 목이랑 접히는 데 땀 차고 열감 올라올 때 이것부터 굴려줬어요.</p>
+    <details class="more">
+      <summary>왜 시원한지 · 성분 보기</summary>
+      <ul class="spec">
+        <li>자일리톨의 흡열 반응으로 발라줄 때 시원한 느낌</li>
+        <li>판테놀로 수분길을 열어주는 설계</li>
+        <li><strong>200:1로 농축한 알로에 파우더 + 편백수</strong>가 베이스</li>
+        <li>50g · 아기 피부에 맞춘 <strong>약산성</strong> 세럼</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <span class="card-no">4</span>
+      <div>
         <h3>수딩 스틱밤</h3>
         <div class="card-role">아기 침독·건조 부위 보호막 스틱</div>
       </div>
     </div>
     <div class="p-shot">
       <img src="img/stickbalm.jpg" alt="수딩 스틱밤 제품 사진" width="560" height="560" loading="lazy">
-      <p class="p-cap-m">첨부 PHOTO 03 · 수딩 스틱밤 16g</p>
+      <p class="p-cap-m">첨부 PHOTO 04 · 수딩 스틱밤 16g</p>
     </div>
     <p>아기 침독이나 트러블은 사실 <strong>피부 장벽 개선이 우선</strong>인 건데, 피부 장벽 개선은 수시로 보습해주는 방법밖에 없더라고요. 근데 밖에 나가서 보습하려니 매번 손 씻는 과정이 불편하더라고요. 얼굴에 지저분한 손으로 해줄 수도 없고….</p>
     <p>그래서 이걸 찾게 됐는데요. <strong>스틱밤 그대로 아기 입가에 발라줄 수 있어서</strong> 너무 편하게 쓰고 있어요.</p>
-    <ul class="spec">
-      <li>스틱 끝이 <strong>물방울 모양</strong> — 넓은 볼은 넓은 면으로, 콧볼·입가처럼 좁은 데는 뾰족한 쪽으로</li>
-      <li>주요 원료: 올리브오일, 피마자씨오일, <strong>캐모마일꽃오일</strong>, 시어버터, 비즈왁스</li>
-      <li>전성분 표기 기준 <strong>자연유래 99.9% · 유기농 원료 79%</strong></li>
-      <li>16g · 신생아부터 / 개봉 후 6개월 이내</li>
-    </ul>
     <div class="quote">
       <span class="who">대표님 이야기</span>
       <p>"유기농 원료 79% 쓴 곳은, 단언컨대 저희뿐이에요. 저희가 높은 원가율인 이유죠."</p>
     </div>
+    <details class="more">
+      <summary>물방울 모양인 이유 · 성분 보기</summary>
+      <ul class="spec">
+        <li>스틱 끝이 <strong>물방울 모양</strong> — 넓은 볼은 넓은 면으로, 콧볼·입가처럼 좁은 데는 뾰족한 쪽으로</li>
+        <li>주요 원료: 올리브오일, 피마자씨오일, <strong>캐모마일꽃오일</strong>, 시어버터, 비즈왁스</li>
+        <li>전성분 표기 기준 <strong>자연유래 99.9% · 유기농 원료 79%</strong></li>
+        <li>16g · 신생아부터 / 개봉 후 6개월 이내</li>
+      </ul>
+    </details>
 
     <div class="trial">
       <span class="t-lbl">인체적용시험 · 스틱밤</span>
@@ -1127,27 +1176,6 @@ footer p:last-child{ margin-bottom:0; }
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-head">
-      <span class="card-no">4</span>
-      <div>
-        <h3>수딩 롤온세럼</h3>
-        <div class="card-role">아기 땀띠·열감 케어 약산성 롤온 세럼</div>
-      </div>
-    </div>
-    <div class="p-shot">
-      <img src="img/rollon.png" alt="수딩 롤온세럼 제품 사진" width="236" height="560" loading="lazy">
-      <p class="p-cap-m">첨부 PHOTO 04 · 수딩 롤온세럼 50g</p>
-    </div>
-    <p>구슬을 굴려서 발라주는 타입이라 <strong>손을 안 대도 돼요.</strong> 여름에 아기 목이랑 접히는 데 땀 차고 열감 올라올 때 이것부터 굴려줬어요.</p>
-    <ul class="spec">
-      <li>자일리톨의 흡열 반응으로 발라줄 때 시원한 느낌</li>
-      <li>판테놀로 수분길을 열어주는 설계</li>
-      <li><strong>200:1로 농축한 알로에 파우더 + 편백수</strong>가 베이스</li>
-      <li>50g · 아기 피부에 맞춘 <strong>약산성</strong> 세럼</li>
-    </ul>
-  </div>
-
   <div class="formula">
     <span class="f-lbl">3 + 4 · 바르는 순서가 정해져 있습니다</span>
     <div class="formula-row">
@@ -1158,15 +1186,17 @@ footer p:last-child{ margin-bottom:0; }
     <p class="f-out">채우고 → 덮는 2단계.<br>따로 발라줄 때랑 같이 쓸 때가 다릅니다.</p>
   </div>
 
-  <div class="usecase">
-    <span class="u-lbl">상황별로 순서가 다릅니다</span>
-    <table class="u-t">
-      <tr><td class="u-when">건조할 때</td><td>롤온세럼 → 촉촉함이 남아 있을 때 스틱밤 덧발라주기</td></tr>
-      <tr><td class="u-when">붉어질 때</td><td>롤온세럼 → <strong>1분쯤 두고 열감을 뺀 뒤</strong> 스틱밤으로 마무리</td></tr>
-      <tr><td class="u-when">가려워할 때</td><td>롤온세럼을 자주 덧발라주고, 스틱밤은 <strong>바로</strong> 덧발라주기</td></tr>
-    </table>
-    <p class="u-f">이걸 모르고 대충 발라주면 세트로 산 의미가 없어서, 미팅에서 따로 받아 적어 왔어요.</p>
-  </div>
+  <details class="more usecase-more">
+    <summary>건조할 때 · 붉어질 때 · 가려워할 때 순서가 조금씩 달라요</summary>
+    <div class="usecase">
+      <table class="u-t">
+        <tr><td class="u-when">건조할 때</td><td>롤온세럼 → 촉촉함이 남아 있을 때 스틱밤 덧발라주기</td></tr>
+        <tr><td class="u-when">붉어질 때</td><td>롤온세럼 → <strong>1분쯤 두고 열감을 뺀 뒤</strong> 스틱밤으로 마무리</td></tr>
+        <tr><td class="u-when">가려워할 때</td><td>롤온세럼을 자주 덧발라주고, 스틱밤은 <strong>바로</strong> 덧발라주기</td></tr>
+      </table>
+      <p class="u-f">이걸 모르고 대충 발라주면 세트로 산 의미가 없어서, 미팅에서 따로 받아 적어 왔어요.</p>
+    </div>
+  </details>
 
   <a class="mid-cta" href="#apply">오픈 알림 먼저 받아두기 →</a>
 </section>
