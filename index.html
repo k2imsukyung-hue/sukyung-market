@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>수경마켓 × 네츄레메디 미팅 회의록 (각색본)</title>
+<meta name="description" content="팔로워 대신 브랜드를 깐깐하게 검증하고 온 미팅 기록. 수경마켓 사전 공유본.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="수경마켓 × 네츄레메디 미팅 회의록 (각색본)">
+<meta property="og:description" content="팔로워 대신 브랜드를 깐깐하게 검증하고 온 미팅 기록.">
+<meta property="og:locale" content="ko_KR">
+
+<style>
+/* ============================================================
+   수경마켓 × 네츄레메디 — 대외비 회의록 원페이지
+   컨셉: 유출된 내부 문서 / 단일 파일 / 외부 라이브러리 0
+   ============================================================ */
+
+:root{
+  --green:      #2B593F;
+  --green-deep: #1B3A29;
+  --green-mid:  #3E7355;
+  --green-soft: #E7EEE8;
+  --green-line: #BFD2C5;
+
+  --paper:      #EFEBE1;
+  --paper-2:    #E4DECF;
+  --card:       #FCFAF5;
+  --white:      #FFFFFF;
+
+  --ink:        #1F2225;
+  --ink-soft:   #555C63;
+  --ink-faint:  #8B9198;
+  --line:       #CFC7B5;
+  --line-soft:  #E2DBCB;
+
+  --red:        #C0392B;
+  --red-deep:   #96271B;
+  --blue:       #2A5C8A;
+  --tape:       #F2C200;
+  --postit:     #FFF6C9;
+  --postit-line:#E8D477;
+
+  --radius:     4px;
+  --maxw:       660px;
+  --bar-h:      52px;
+
+  --mono: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard",
+          "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.78;
+  letter-spacing:-0.01em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(rgba(43,89,63,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43,89,63,.035) 1px, transparent 1px);
+  background-size:23px 23px;
+}
+
+img{ max-width:100%; height:auto; display:block; }
+.mono{ font-family:var(--mono); letter-spacing:0; }
+
+/* 좌우만 지정한다 — padding 단축을 쓰면 section의 상하 여백을 덮어쓴다 */
+.wrap{ max-width:var(--maxw); margin:0 auto; padding-left:18px; padding-right:18px; }
+
+section{ padding:60px 0; }
+.sheet{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 6px 18px -12px rgba(31,34,37,.3);
+}
+
+/* ─────────── 도장 (Stamp) ─────────── */
+.stamp{
+  display:inline-block;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:16px;
+  letter-spacing:.11em;
+  color:var(--red);
+  border:3px solid var(--red);
+  outline:1.5px solid var(--red);
+  outline-offset:3px;
+  padding:8px 16px;
+  transform:rotate(-5.5deg);
+  opacity:.9;
+  border-radius:2px;
+  white-space:nowrap;
+  mix-blend-mode:multiply;
+}
+.stamp.blue{ color:var(--blue); border-color:var(--blue); outline-color:var(--blue); transform:rotate(3.5deg); }
+.stamp.sm{ font-size:14px; padding:6px 13px; border-width:2.5px; }
+
+/* 큰 SECRET 도장 */
+.stamp-secret{
+  flex:none;
+  align-self:flex-start;
+  margin-top:-7px;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:27px;
+  line-height:1;
+  letter-spacing:.13em;
+  color:var(--red);
+  border:4px double var(--red);
+  padding:8px 14px 7px;
+  transform:rotate(-9deg);
+  opacity:.8;
+  border-radius:3px;
+  white-space:nowrap;
+  mix-blend-mode:multiply;
+  pointer-events:none;
+}
+
+/* ─────────── Sticky bar (혜택 요약 상시 노출) ─────────── */
+.bar{
+  position:fixed; top:0; left:0; right:0; height:var(--bar-h);
+  background:var(--green-deep);
+  color:#fff; z-index:80;
+  display:flex; align-items:center; justify-content:center;
+  padding:0 12px;
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+  border-bottom:2px solid var(--tape);
+}
+.bar a{
+  color:#fff; text-decoration:none;
+  display:flex; align-items:center; gap:9px;
+  font-size:12.5px; letter-spacing:-0.02em; line-height:1.25;
+}
+.bar .b-l{ text-align:left; }
+.bar .b-1{ display:block; font-weight:800; }
+.bar .b-1 em{ font-style:normal; color:var(--tape); font-family:var(--mono); }
+.bar .b-2{ display:block; font-size:10.5px; opacity:.7; }
+.bar .b-go{
+  background:var(--tape); color:#3A2B00;
+  font-size:11.5px; font-weight:800;
+  padding:6px 11px; border-radius:3px; white-space:nowrap;
+}
+
+/* ─────────── 헤더 (문서 표지) ─────────── */
+header{
+  background:var(--green);
+  color:#fff;
+  padding:30px 0 28px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:3px double rgba(255,255,255,.3);
+}
+header::before{
+  content:"";
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(-45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 10px);
+  pointer-events:none;
+}
+header .wrap{ position:relative; z-index:1; }
+
+.stamp-row{
+  display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+  margin-bottom:22px; padding-left:4px;
+}
+header .stamp{ color:#FF8A7A; border-color:#FF8A7A; outline-color:#FF8A7A; mix-blend-mode:normal; opacity:.95; }
+header .stamp.blue{ color:#9FD0FF; border-color:#9FD0FF; outline-color:#9FD0FF; }
+
+h1{
+  font-family:var(--mono);
+  font-size:25px; line-height:1.34;
+  margin:0 0 6px; font-weight:700;
+  letter-spacing:-0.02em;
+}
+.h1-sub{ font-size:13px; color:rgba(255,255,255,.66); margin:0 0 22px; font-family:var(--mono); }
+
+.meta{
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(0,0,0,.16);
+  padding:13px 14px;
+  font-family:var(--mono);
+  font-size:12px; line-height:1.8;
+  border-radius:2px;
+}
+.meta .row{ display:flex; gap:10px; align-items:baseline; }
+.meta .row + .row{ margin-top:4px; }
+.meta dt{ flex:none; width:44px; color:rgba(255,255,255,.5); font-size:10.5px; }
+.meta dd{ margin:0; color:rgba(255,255,255,.94); }
+.meta dl{ margin:0; }
+
+.thesis{ margin-top:18px; border-left:3px solid var(--tape); padding:2px 0 2px 14px; }
+.thesis p{ margin:0; font-size:14.5px; line-height:1.78; color:rgba(255,255,255,.87); }
+.thesis p + p{ margin-top:11px; }
+.thesis strong{ color:var(--tape); }
+
+/* ─────────── 상단 혜택 요약 (스크롤 이탈 방어) ─────────── */
+.brief{
+  margin:-16px auto 0;
+  position:relative; z-index:5;
+  max-width:calc(var(--maxw) - 36px);
+}
+.brief-in{
+  background:var(--white);
+  border:2px solid var(--ink);
+  border-radius:var(--radius);
+  box-shadow:5px 5px 0 rgba(31,34,37,.16);
+  padding:18px 16px 16px;
+  position:relative;
+}
+.brief-in::before{
+  content:"";
+  position:absolute; top:-13px; left:26px;
+  width:13px; height:34px;
+  border:2.5px solid #9BA2A9;
+  border-radius:9px;
+  transform:rotate(14deg);
+  background:transparent;
+}
+.brief-top{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:10px; margin-bottom:10px;
+}
+.brief-lbl{
+  font-family:var(--mono);
+  font-size:10.5px; font-weight:700; letter-spacing:.1em;
+  line-height:1.5;
+  color:var(--red); display:block; padding-top:3px;
+  white-space:nowrap;
+}
+.brief-h{
+  font-size:18px; font-weight:800; letter-spacing:-0.035em;
+  margin:0 0 14px; line-height:1.4;
+}
+.brief-grid{ display:grid; gap:8px; margin-bottom:14px; }
+.brief-item{
+  display:flex; align-items:center; gap:11px;
+  background:var(--paper); border-radius:3px; padding:10px 12px;
+}
+.bi-n{
+  flex:none; font-family:var(--mono); font-weight:700;
+  font-size:19px; color:var(--red); letter-spacing:-0.03em; line-height:1;
+  min-width:64px;
+}
+.bi-n small{ font-size:12px; }
+.bi-t{ font-size:13px; line-height:1.5; }
+.bi-t b{ display:block; font-size:14px; letter-spacing:-0.02em; }
+.bi-t span{ color:var(--ink-soft); font-size:11.5px; }
+
+.brief-cta{
+  display:block; text-align:center;
+  background:var(--ink); color:#fff;
+  font-size:14.5px; font-weight:700; letter-spacing:-0.02em;
+  padding:13px; border-radius:3px; text-decoration:none;
+}
+.brief-cta:hover{ background:var(--green-deep); }
+.brief-note{
+  font-size:13px;
+  color:var(--ink-soft);
+  text-align:center;
+  margin:13px 0 0;
+  padding-top:12px;
+  border-top:1px dashed var(--line);
+  line-height:1.75;
+}
+.brief-note strong{ color:var(--ink); font-weight:700; }
+
+/* ─────────── 섹션 헤딩 ─────────── */
+.sec-num{
+  font-family:var(--mono);
+  display:block; font-size:11px; font-weight:700; letter-spacing:.18em;
+  color:var(--red); margin-bottom:6px;
+}
+h2{
+  font-family:var(--mono);
+  font-size:20px; line-height:1.4; margin:0 0 6px;
+  font-weight:700; letter-spacing:-0.02em; color:var(--ink);
+  border-bottom:2px solid var(--ink); padding-bottom:8px;
+}
+.sec-lead{ font-size:13.5px; color:var(--ink-soft); margin:10px 0 22px; }
+h3{ font-size:16px; margin:0 0 8px; font-weight:700; letter-spacing:-0.025em; }
+p{ margin:0 0 13px; }
+p:last-child{ margin-bottom:0; }
+
+/* ─────────── 01 타임라인 ─────────── */
+.steps{ list-style:none; margin:0; padding:0; position:relative; }
+.steps::before{
+  content:""; position:absolute; left:9px; top:9px; bottom:9px;
+  width:0; border-left:2px dashed var(--green-line);
+}
+.steps li{ position:relative; padding-left:34px; padding-bottom:22px; }
+.steps li:last-child{ padding-bottom:0; }
+.steps li::before{
+  content:""; position:absolute; left:2px; top:6px;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--paper); border:3px solid var(--green);
+}
+.step-tag{
+  font-family:var(--mono);
+  display:inline-block; font-size:10.5px; font-weight:700;
+  color:#fff; background:var(--green); padding:2px 8px;
+  margin-bottom:6px; letter-spacing:.04em; border-radius:2px;
+}
+.steps p{ font-size:15px; margin:0; }
+
+/* ─────────── 영수증 / 증거 슬롯 ─────────── */
+.receipt{
+  position:relative;
+  background:var(--white);
+  padding:24px 16px 26px;
+  margin:16px 0 22px;
+  text-align:center;
+  box-shadow:0 3px 10px -6px rgba(31,34,37,.4);
+}
+.receipt::before,
+.receipt::after{
+  content:""; position:absolute; left:0; right:0; height:9px;
+  background-image:
+    linear-gradient(45deg, transparent 33.33%, var(--white) 33.33%, var(--white) 66.66%, transparent 66.66%),
+    linear-gradient(-45deg, transparent 33.33%, var(--white) 33.33%, var(--white) 66.66%, transparent 66.66%);
+  background-size:14px 18px;
+  background-repeat:repeat-x;
+}
+.receipt::before{ top:-9px; background-position:0 100%; transform:scaleY(-1); }
+.receipt::after{ bottom:-9px; background-position:0 0; }
+.rc-ico{ font-size:19px; display:block; margin-bottom:7px; opacity:.5; }
+.rc-t{
+  font-family:var(--mono);
+  display:block; font-size:12.5px; font-weight:700;
+  color:var(--ink-soft); margin-bottom:5px; letter-spacing:.02em;
+}
+.rc-d{ display:block; font-size:11.5px; color:var(--ink-faint); line-height:1.65; }
+.rc-cut{
+  border-top:1px dashed var(--line);
+  margin:13px 0 0; padding-top:9px;
+  font-family:var(--mono); font-size:10px; color:var(--ink-faint);
+  letter-spacing:.1em;
+}
+.ev-caption{ font-size:12.5px; color:var(--ink-soft); margin:0; text-align:center; }
+
+/* ─────────── 첨부 사진 (테이프로 붙인 느낌) ─────────── */
+.p-shot{
+  position:relative;
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:16px 10px 9px;
+  margin:0 0 14px;
+  text-align:center;
+}
+.p-shot::before{
+  content:"";
+  position:absolute; top:-8px; left:50%;
+  width:66px; height:17px;
+  transform:translateX(-50%) rotate(-1.8deg);
+  background:rgba(206,186,138,.5);
+  border-left:1px dashed rgba(0,0,0,.09);
+  border-right:1px dashed rgba(0,0,0,.09);
+}
+.p-shot img{
+  margin:0 auto;
+  max-height:172px;
+  width:auto; max-width:100%;
+  object-fit:contain;
+}
+.p-cap-m{
+  font-family:var(--mono);
+  font-size:10px; letter-spacing:.07em;
+  color:var(--ink-faint);
+  margin:10px 0 0; padding-top:7px;
+  border-top:1px dashed var(--line-soft);
+}
+/* 증거 캡처 — 스크린샷이라 높이 제한 없이 폭에 맞춤 */
+.p-shot.evidence img{ max-height:none; width:100%; }
+.ev-caption strong{ color:var(--green-deep); }
+.zoom{ display:block; text-decoration:none; }
+.zoom-hint{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--green);
+  letter-spacing:-0.02em;
+}
+
+/* 세트 구성 썸네일 */
+.set-shots{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  background:var(--card); border:1px solid var(--line-soft);
+  padding:13px 10px; margin-bottom:14px;
+}
+.set-shots img{ height:92px; width:auto; max-width:44%; object-fit:contain; }
+.set-plus{ font-family:var(--mono); font-size:17px; font-weight:700; color:var(--ink-faint); flex:none; }
+
+/* 사은품 썸네일 */
+.p-gift{ display:flex; gap:13px; align-items:flex-start; }
+.p-gift .gift-img{
+  flex:none; width:74px;
+  background:var(--white); border:1px solid var(--line-soft); padding:6px;
+}
+.p-gift .gift-img img{ width:100%; }
+
+/* ─────────── 제품 카드 ─────────── */
+.group-lbl{
+  font-family:var(--mono);
+  font-size:11px; font-weight:700; letter-spacing:.1em;
+  color:var(--ink-soft);
+  margin:26px 0 12px; padding-bottom:7px;
+  border-bottom:1px dashed var(--line);
+}
+.group-lbl:first-of-type{ margin-top:2px; }
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 16px;
+  margin-bottom:12px;
+}
+.card-head{ display:flex; align-items:flex-start; gap:10px; margin-bottom:9px; }
+.card-no{
+  font-family:var(--mono);
+  flex:none; width:25px; height:25px; margin-top:2px;
+  background:var(--ink); color:#fff;
+  font-size:12px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:2px;
+}
+.card-head h3{ margin:0; }
+.card-role{ font-size:12px; color:var(--green-mid); font-weight:600; margin-top:1px; }
+.card p{ font-size:14.5px; }
+
+.spec{ list-style:none; margin:12px 0 0; padding:11px 0 0; border-top:1px dashed var(--line-soft); }
+.spec li{
+  font-size:13px; color:var(--ink-soft);
+  padding-left:14px; position:relative; margin-bottom:5px; line-height:1.68;
+}
+.spec li:last-child{ margin-bottom:0; }
+.spec li::before{
+  content:""; position:absolute; left:2px; top:9px;
+  width:4px; height:4px; background:var(--green-line);
+}
+
+.quote{ border-left:3px solid var(--green-line); padding:2px 0 2px 12px; margin:12px 0 0; }
+.quote .who{
+  font-family:var(--mono);
+  display:block; font-size:11px; font-weight:700;
+  color:var(--green-mid); margin-bottom:3px; letter-spacing:.02em;
+}
+.quote p{ font-size:13.5px; color:var(--ink-soft); margin:0; }
+
+/* 인체적용시험 */
+.trial{
+  margin-top:15px; border:1px solid var(--green-line);
+  background:var(--green-soft); padding:15px 14px; border-radius:3px;
+}
+.trial .t-lbl{
+  font-family:var(--mono);
+  display:block; font-size:10.5px; font-weight:700; letter-spacing:.1em;
+  color:var(--green); margin-bottom:8px;
+}
+.trial .t-desc{ font-size:13.5px; margin:0 0 13px; line-height:1.7; }
+.t-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:10px; }
+.t-cell{ background:var(--white); padding:10px 4px; text-align:center; border-radius:2px; }
+.t-n{
+  font-family:var(--mono);
+  display:block; font-size:15.5px; font-weight:700; color:var(--green); line-height:1.2;
+}
+.t-k{ display:block; font-size:10px; color:var(--ink-soft); margin-top:3px; line-height:1.35; }
+.trial .t-src{ font-family:var(--mono); font-size:10px; color:var(--ink-faint); margin:0 0 11px; text-align:center; }
+.trial .t-warn{
+  font-size:12.5px; color:var(--ink-soft); margin:0;
+  padding-top:10px; border-top:1px dashed var(--green-line); line-height:1.68;
+}
+.trial .t-warn strong{ color:var(--red-deep); }
+
+/* 세트 공식 */
+.formula{
+  background:var(--green); color:#fff;
+  padding:20px 16px; margin:18px 0; text-align:center; border-radius:3px;
+}
+.formula .f-lbl{
+  font-family:var(--mono);
+  display:block; font-size:10.5px; font-weight:700; letter-spacing:.1em;
+  opacity:.72; margin-bottom:12px;
+}
+.formula-row{ display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.f-item{ background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.24); padding:9px 12px; border-radius:2px; min-width:112px; }
+.fi-n{ display:block; font-size:13.5px; font-weight:700; }
+.fi-s{ display:block; font-size:11px; opacity:.75; margin-top:1px; }
+.f-plus{ font-family:var(--mono); font-size:17px; font-weight:700; opacity:.65; }
+.formula .f-out{ font-size:14px; font-weight:700; margin:0; line-height:1.6; }
+
+/* 상황별 사용법 */
+.usecase{ margin-top:15px; border:1px solid var(--line); background:var(--white); padding:15px 14px; border-radius:3px; }
+.usecase .u-lbl{
+  font-family:var(--mono);
+  display:block; font-size:10.5px; font-weight:700; letter-spacing:.09em;
+  color:var(--green-mid); margin-bottom:10px;
+}
+.u-t{ width:100%; border-collapse:collapse; }
+.u-t td{ font-size:13.5px; padding:8px 0; border-bottom:1px dashed var(--line-soft); line-height:1.6; vertical-align:top; }
+.u-t tr:last-child td{ border-bottom:0; }
+.u-when{ width:74px; font-weight:700; color:var(--green); padding-right:9px !important; white-space:nowrap; }
+.usecase .u-f{
+  font-size:12px; color:var(--ink-soft); margin:11px 0 0;
+  padding-top:10px; border-top:1px dashed var(--line-soft); line-height:1.65;
+}
+
+/* ─────────── 03 Q&A 말풍선 ─────────── */
+.qa-blk{ margin-bottom:26px; }
+.qa-tagline{
+  font-family:var(--mono);
+  font-size:10.5px; font-weight:700; letter-spacing:.06em;
+  color:var(--ink-faint); margin-bottom:9px; display:block;
+}
+.qa-blk.sharp .qa-tagline{ color:var(--green-mid); }
+
+.bubble{ display:flex; gap:9px; margin-bottom:11px; align-items:flex-start; }
+.bubble .who{
+  flex:none; width:38px; text-align:center;
+  font-family:var(--mono); font-size:9.5px; font-weight:700;
+  color:var(--ink-faint); line-height:1.3; padding-top:11px;
+}
+.bubble .msg{
+  position:relative; border-radius:12px; padding:12px 14px;
+  font-size:14.5px; line-height:1.72; max-width:100%;
+}
+/* 수경 질문 — 오른쪽 정렬 */
+.bubble.q{ flex-direction:row-reverse; }
+.bubble.q .msg{
+  background:var(--green); color:#fff;
+  border-bottom-right-radius:3px; font-weight:600;
+}
+.bubble.q .msg::after{
+  content:""; position:absolute; right:-6px; bottom:0;
+  border:7px solid transparent; border-left-color:var(--green); border-bottom:0;
+}
+/* 조건 질문 블록 — 색으로 각을 세우지 않는다. 말풍선은 일반 질문과 동일. */
+/* 대표님 답변 — 왼쪽 */
+.bubble.a .msg{
+  background:var(--white); border:1px solid var(--line);
+  border-bottom-left-radius:3px; color:var(--ink);
+}
+.bubble.a .msg::after{
+  content:""; position:absolute; left:-7px; bottom:-1px;
+  border:7px solid transparent; border-right-color:var(--white); border-bottom:0;
+}
+.bubble .msg strong{ color:var(--green-deep); }
+.qa-note{
+  margin:30px 0 18px; padding:14px 15px;
+  border:1px solid var(--green-line); border-left:3px solid var(--green);
+  background:var(--green-soft); border-radius:3px;
+  font-size:13.5px; line-height:1.75; color:var(--ink);
+}
+.qa-note b{ color:var(--green-deep); }
+.myline{ font-weight:700; color:var(--green-mid); }
+
+.pending{
+  display:block; background:var(--postit);
+  border:1px dashed var(--postit-line);
+  color:#7A6412; font-size:12.5px; border-radius:3px;
+  padding:9px 11px; line-height:1.6;
+}
+
+/* ─────────── 04 기준 ─────────── */
+.creed{ list-style:none; margin:0; padding:0; display:grid; gap:9px; }
+.creed li{
+  background:var(--card); border:1px solid var(--line-soft);
+  padding:13px 14px; display:flex; gap:10px; align-items:flex-start; border-radius:3px;
+}
+.creed .ci{ flex:none; font-size:15px; line-height:1.5; }
+.creed .ct{ font-size:14px; font-weight:700; display:block; margin-bottom:2px; letter-spacing:-0.02em; }
+.creed .cd{ font-size:12.5px; color:var(--ink-soft); display:block; line-height:1.6; }
+.creed .cond{ display:inline-block; font-style:normal; font-size:11.5px; color:var(--ink-faint); margin-top:3px; }
+
+/* ─────────── 04-1 사지 마세요 (경고 테이프) ─────────── */
+.danger{ margin-top:6px; }
+.tape{
+  height:15px;
+  background:repeating-linear-gradient(45deg, var(--tape) 0 13px, #1F2225 13px 26px);
+  border-radius:2px 2px 0 0;
+}
+.danger-body{
+  background:var(--postit);
+  border:2px solid #1F2225;
+  border-top:0;
+  border-radius:0 0 var(--radius) var(--radius);
+  padding:20px 16px 18px;
+  box-shadow:4px 4px 0 rgba(31,34,37,.13);
+}
+.danger-h{
+  font-size:19px; font-weight:800; letter-spacing:-0.035em;
+  margin:0 0 8px; line-height:1.38; color:#1F2225;
+}
+.danger-lead{ font-size:13.5px; color:#6B5A18; margin:0 0 18px; line-height:1.7; }
+
+.dont{ list-style:none; margin:0; padding:0; counter-reset:d; }
+.dont li{
+  counter-increment:d;
+  background:rgba(255,255,255,.62);
+  border-left:4px solid var(--red);
+  padding:13px 14px 13px 13px;
+  margin-bottom:11px;
+  border-radius:0 3px 3px 0;
+}
+.dont li:last-child{ margin-bottom:0; }
+.d-no{
+  font-family:var(--mono);
+  display:block; font-size:10.5px; font-weight:700; letter-spacing:.08em;
+  color:var(--red); margin-bottom:5px;
+}
+.d-t{ display:block; font-size:15px; font-weight:800; letter-spacing:-0.03em; margin-bottom:5px; line-height:1.45; }
+.d-d{ display:block; font-size:13.5px; color:#4A4230; line-height:1.72; }
+.d-but{
+  display:block; margin-top:8px; padding-top:8px;
+  border-top:1px dashed rgba(31,34,37,.2);
+  font-size:13.5px; line-height:1.7; color:var(--green-deep); font-weight:600;
+}
+.danger-foot{
+  margin:16px 0 0; padding-top:13px;
+  border-top:2px dashed rgba(31,34,37,.22);
+  font-size:13px; color:#6B5A18; line-height:1.7;
+}
+
+/* ─────────── 05 일정 ─────────── */
+.sched{
+  background:var(--green-deep); color:#fff;
+  padding:22px 16px; text-align:center; border-radius:3px;
+}
+.dday{
+  font-family:var(--mono);
+  display:inline-block; font-size:12px; font-weight:700; letter-spacing:.1em;
+  background:var(--tape); color:#3A2B00; padding:5px 14px; border-radius:2px; margin-bottom:13px;
+}
+.s-date{ font-family:var(--mono); font-size:22px; font-weight:700; margin:0 0 3px; letter-spacing:-0.02em; line-height:1.35; }
+.s-sub{ font-size:13px; opacity:.68; margin:0; }
+.s-first{
+  margin:16px 0 0; padding-top:16px;
+  border-top:1px dashed rgba(255,255,255,.28);
+  font-size:14px; line-height:1.7; opacity:.92;
+}
+.s-first strong{ color:var(--tape); }
+
+/* ─────────── 혜택 4가지 ─────────── */
+.blk-h{
+  font-family:var(--mono);
+  font-size:16px; font-weight:700; letter-spacing:-0.02em;
+  color:var(--ink); margin:30px 0 6px;
+  padding-bottom:7px; border-bottom:2px solid var(--ink);
+}
+.blk-lead{ font-size:13px; color:var(--ink-soft); margin:9px 0 15px; }
+
+.perks{ list-style:none; margin:0; padding:0; }
+.perks li{
+  position:relative;
+  background:var(--white);
+  border:2px solid var(--ink);
+  border-radius:3px;
+  padding:15px 15px 14px;
+  margin-bottom:11px;
+  box-shadow:3px 3px 0 rgba(31,34,37,.13);
+}
+.p-cap{
+  font-family:var(--mono);
+  display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.05em;
+  background:var(--ink); color:#fff; padding:3px 9px; border-radius:2px; margin-bottom:8px;
+}
+.p-t{ display:block; font-size:16px; font-weight:800; letter-spacing:-0.03em; margin-bottom:4px; line-height:1.4; }
+.p-val{
+  font-family:var(--mono);
+  color:var(--red); font-weight:700;
+}
+.p-d{ display:block; font-size:13px; color:var(--ink-soft); line-height:1.68; }
+.perks li.hero{
+  background:var(--green-soft);
+  border-color:var(--green);
+  box-shadow:3px 3px 0 rgba(43,89,63,.22);
+}
+.perks li.hero .p-cap{ background:var(--green); }
+.perks li.hero .p-t{ color:var(--green-deep); font-size:17.5px; }
+.perks li.hero .p-d strong{ color:var(--green-deep); }
+
+/* ─────────── 구성 · 가격 ─────────── */
+.opt{
+  background:var(--white);
+  border:2px solid var(--ink);
+  border-radius:3px;
+  padding:0;
+  margin-bottom:13px;
+  overflow:hidden;
+  box-shadow:3px 3px 0 rgba(31,34,37,.13);
+}
+.opt-head{
+  background:var(--ink); color:#fff;
+  padding:10px 14px;
+  display:flex; align-items:center; gap:9px; flex-wrap:wrap;
+}
+.opt-tag{
+  font-family:var(--mono);
+  font-size:10px; font-weight:700; letter-spacing:.06em;
+  background:rgba(255,255,255,.18); padding:2px 7px; border-radius:2px;
+}
+.opt.pick .opt-head{ background:var(--green); }
+.opt.pick .opt-tag{ background:var(--tape); color:#3A2B00; }
+.opt-head h4{ font-size:15px; font-weight:800; letter-spacing:-0.03em; margin:0; }
+.opt-body{ padding:15px 14px 14px; }
+.opt-desc{ font-size:13.5px; color:var(--ink-soft); margin:0 0 14px; line-height:1.7; }
+
+/* 단품 라인 */
+.oline{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:11px 0; border-bottom:1px dashed var(--line-soft);
+}
+.oline:last-child{ border-bottom:0; padding-bottom:0; }
+.ol-n{ font-size:14px; font-weight:600; }
+.ol-p{ text-align:right; white-space:nowrap; line-height:1.25; }
+.ol-was{ font-family:var(--mono); display:block; font-size:11.5px; color:var(--ink-faint); text-decoration:line-through; }
+.ol-now{ display:flex; align-items:baseline; gap:6px; justify-content:flex-end; }
+.ol-off{
+  font-family:var(--mono); font-size:12.5px; font-weight:700;
+  color:#fff; background:var(--red); padding:1px 5px; border-radius:2px;
+}
+.ol-val{ font-family:var(--mono); font-size:16px; font-weight:700; color:var(--ink); letter-spacing:-0.02em; }
+
+/* 세트 임팩트 블록 */
+.deal{ text-align:center; padding:4px 0 2px; }
+.deal-was{
+  font-family:var(--mono);
+  font-size:15px; color:var(--ink-faint);
+  position:relative; display:inline-block; margin-bottom:2px;
+}
+.deal-was::after{
+  content:""; position:absolute; left:-6px; right:-6px; top:52%;
+  height:2.5px; background:var(--red); transform:rotate(-4deg);
+}
+.deal-cap{ display:block; font-size:11.5px; color:var(--ink-faint); margin-bottom:4px; }
+.deal-arrow{
+  font-family:var(--mono); color:var(--red);
+  font-size:17px; line-height:1; margin:6px 0 4px; font-weight:700;
+}
+.deal-now{ display:flex; align-items:center; justify-content:center; gap:9px; flex-wrap:wrap; }
+.deal-off{
+  font-family:var(--mono); font-size:19px; font-weight:700;
+  color:#fff; background:var(--red); padding:3px 10px; border-radius:2px;
+  letter-spacing:-0.02em;
+}
+.deal-val{ font-family:var(--mono); font-size:29px; font-weight:700; color:var(--ink); letter-spacing:-0.035em; line-height:1.1; }
+.deal-save{
+  display:inline-block; margin-top:11px;
+  background:var(--tape); color:#3A2B00;
+  font-size:13.5px; font-weight:800; letter-spacing:-0.02em;
+  padding:6px 14px; border-radius:2px;
+}
+.deal-save b{ font-family:var(--mono); }
+
+.opt-add{
+  font-size:12.5px; color:var(--ink-soft);
+  margin:14px 0 0; padding-top:11px;
+  border-top:1px dashed var(--line); line-height:1.85;
+}
+.opt-add strong{ color:var(--red); font-family:var(--mono); font-weight:700; }
+.opt-add s{ color:var(--ink-faint); }
+
+.buyinfo{ list-style:none; margin:14px 0 0; padding:0; }
+.buyinfo li{
+  font-size:12.5px; color:var(--ink-soft);
+  padding-left:13px; position:relative; margin-bottom:6px; line-height:1.65;
+}
+.buyinfo li:last-child{ margin-bottom:0; }
+.buyinfo li::before{ content:"·"; position:absolute; left:3px; top:0; color:var(--ink-faint); font-weight:700; }
+
+.curation{ margin-top:18px; padding:2px 0 2px 14px; border-left:2px solid var(--line); }
+.curation p{ font-size:13.5px; color:var(--ink-soft); line-height:1.8; margin:0; }
+.curation p + p{ margin-top:10px; }
+.curation strong{ color:var(--green); }
+
+.mid-cta{
+  display:block; text-align:center;
+  background:var(--white); border:2px solid var(--ink);
+  color:var(--ink); padding:14px;
+  font-size:14.5px; font-weight:700; text-decoration:none;
+  margin-top:20px; letter-spacing:-0.02em; border-radius:3px;
+  box-shadow:3px 3px 0 rgba(31,34,37,.13);
+}
+.mid-cta:hover{ background:var(--ink); color:#fff; }
+
+/* ─────────── 06 폼 ─────────── */
+#apply{ scroll-margin-top:calc(var(--bar-h) + 10px); }
+.form-box{
+  background:var(--white); border:2px solid var(--ink);
+  border-radius:var(--radius); padding:20px 16px;
+  box-shadow:4px 4px 0 rgba(31,34,37,.13);
+}
+.field{ margin-bottom:16px; }
+.field label{ display:block; font-size:13.5px; font-weight:700; margin-bottom:7px; letter-spacing:-0.02em; }
+.field .req{ color:var(--red); margin-left:3px; }
+.field .hint{ display:block; font-size:11.5px; font-weight:400; color:var(--ink-faint); margin-top:3px; }
+.field input, .field select{
+  width:100%; font-family:inherit; font-size:16px; color:var(--ink);
+  background:var(--card); border:1px solid var(--line);
+  border-radius:3px; padding:12px;
+  -webkit-appearance:none; appearance:none;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.field input:focus, .field select:focus{
+  outline:none; border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(43,89,63,.13);
+}
+.field select{
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23555C63' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 13px center; padding-right:34px;
+}
+.consent{ background:var(--paper); border-radius:3px; padding:12px 13px; margin-bottom:17px; }
+.consent-row{ display:flex; gap:9px; align-items:flex-start; cursor:pointer; }
+.consent-row input{ flex:none; width:19px; height:19px; margin:2px 0 0; accent-color:var(--green); }
+.consent-row span{ font-size:13px; line-height:1.6; font-weight:600; }
+.consent .terms{ font-size:11.5px; color:var(--ink-faint); margin:9px 0 0; padding-left:28px; line-height:1.65; }
+
+.submit{
+  width:100%; font-family:inherit; font-size:16px; font-weight:700;
+  letter-spacing:-0.02em; color:#fff; background:var(--red);
+  border:0; border-radius:3px; padding:16px; cursor:pointer;
+  transition:background .15s ease, transform .1s ease;
+}
+.submit:hover{ background:var(--red-deep); }
+.submit:active{ transform:scale(.988); }
+.form-note{ font-size:12px; color:var(--ink-faint); text-align:center; margin:11px 0 0; line-height:1.65; }
+
+/* ─────────── Modal ─────────── */
+.modal{
+  position:fixed; inset:0; z-index:120; display:none;
+  align-items:center; justify-content:center; padding:22px;
+  background:rgba(20,24,21,.66);
+  -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
+}
+.modal.open{ display:flex; }
+.modal-card{
+  background:var(--white); border:2px solid var(--ink);
+  padding:28px 20px 22px; max-width:330px; width:100%;
+  text-align:center; border-radius:var(--radius);
+  box-shadow:6px 6px 0 rgba(0,0,0,.3);
+  animation:pop .22s cubic-bezier(.2,.9,.3,1.3);
+}
+@keyframes pop{ from{ opacity:0; transform:translateY(14px) scale(.96);} to{ opacity:1; transform:none; } }
+.modal-ico{ font-size:34px; line-height:1; margin-bottom:12px; }
+.modal-card h3{ font-family:var(--mono); font-size:17px; margin:0 0 9px; color:var(--green-deep); }
+.modal-card p{ font-size:14px; color:var(--ink-soft); margin:0 0 18px; line-height:1.7; }
+.modal-close{
+  width:100%; font-family:inherit; font-size:15px; font-weight:700;
+  color:#fff; background:var(--ink); border:0; border-radius:3px; padding:13px; cursor:pointer;
+}
+
+/* ─────────── Footer ─────────── */
+footer{ background:var(--paper-2); padding:24px 0 32px; border-top:1px solid var(--line); }
+footer p{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); line-height:1.8; margin:0 0 7px; text-align:center; }
+footer p:last-child{ margin-bottom:0; }
+
+/* ─────────── Reveal ─────────── */
+.rv{ opacity:0; transform:translateY(12px); transition:opacity .45s ease, transform .45s ease; }
+.rv.in{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .rv{ opacity:1; transform:none; transition:none; }
+  .modal-card{ animation:none; }
+}
+
+/* ============================================================
+   반응형 — 기본 360px, 위로 확장
+   ============================================================ */
+@media (min-width:400px){
+  .wrap{ padding-left:22px; padding-right:22px; }
+  h1{ font-size:28px; }
+  h2{ font-size:22px; }
+  .brief-h{ font-size:20px; }
+  .deal-val{ font-size:33px; }
+  .danger-h{ font-size:21px; }
+  .stamp-secret{ font-size:32px; padding:9px 17px 8px; }
+  .stamp{ font-size:17px; }
+  .brief-note{ font-size:13.5px; }
+}
+@media (min-width:560px){
+  body{ font-size:16.5px; }
+  section{ padding:76px 0; }
+  header{ padding:40px 0 34px; }
+  h1{ font-size:32px; }
+  .card, .form-box, .danger-body, .brief-in{ padding-left:22px; padding-right:22px; }
+  .opt-body{ padding-left:20px; padding-right:20px; }
+  .creed{ grid-template-columns:1fr 1fr; }
+  .brief-grid{ grid-template-columns:1fr 1fr; }
+  .brief-grid .brief-item:first-child{ grid-column:1 / -1; }
+  .deal-val{ font-size:36px; }
+  .bubble .msg{ max-width:88%; }
+  .stamp-secret{ font-size:38px; padding:10px 20px 9px; }
+  .stamp{ font-size:19px; padding:9px 18px; }
+  .stamp.sm{ font-size:16px; }
+}
+@media (min-width:768px){
+  :root{ --bar-h:56px; }
+  .bar a{ font-size:13.5px; }
+  section{ padding:90px 0; }
+  h1{ font-size:35px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ Sticky bar — 혜택 상시 노출 ══════════ -->
+<div class="bar">
+  <a href="#apply">
+    <span class="b-l">
+      <span class="b-1">8/19(수) 오픈 · 최대 <em>33%</em> + 사은품 <em>23,000원</em> 상당</span>
+      <span class="b-2">3일간 · 이 4종의 첫 공동구매</span>
+    </span>
+    <span class="b-go">알림 신청</span>
+  </a>
+</div>
+
+<!-- ══════════ 헤더 ══════════ -->
+<header>
+  <div class="wrap">
+    <div class="stamp-row">
+      <span class="stamp">1급 대외비</span>
+      <span class="stamp blue sm">내부 확인 필</span>
+    </div>
+
+    <h1>수경마켓 × 네츄레메디<br>미팅 회의록</h1>
+    <p class="h1-sub">— 친구님들에게만 공유하는 1급 보안 미팅 회의록</p>
+
+    <div class="meta">
+      <dl>
+        <div class="row"><dt>일시</dt><dd>2026년 8월의 어느 날</dd></div>
+        <div class="row"><dt>참석</dt><dd>네츄레메디 대표님, 팀장님, 김수경</dd></div>
+        <div class="row"><dt>안건</dt><dd>수경마켓 혜택 검토 및 제품 검증</dd></div>
+      </dl>
+    </div>
+
+    <div class="thesis">
+      <p>"이거 파니까 사세요" 하고 광고만 하는 건 제 방식이 아닙니다.</p>
+      <p>친구님들이 직접 추천해 주신 브랜드인 만큼, <strong>제가 팔로워님들의 대리인이 되어</strong> 브랜드 담당자분들과 치열하게 부딪히며 협상하고, 꼼꼼하게 검증하고 왔습니다.</p>
+      <p>브랜드의 고집부터 솔직한 한계점까지, 투명하게 정리된 미팅 회의록을 보고서 형태로 제출합니다. <strong>최종 '결제'는 우리 친구님들이 직접 내려주세요!</strong></p>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ 상단 혜택 요약 ══════════ -->
+<div class="brief wrap">
+  <div class="brief-in">
+    <div class="brief-top">
+      <span class="brief-lbl">SUMMARY<br>결론부터</span>
+      <span class="stamp-secret">SECRET</span>
+    </div>
+    <p class="brief-h">기나긴 협의 끝에 완성된<br>수경마켓 단독 혜택</p>
+
+    <div class="brief-grid">
+      <div class="brief-item">
+        <span class="bi-n">53,800<small>원 이득</small></span>
+        <span class="bi-t">
+          <b>세트 2개 기준 총 혜택</b>
+          <span>할인 30,800원 + 사은품 23,000원 상당 (100명 선착순)</span>
+        </span>
+      </div>
+      <div class="brief-item">
+        <span class="bi-n">33<small>%</small></span>
+        <span class="bi-t">
+          <b>최대 할인</b>
+          <span>진정 세트 54,900 → 36,900</span>
+        </span>
+      </div>
+      <div class="brief-item">
+        <span class="bi-n">2<small>가정</small></span>
+        <span class="bi-t">
+          <b>찾아가는 홈스파</b>
+          <span>제가 직접 가서 해드립니다</span>
+        </span>
+      </div>
+    </div>
+
+    <a class="brief-cta" href="#apply">8/19 오픈 알림 먼저 받아두기 →</a>
+    <p class="brief-note">아래는 제가 왜 이 4종을 골랐는지에 대한 <strong>치열했던 미팅 기록</strong>이에요.<br>급하시면 <strong>바로 위 버튼만 누르셔도</strong> 됩니다.</p>
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════ 01 배경 ══════════ -->
+<section class="wrap rv">
+  <span class="sec-num">01</span>
+  <h2>이 미팅이 잡힌 이유</h2>
+  <p class="sec-lead">제가 브랜드를 발굴한 게 아니에요. 순서가 반대였습니다.</p>
+
+  <ol class="steps">
+    <li>
+      <span class="step-tag">발단</span>
+      <p>우리 아기 침독 때문에 고민이라고 글을 올렸더니, <strong>친구님들이 네츄레메디를 정말 많이 추천해주셨어요.</strong> DM으로도 댓글로도 같은 이름이 계속 올라왔어요.</p>
+    </li>
+    <li>
+      <span class="step-tag">검증</span>
+      <p>추천받아서 <strong>내돈내산으로 사서 우리 아기한테 직접 써봤어요.</strong> 침독 부위부터 저녁 목욕 루틴까지 4종을 다 써봤는데 정말 만족스러웠어요.</p>
+    </li>
+    <li>
+      <span class="step-tag">역요청</span>
+      <p>쓰는 걸 올릴 때마다 <strong>"마켓 안 여세요?" 문의가 쇄도했어요.</strong> 그래서 제가 직접 브랜드에 연락해 딜을 열었습니다. 조건 협상도 제가 걸었어요.</p>
+    </li>
+  </ol>
+
+  <div class="p-shot evidence">
+    <a href="img/evidence-dm.jpg" target="_blank" rel="noopener" class="zoom">
+      <img src="img/evidence-dm.jpg" alt="아기 목욕 릴스에 달린 네츄레메디 추천 댓글과 구매처 문의 DM 캡처" width="1000" height="586">
+      <span class="zoom-hint">🔍 탭하면 크게 볼 수 있어요</span>
+    </a>
+    <p class="p-cap-m">첨부 EVIDENCE 01 · 받아온 DM · 댓글</p>
+  </div>
+  <p class="ev-caption">아기 목욕 릴스를 올릴 때마다 달린 것들이에요. <strong>"입욕제 구매처 궁금해요", "세트구성 시급해요", "공구를 간절히 바라게 된 건 처음"</strong> — 이런 게 계속 쌓였습니다.</p>
+
+  <div class="p-shot evidence">
+    <a href="img/evidence-order.jpg" target="_blank" rel="noopener" class="zoom">
+      <img src="img/evidence-order.jpg" alt="네츄레메디 진정듀오 세트와 아기 입욕제 세트 실제 주문 내역 캡처" width="1000" height="586" loading="lazy">
+      <span class="zoom-hint">🔍 탭하면 크게 볼 수 있어요</span>
+    </a>
+    <p class="p-cap-m">첨부 EVIDENCE 02 · 실제 주문 내역</p>
+  </div>
+  <p class="ev-caption">진정 듀오 세트 41,000원, 입욕제 세트 49,900원. <strong>결제일이 5월과 7월</strong>이에요. 미팅은 <strong>8월</strong>이었고요. 말로 "내돈내산"이라고 하는 것보다, 날짜가 찍힌 영수증 한 장이 정확하잖아요.</p>
+</section>
+
+<!-- ══════════ 02 제품 ══════════ -->
+<section class="wrap rv">
+  <span class="sec-num">02</span>
+  <h2>우리 아기한테 써보고 고른 4종</h2>
+  <p class="sec-lead">저녁 목욕 루틴 2종 + 낮에 발라주는 진정 2종이에요. 우리 아기한테 안 써본 제품은 이 마켓에 없습니다.</p>
+
+  <p class="group-lbl">A. 저녁 목욕 루틴 — 욕조에 넣는 것</p>
+
+  <div class="card">
+    <div class="card-head">
+      <span class="card-no">1</span>
+      <div>
+        <h3>수딩 스파</h3>
+        <div class="card-role">헹구지 않는 아기 탄산 온천 입욕제</div>
+      </div>
+    </div>
+    <div class="p-shot">
+      <img src="img/spa.png" alt="수딩 스파 제품 사진" width="309" height="560">
+      <p class="p-cap-m">첨부 PHOTO 01 · 수딩 스파 500g</p>
+    </div>
+    <p>저는 이거 만나고 <strong>목욕의 신세계</strong> 만났어요. 욕조에 하나 넣으면 끝이고, 아기를 다시 헹구지 않아도 되더라고요! 탄산 기포가 씻어내는 방식이라, <strong>이틀에 한 번은 바디워시 안 쓰고 이걸로 한 번에</strong> 씻겨요. 저녁마다 씻기고 헹구고 다시 안아 올리는 과정이 한 단계 줄어들어서 진짜 편했구요!</p>
+    <ul class="spec">
+      <li><strong>수돗물 속 잔류 염소 제거</strong> — 목욕물을 매끈하게 만들어줍니다</li>
+      <li>계면활성제가 아니라 탄산 기포가 아기 피부의 노폐물·각질을 밀어내는 방식</li>
+      <li>베타인 · 알란토인 · 트레할로오스 배합</li>
+      <li>500g · <strong>신생아부터</strong> 사용 / 개봉 후 3개월 이내</li>
+    </ul>
+    <div class="quote">
+      <span class="who">기록자 메모</span>
+      <p>브랜드몰 리뷰 키워드를 세어보니 <strong>"사용하기 편해요"가 "효과가 좋아요"보다 약 2배</strong> 많았어요. 엄마들이 이걸 다시 사는 이유는 효능보다 편의라는 뜻으로 읽었습니다.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <span class="card-no">2</span>
+      <div>
+        <h3>굿나잇 통잠스파</h3>
+        <div class="card-role">아기 릴렉싱 마그네슘 입욕제</div>
+      </div>
+    </div>
+    <div class="p-shot">
+      <img src="img/goodnight.png" alt="굿나잇 통잠스파 제품 사진" width="560" height="555" loading="lazy">
+      <p class="p-cap-m">첨부 PHOTO 02 · 굿나잇 통잠스파 400g</p>
+    </div>
+    <p>통잠 자던 저희 아기가 <strong>원더윅스 시작하면서 자다 깨는 시간이 많아지니</strong>, 이것저것 알아보다 알게 된 통잠스파! 이걸 쓴다고 100% 통잠을 자진 않지만, 아기에게 조금 더 편안하게 릴렉스하는 시간을 선물하고 싶어서 쓰고 있는 제품이에요.</p>
+    <p>대표님과 대화하며 알게 된 건데, 제품 탄생 배경도 <strong>원더윅스로 힘들어서 울고 싶다는 엄마의 글</strong>을 보고 만들기 시작했다고 하시더라고요.</p>
+    <ul class="spec">
+      <li>엡솜솔트(마그네슘)와 오렌지 오일 — 아기 몸과 마음을 이완시켜주는 방향</li>
+      <li>브랜드 표기 기준 <strong>전성분이 식용 가능한 성분</strong>, 유기농 원료 사용</li>
+      <li>기저귀로 예민해진 엉덩이 피부 진정도 함께 소구하는 제품</li>
+      <li>400g · <strong>3개월 아기부터</strong> / 개봉 후 6개월 이내</li>
+    </ul>
+  </div>
+
+  <p class="group-lbl">B. 낮에 발라주는 진정 — 아기 피부에 바르는 것</p>
+
+  <div class="card">
+    <div class="card-head">
+      <span class="card-no">3</span>
+      <div>
+        <h3>수딩 스틱밤</h3>
+        <div class="card-role">아기 침독·건조 부위 보호막 스틱</div>
+      </div>
+    </div>
+    <div class="p-shot">
+      <img src="img/stickbalm.jpg" alt="수딩 스틱밤 제품 사진" width="560" height="560" loading="lazy">
+      <p class="p-cap-m">첨부 PHOTO 03 · 수딩 스틱밤 16g</p>
+    </div>
+    <p>아기 침독이나 트러블은 사실 <strong>피부 장벽 개선이 우선</strong>인 건데, 피부 장벽 개선은 수시로 보습해주는 방법밖에 없더라고요. 근데 밖에 나가서 보습하려니 매번 손 씻는 과정이 불편하더라고요. 얼굴에 지저분한 손으로 해줄 수도 없고….</p>
+    <p>그래서 이걸 찾게 됐는데요. <strong>스틱밤 그대로 아기 입가에 발라줄 수 있어서</strong> 너무 편하게 쓰고 있어요.</p>
+    <ul class="spec">
+      <li>스틱 끝이 <strong>물방울 모양</strong> — 넓은 볼은 넓은 면으로, 콧볼·입가처럼 좁은 데는 뾰족한 쪽으로</li>
+      <li>주요 원료: 올리브오일, 피마자씨오일, <strong>캐모마일꽃오일</strong>, 시어버터, 비즈왁스</li>
+      <li>전성분 표기 기준 <strong>자연유래 99.9% · 유기농 원료 79%</strong></li>
+      <li>16g · 신생아부터 / 개봉 후 6개월 이내</li>
+    </ul>
+    <div class="quote">
+      <span class="who">대표님 이야기</span>
+      <p>"유기농 원료 79% 쓴 곳은, 단언컨대 저희뿐이에요. 저희가 높은 원가율인 이유죠."</p>
+    </div>
+
+    <div class="trial">
+      <span class="t-lbl">인체적용시험 · 스틱밤</span>
+      <p class="t-desc">4주 사용 후 <strong>건조에 의한 일시적 가려움 완화</strong>에 도움을 줄 수 있다는 결과를 받은 제품입니다.</p>
+      <div class="t-grid">
+        <div class="t-cell"><span class="t-n">+35.6%</span><span class="t-k">피부 수분 함유량</span></div>
+        <div class="t-cell"><span class="t-n">−24.6%</span><span class="t-k">수분 손실량</span></div>
+        <div class="t-cell"><span class="t-n">−65.9%</span><span class="t-k">가려움 정도</span></div>
+      </div>
+      <p class="t-src">KC피부임상연구센터 · KC-220630-C1 · 2022.06.30~07.29<br>성인 21명 · 스틱밤 단독 4주 · 아기 대상 시험이 아니며 세트 전체 결과도 아닙니다</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <span class="card-no">4</span>
+      <div>
+        <h3>수딩 롤온세럼</h3>
+        <div class="card-role">아기 땀띠·열감 케어 약산성 롤온 세럼</div>
+      </div>
+    </div>
+    <div class="p-shot">
+      <img src="img/rollon.png" alt="수딩 롤온세럼 제품 사진" width="236" height="560" loading="lazy">
+      <p class="p-cap-m">첨부 PHOTO 04 · 수딩 롤온세럼 50g</p>
+    </div>
+    <p>구슬을 굴려서 발라주는 타입이라 <strong>손을 안 대도 돼요.</strong> 여름에 아기 목이랑 접히는 데 땀 차고 열감 올라올 때 이것부터 굴려줬어요.</p>
+    <ul class="spec">
+      <li>자일리톨의 흡열 반응으로 발라줄 때 시원한 느낌</li>
+      <li>판테놀로 수분길을 열어주는 설계</li>
+      <li><strong>200:1로 농축한 알로에 파우더 + 편백수</strong>가 베이스</li>
+      <li>50g · 아기 피부에 맞춘 <strong>약산성</strong> 세럼</li>
+    </ul>
+  </div>
+
+  <div class="formula">
+    <span class="f-lbl">3 + 4 · 바르는 순서가 정해져 있습니다</span>
+    <div class="formula-row">
+      <div class="f-item"><span class="fi-n">롤온세럼</span><span class="fi-s">속수분 채우기</span></div>
+      <span class="f-plus">+</span>
+      <div class="f-item"><span class="fi-n">스틱밤</span><span class="fi-s">겉장벽 잠그기</span></div>
+    </div>
+    <p class="f-out">채우고 → 덮는 2단계.<br>따로 발라줄 때랑 같이 쓸 때가 다릅니다.</p>
+  </div>
+
+  <div class="usecase">
+    <span class="u-lbl">상황별로 순서가 다릅니다</span>
+    <table class="u-t">
+      <tr><td class="u-when">건조할 때</td><td>롤온세럼 → 촉촉함이 남아 있을 때 스틱밤 덧발라주기</td></tr>
+      <tr><td class="u-when">붉어질 때</td><td>롤온세럼 → <strong>1분쯤 두고 열감을 뺀 뒤</strong> 스틱밤으로 마무리</td></tr>
+      <tr><td class="u-when">가려워할 때</td><td>롤온세럼을 자주 덧발라주고, 스틱밤은 <strong>바로</strong> 덧발라주기</td></tr>
+    </table>
+    <p class="u-f">이걸 모르고 대충 발라주면 세트로 산 의미가 없어서, 미팅에서 따로 받아 적어 왔어요.</p>
+  </div>
+
+  <a class="mid-cta" href="#apply">오픈 알림 먼저 받아두기 →</a>
+</section>
+
+<!-- ══════════ 03 Q&A ══════════ -->
+<section class="wrap rv">
+  <span class="sec-num">03</span>
+  <h2>비하인드 스토리</h2>
+  <p class="sec-lead">제가 먼저 납득이 돼야 친구님들께 권해드릴 수 있으니까요. 궁금한 건 그 자리에서 다 여쭤봤고, 오간 이야기를 그대로 옮깁니다.</p>
+
+
+
+
+  <div class="qa-blk">
+    <span class="qa-tagline">01 · 자기 제품 덜 팔리는 이야기</span>
+    <div class="bubble q"><span class="who">수경</span><div class="msg">그럼 탄산 스파(핑크색)를 쓰면, 정말 바디워시로 따로 안 씻어도 되는 거예요?</div></div>
+    <div class="bubble a"><span class="who">대표님</span><div class="msg"><strong>워시, 매일 안 쓰셔도 돼요. 오히려 매일 쓰면 더 건조해져요.</strong><br><br>밖에서 활동하고 땀 많이 흘린 날은 씻어내야 하지만, 집에 있었던 날은 간단히 씻어도 괜찮아요.</div></div>
+    <div class="bubble a"><span class="who"></span><div class="msg">아기 몸에 묻는 건 대부분 침이랑 먼지예요. <strong>계면활성제까지 써서 끌어내야 할 만큼의 노폐물이 아니거든요.</strong> 워시는 지용성 노폐물을 물로 끌고 와서 떨어뜨리는 방식이라, 매일 하면 지켜야 할 것까지 같이 씻겨 나갑니다.</div></div>
+    <div class="bubble a"><span class="who"></span><div class="msg">탄산 스파는 방식이 달라요. <strong>기포가 피부에 물리적으로 붙어서 이물질을 떨어뜨립니다.</strong> 여기에 보습 성분이 같이 들어 있어서, 헹굼 없이 닦아내고 끝내셔도 되고요.</div></div>
+    <div class="bubble a"><span class="who">수경<br>메모</span><div class="msg"><span class="myline">저도 그래서 너무 편하더라고요.</span> 입욕제 쓰고 나면 보습이 잘된 느낌이라 바디로션을 따로 안 발라줬는데, 저는 이게 제일 편했던 포인트예요. (제 경우고, 아이 피부에 따라 다를 수 있어요.)<br><br>파는 쪽에서 <strong>"우리 워시 매일 쓰지 마세요"</strong>라고 먼저 말하는 걸 처음 봤습니다.</div></div>
+  </div>
+
+  <div class="qa-blk">
+    <span class="qa-tagline">02 · "거짓말입니다"라고 답한 순간</span>
+    <div class="bubble q"><span class="who">수경</span><div class="msg">통잠스파 쓰면 진짜 통잠 자나요?</div></div>
+    <div class="bubble a"><span class="who">대표님</span><div class="msg"><strong>"약이 아니기 때문에 100% 다 잔다고 하면 거짓말입니다."</strong><br><br>편안하게 이완시켜주는 목욕 루틴이지, 수면제가 아닙니다. 효과를 낼 때도 있고 안 낼 때도 있어요.</div></div>
+    <div class="bubble a"><span class="who">수경<br>메모</span><div class="msg"><span class="myline">이 답이 이 미팅에서 제일 좋았어요.</span> 파는 사람이 스스로 안 되는 걸 안 된다고 말한 자리라서, 이 회의록을 공개하기로 결정한 순간이기도 해요.</div></div>
+  </div>
+
+  <div class="qa-blk">
+    <span class="qa-tagline">03 · 자랑을 안 하셔서 제가 졸랐습니다</span>
+    <div class="bubble q"><span class="who">수경</span><div class="msg">대표님, 저한테 장점 어필을 해주셔야죠. 그래야 저도 친구님들한테 자랑하죠!</div></div>
+    <div class="bubble a"><span class="who">대표님</span><div class="msg">(웃음) 제가 진짜 T라서요. 근데 <strong>정말 저희 제품만이 해답은 아니니까요.</strong><br><br>그렇지만 좋은 원료를 좋은 함량으로 만들었고, <strong>후기 하나 조작하지 않은 건 100% 정직해요.</strong></div></div>
+  </div>
+
+</section>
+
+<!-- ══════════ 04 기준 ══════════ -->
+<section class="wrap rv">
+  <span class="sec-num">04</span>
+  <h2>제가 이 브랜드를<br>선택한 또 다른 이유</h2>
+  <p class="sec-lead">느리게 가지만, 정직하게 가는 브랜드. 진정성이 있는 브랜드라 더 깊이 사랑하게 되었어요.</p>
+
+  <ul class="creed">
+    <li><span class="ci">🚫</span><div><span class="ct">컨셉 원료 ZERO</span><span class="cd">0.1%만 넣는 눈속임 성분은 싹 빼고, 피부가 진짜 변화를 느낄 수 있게 유효 성분을 아낌없이 꽉 채웠습니다</span></div></li>
+    <li><span class="ci">💬</span><div><span class="ct">가구매 · 가짜 리뷰 0%</span><span class="cd">올라온 후기는 전부 실제 구매자가 쓴 것이라고 하셨어요</span></div></li>
+    <li><span class="ci">↩️</span><div><span class="ct">30일 트러블 반품제</span><span class="cd">아기 피부에 트러블이 나면 30일 안에 반품<br><em class="cond">단 고객센터 사전접수 필수, 1/4 이상 쓴 제품은 반품 불가</em></span></div></li>
+    <li><span class="ci">🗨️</span><div><span class="ct">카톡 1:1 상담 무료</span><span class="cd">아기 피부 관련해 따로 비용 없이 상담해주신대요</span></div></li>
+  </ul>
+</section>
+
+<!-- ══════════ 04-1 사지 마세요 ══════════ -->
+<section class="wrap rv">
+  <span class="sec-num">04-1</span>
+  <div class="danger">
+    <div class="tape"></div>
+    <div class="danger-body">
+      <p class="danger-h">🚨 이런 분들은 이번 마켓에서<br>구매하지 마세요</p>
+      <p class="danger-lead">좋은 얘기만 적으면 이 문서를 쓴 의미가 없어서, 안 맞을 분들을 먼저 걸러내겠습니다.</p>
+
+      <ol class="dont">
+        <li>
+          <span class="d-no">CASE 01</span>
+          <span class="d-t">한 번에 기절하듯 재워주길 바라는 분</span>
+          <span class="d-d">통잠스파는 수면제가 아니에요. 우리 아기도 효과가 뚜렷한 날이 있었고, 그냥 평소랑 똑같은 날도 있었어요. 한 번 썼다고 기적이 일어나길 바라신다면 구매를 피해주세요.</span>
+          <span class="d-but">▸ 다만 <strong>자기 전 긴장을 풀어주는 목욕 루틴</strong>을 만들고 싶으셨다면, 이만한 선택은 못 봤어요.</span>
+        </li>
+        <li>
+          <span class="d-no">CASE 02</span>
+          <span class="d-t">설명서 안 읽고 대충 쓰실 분</span>
+          <span class="d-d">가루가 날려서 아기 얼굴 가까이서 뿌리면 안 되고, 아기를 넣기 전에 먼저 녹여야 하고, 쓰고 나면 <strong>욕조 바닥이 미끄럽습니다.</strong> 수딩스파는 탄산이라 배송 후 바로 열면 분출될 수 있어 눌러가며 천천히 열어야 합니다.<br><br>참고로 <strong>스틱밤 표면에 미세한 자국이 보여도 불량이 아니에요.</strong> 후면 충진 방식이라 생기는 거래요. 저도 처음에 놀라서 물어봤어요.</span>
+          <span class="d-but">▸ 편한 제품이지만, 무심하게 쓸 제품은 아닙니다.</span>
+        </li>
+      </ol>
+
+      <p class="danger-foot">제가 상세페이지를 끝까지 읽고 옮긴 것입니다. 브랜드가 숨긴 게 아니라 적어둔 건데, 보통 거기까지 안 읽으셔서 제가 가져왔어요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 05 일정 · 혜택 · 구성 ══════════ -->
+<section class="wrap rv">
+  <span class="sec-num">05</span>
+  <h2>마켓 일정 · 혜택 · 구성</h2>
+  <p class="sec-lead">딱 3일간 엽니다.</p>
+
+  <div class="sched">
+    <span class="dday" id="dday">D-DAY</span>
+    <p class="s-date">8/19(수) ~ 8/21(금)</p>
+    <p class="s-sub">2026년 · 3일간</p>
+    <p class="s-first">이 네 제품의 <strong>첫 공동구매</strong>예요.<br>그동안 어디서도 열린 적 없어요.</p>
+  </div>
+
+  <h3 class="blk-h">치열한 협의 끝에 받아온<br>단독 혜택 4가지</h3>
+  <p class="blk-lead">가격만 깎아달라고 하지 않았어요. 이 네 개를 받아오는 데 시간을 더 썼습니다.</p>
+
+  <ul class="perks">
+    <li>
+      <span class="p-cap">01 · 선착순 100명</span>
+      <span class="p-t">수딩젤 본품을 <span class="p-val">23,000원 상당</span> 그대로 얹어드립니다</span>
+      <div class="p-gift">
+        <span class="gift-img"><img src="img/gift-soothinggel.png" alt="선착순 증정 수딩젤" loading="lazy"></span>
+        <span class="p-d">깎아주는 게 아니라 <strong>본품을 하나 더</strong> 드리는 방식이에요. 수량을 더 받아오려고 아직 이야기 중입니다.</span>
+      </div>
+    </li>
+    <li>
+      <span class="p-cap">02 · 구매 인증 10명</span>
+      <span class="p-t">수딩 롤온세럼 본품 <span class="p-val">22,900원 상당</span></span>
+      <span class="p-d">사서 인증만 해주시면 추첨에 들어갑니다. 땀띠·열감 올라올 때 쓰는 그 롤온세럼이에요.</span>
+    </li>
+    <li>
+      <span class="p-cap">03 · 최다 구매 5명</span>
+      <span class="p-t">굿나잇 통잠스파 본품 <span class="p-val">23,900원 상당</span></span>
+      <span class="p-d">가장 많이 담아주신 다섯 분께 따로 드려요. 추첨이 아니라 <strong>구매 금액순</strong>이라 확실합니다.</span>
+    </li>
+    <li class="hero">
+      <span class="p-cap">04 · 2가정 한정</span>
+      <span class="p-t">찾아가는 홈스파 🛁<br><span class="p-val">제품 4종 전부 + 방문 시연 · 113,600원 상당</span></span>
+      <span class="p-d"><strong>제가 직접 찾아갑니다.</strong> 마켓에 올린 <strong>4종을 전부 들고 가서 선물해 드리고</strong>, 우리 아기한테 해주는 홈스파 루틴 그대로 그 집 아기에게 베이비스파를 해드려요. 목욕부터 마무리 보습까지 옆에서 다 해드립니다.<br><br>제품값만 <strong>113,600원</strong>이에요 (진정 세트 54,900 + 스파 세트 58,700).<br><br>그런데 단순히 제품만 전달하는 게 아니에요. <strong>화면 너머로만 뵙던 친구님께 진심을 전하러 갑니다.</strong> 직접 찾아가서 아기에게 따뜻한 목욕 시간을 선물해 드리고 싶었어요.</span>
+    </li>
+  </ul>
+
+  <h3 class="blk-h">구성은 세 가지로 짰습니다</h3>
+  <p class="blk-lead">하나만 써보실 분, 바르는 것부터 시작할 분, 목욕 루틴을 바꾸고 싶은 분. 셋 다 다른 상황이라 따로 만들었어요.</p>
+
+  <!-- 단품 -->
+  <div class="opt">
+    <div class="opt-head">
+      <span class="opt-tag">OPTION 1</span>
+      <h4>하나만 먼저 써볼게요</h4>
+    </div>
+    <div class="opt-body">
+      <div class="oline">
+        <span class="ol-n">수딩 스파</span>
+        <span class="ol-p"><s class="ol-was">28,900</s><span class="ol-now"><span class="ol-off">21%</span><span class="ol-val">22,900</span></span></span>
+      </div>
+      <div class="oline">
+        <span class="ol-n">굿나잇 통잠스파</span>
+        <span class="ol-p"><s class="ol-was">29,800</s><span class="ol-now"><span class="ol-off">20%</span><span class="ol-val">23,900</span></span></span>
+      </div>
+      <div class="oline">
+        <span class="ol-n">수딩 스틱밤</span>
+        <span class="ol-p"><s class="ol-was">28,900</s><span class="ol-now"><span class="ol-off">21%</span><span class="ol-val">22,900</span></span></span>
+      </div>
+      <div class="oline">
+        <span class="ol-n">수딩 롤온세럼</span>
+        <span class="ol-p"><s class="ol-was">33,900</s><span class="ol-now"><span class="ol-off">32%</span><span class="ol-val">22,900</span></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 진정 세트 -->
+  <div class="opt pick">
+    <div class="opt-head">
+      <span class="opt-tag">수경 PICK</span>
+      <h4>침독 · 땀띠 진정 세트</h4>
+    </div>
+    <div class="opt-body">
+      <div class="set-shots">
+        <img src="img/stickbalm.jpg" alt="수딩 스틱밤" loading="lazy">
+        <span class="set-plus">+</span>
+        <img src="img/rollon.png" alt="수딩 롤온세럼" loading="lazy">
+      </div>
+      <p class="opt-desc">낮에 발라주는 2종. <strong>롤온세럼으로 채우고 스틱밤으로 덮는</strong> 그 순서 그대로 쓰시라고 묶었어요.</p>
+      <div class="deal">
+        <span class="deal-cap">따로 사면</span>
+        <div class="deal-was">54,900원</div>
+        <div class="deal-arrow">▼</div>
+        <div class="deal-now">
+          <span class="deal-off">33% ↓</span>
+          <span class="deal-val">36,900<small>원</small></span>
+        </div>
+        <span class="deal-save">18,000원 아끼십니다</span>
+      </div>
+      <p class="opt-add">세트에 단품을 더 담으시면 스틱밤 <s>26,000</s> <strong>18,900원</strong> · 롤온세럼 <s>29,800</s> <strong>18,900원</strong></p>
+    </div>
+  </div>
+
+  <!-- 스파 세트 -->
+  <div class="opt pick">
+    <div class="opt-head">
+      <span class="opt-tag">수경 PICK</span>
+      <h4>통잠 · 꿀잠 스파 세트</h4>
+    </div>
+    <div class="opt-body">
+      <div class="set-shots">
+        <img src="img/spa.png" alt="수딩 스파" loading="lazy">
+        <span class="set-plus">+</span>
+        <img src="img/goodnight.png" alt="굿나잇 통잠스파" loading="lazy">
+      </div>
+      <p class="opt-desc">저녁 목욕 루틴 2종. <strong>낮 목욕은 편하게, 밤 목욕은 재우려고</strong> 나눠 쓰는 조합입니다.</p>
+      <div class="deal">
+        <span class="deal-cap">따로 사면</span>
+        <div class="deal-was">58,700원</div>
+        <div class="deal-arrow">▼</div>
+        <div class="deal-now">
+          <span class="deal-off">22% ↓</span>
+          <span class="deal-val">45,900<small>원</small></span>
+        </div>
+        <span class="deal-save">12,800원 아끼십니다</span>
+      </div>
+      <p class="opt-add">세트에 단품을 더 담으시면 수딩 스파 <s>28,900</s> <strong>21,900원</strong> · 통잠스파 <s>29,800</s> <strong>22,900원</strong></p>
+    </div>
+  </div>
+
+  <ul class="buyinfo">
+    <li>네츄레메디 공식몰 <strong>비공개 링크</strong>로 진행합니다 (다른 쿠폰은 함께 적용되지 않습니다)</li>
+    <li>5만원 이상 무료배송 · 미만은 배송비 3,000원</li>
+    <li>오픈 시점에 구성·가격이 조정될 수 있어 링크에서 한 번 더 확인 부탁드립니다</li>
+  </ul>
+
+  <div class="curation">
+    <p>가격표부터 들이미는 마켓은 하고 싶지 않았어요. <strong>제가 우리 아기한테 써보고 좋았던 것만 골라서</strong>, 브랜드에 조건을 더 받아오는 쪽으로 이야기했습니다.</p>
+    <p>그래서 이 문서에 <strong>할인율 대신 회의록을 먼저</strong> 붙였어요. 무엇을 얼마에 파는지보다, 무엇을 왜 골랐는지가 먼저 읽혔으면 했거든요.</p>
+  </div>
+</section>
+
+<!-- ══════════ 06 폼 ══════════ -->
+<section class="wrap rv" id="apply">
+  <span class="sec-num">06</span>
+  <h2>오픈 알림 신청</h2>
+  <p class="sec-lead">오픈하면 단독 링크를 문자 또는 카카오톡으로 가장 먼저 보내드립니다.</p>
+
+  <div class="form-box">
+    <form id="applyForm" method="POST" target="hidden_iframe">
+      <div class="field">
+        <label for="f-name">성함 <span class="req">*</span></label>
+        <input type="text" id="f-name" name="entry.NAME" required
+               placeholder="예: 홍길동" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="f-tel">연락처 <span class="req">*</span>
+          <span class="hint">오픈 알림 발송에만 사용합니다</span>
+        </label>
+        <input type="tel" id="f-tel" name="entry.TEL" required
+               placeholder="010-0000-0000" inputmode="tel" autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label for="f-item">가장 기대되는 제품 <span class="req">*</span></label>
+        <select id="f-item" name="entry.ITEM" required>
+          <option value="" disabled selected>선택해주세요</option>
+          <option value="전 라인업">전 라인업</option>
+          <option value="수딩 스파">수딩 스파</option>
+          <option value="굿나잇 통잠스파">굿나잇 통잠스파</option>
+          <option value="수딩 스틱밤">수딩 스틱밤</option>
+          <option value="수딩 롤온세럼">수딩 롤온세럼</option>
+        </select>
+      </div>
+
+      <div class="consent">
+        <label class="consent-row" for="f-agree">
+          <input type="checkbox" id="f-agree" required>
+          <span>개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></span>
+        </label>
+        <p class="terms">
+          수집 항목: 성함, 연락처, 관심 제품 · 이용 목적: 마켓 오픈 알림 발송 ·
+          보유 기간: <strong>마켓 종료 후 30일 내 파기</strong> · 동의를 거부하실 수 있으며, 이 경우 알림 발송이 어렵습니다.
+        </p>
+      </div>
+
+      <button type="submit" class="submit">보안 해제 · 알림 신청하기 🫡</button>
+      <p class="form-note">광고성 정보는 보내지 않습니다. 이번 마켓 알림 딱 한 번입니다.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>수경이가 친구님들을 위해 만든 마켓 사전 안내 페이지입니다.</p>
+    <p>제품 제조판매원 (주)레메디웍스 · 소비자 상담 070-7524-8418<br>제품 자체에 대한 문의는 브랜드로 하시는 편이 정확합니다.</p>
+    <p style="margin-top:13px;opacity:.7;">수경마켓 × 네츄레메디 · 2026</p>
+  </div>
+</footer>
+
+<iframe name="hidden_iframe" title="form-target" style="display:none" tabindex="-1" aria-hidden="true"></iframe>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <div class="modal-ico">🫡</div>
+    <h3 id="modalTitle">신청 완료</h3>
+    <p>8월 19일 오픈하면 단독 링크를 가장 먼저 보내드릴게요.<br>알려주신 연락처로만 딱 한 번 갑니다.</p>
+    <button type="button" class="modal-close" id="modalClose">확인</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ══════════════════════════════════════════════════════════
+     ① 구글폼 연동 설정 — 여기 4줄만 채우면 수집이 시작됩니다
+     ══════════════════════════════════════════════════════════
+     1. 구글폼 생성 (질문 3개: 성함/인스타ID, 연락처, 기대 제품)
+     2. [보내기] → 링크(<>) 아이콘 → 주소에서
+        .../forms/d/e/  와  /viewform  사이의 긴 문자열이 FORM_ID
+     3. 편집 화면 → 미리보기(눈 아이콘) → 우클릭 [페이지 소스 보기]
+        → Ctrl+F 로 "entry." 검색 → entry.123456789 3개를 순서대로 복사
+     4. 아래에 붙여넣고 저장 → 끝
+     ────────────────────────────────────────────────────────── */
+  var CONFIG = {
+    FORM_ID:    '1FAIpQLSdkO4ieS8AeSjtguIIIT4Hv8tEDqkHhoF0XpOcNrxLoDo2K_Q',
+    ENTRY_NAME: 'entry.1162574575',  // 성함
+    ENTRY_TEL:  'entry.1410423697',  // 연락처
+    ENTRY_ITEM: 'entry.1235378257'   // 가장 기대되는 제품
+  };
+
+  var OPEN_DATE  = '2026-08-19';
+  var CLOSE_DATE = '2026-08-21';
+
+  var form   = document.getElementById('applyForm');
+  var modal  = document.getElementById('modal');
+  var mClose = document.getElementById('modalClose');
+
+  function isConfigured() {
+    return CONFIG.FORM_ID.indexOf('PASTE_') === -1 &&
+           CONFIG.ENTRY_NAME.indexOf('000000') === -1;
+  }
+
+  if (isConfigured()) {
+    form.action = 'https://docs.google.com/forms/d/e/' + CONFIG.FORM_ID + '/formResponse';
+    document.getElementById('f-name').name = CONFIG.ENTRY_NAME;
+    document.getElementById('f-tel').name  = CONFIG.ENTRY_TEL;
+    document.getElementById('f-item').name = CONFIG.ENTRY_ITEM;
+  }
+
+  var lastFocused = null;
+  function openModal() {
+    lastFocused = document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    mClose.focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+  mClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', function (e) {
+    if (!isConfigured()) {
+      e.preventDefault();
+      console.warn('[수경마켓] 구글폼 CONFIG가 아직 비어 있습니다. 입력값이 저장되지 않습니다.');
+    }
+    openModal();
+    setTimeout(function () { form.reset(); }, 400);
+  });
+
+  function toDate(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  (function renderDday() {
+    var el = document.getElementById('dday');
+    if (!el) return;
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var open = toDate(OPEN_DATE), close = toDate(CLOSE_DATE), day = 86400000;
+    if (today < open)       el.textContent = 'D-' + Math.round((open - today) / day);
+    else if (today <= close) el.textContent = '지금 오픈 중';
+    else                     el.textContent = '마켓 종료';
+  })();
+
+  var targets = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>
