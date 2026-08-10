@@ -700,6 +700,45 @@ p:last-child{ margin-bottom:0; }
   color:var(--red); font-weight:700;
 }
 .p-d{ display:block; font-size:13px; color:var(--ink-soft); line-height:1.68; }
+/* 홈스파 응모 — 접이식 폼 */
+.hs-apply{ margin-top:15px; }
+.hs-apply > summary{
+  display:block; text-align:center; cursor:pointer; list-style:none;
+  font-family:var(--mono); font-size:14px; font-weight:700; letter-spacing:-0.01em;
+  background:var(--green); color:#fff;
+  padding:14px 16px; border-radius:3px;
+  box-shadow:3px 3px 0 rgba(43,89,63,.28); user-select:none;
+}
+.hs-apply > summary::-webkit-details-marker{ display:none; }
+.hs-apply > summary::after{ content:" ▾"; }
+.hs-apply[open] > summary::after{ content:" ▴"; }
+.hs-apply > summary:hover{ background:var(--green-deep); }
+.hs-form{
+  margin-top:12px; background:var(--white);
+  border:1px solid var(--green-line); border-radius:3px; padding:16px 14px;
+}
+.hs-form .field{ margin-bottom:14px; }
+.hs-note{
+  font-size:12px; line-height:1.7; color:var(--ink-soft);
+  background:var(--postit); border:1px dashed var(--postit-line);
+  border-radius:3px; padding:10px 11px; margin:0 0 14px;
+}
+.hs-radio{ display:flex; gap:8px; flex-wrap:wrap; }
+.hs-radio label{
+  flex:1; min-width:104px; display:flex; align-items:center; gap:7px;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); border-radius:3px; padding:10px 11px; margin:0;
+  background:var(--card);
+}
+/* .field input 전역 규칙(width:100% · appearance:none)이 라디오를 텍스트칸으로 만들기 때문에 되돌린다 */
+.hs-radio input[type="radio"]{
+  width:auto; flex:none; margin:0; padding:0;
+  -webkit-appearance:radio; appearance:radio;
+  accent-color:var(--green); background:none; border:0; box-shadow:none;
+}
+.hs-radio input[type="radio"]:focus{ outline:2px solid var(--green); outline-offset:2px; box-shadow:none; }
+.hs-radio label:has(input:checked){ border-color:var(--green); background:var(--green-soft); }
+
 .hero-shot{
   margin:11px 0 13px;
   background:var(--white); border:1px solid var(--green-line);
@@ -1334,6 +1373,68 @@ footer p:last-child{ margin-bottom:0; }
         <img src="img/homespa.png" alt="찾아가는 베이비 홈스파 — 방문 시연 장면과 제품 4종" width="1000" height="541" loading="lazy">
       </div>
       <span class="p-d"><strong>제가 직접 찾아갑니다.</strong> 마켓에 올린 <strong>4종을 전부 들고 가서 선물해 드리고</strong>, 우리 아기한테 해주는 홈스파 루틴 그대로 그 집 아기에게 베이비스파를 해드려요. 목욕부터 마무리 보습까지 옆에서 다 해드립니다.<br><br>제품값만 <strong>113,600원</strong>이에요 (진정 세트 54,900 + 스파 세트 58,700).<br><br>그런데 단순히 제품만 전달하는 게 아니에요. <strong>화면으로만 뵙던 친구님께 진심을 전하러 갑니다.</strong> 직접 찾아가서 아기에게 따뜻한 목욕 시간을 선물해 드리고 싶었어요.</span>
+
+      <details class="hs-apply">
+        <summary>찾아가는 홈스파 이벤트 응모하기</summary>
+        <div class="hs-form">
+          <p class="hs-note">
+            <strong>2가정만 선정합니다.</strong> 8/13(목)에 방문할 예정이라 그날 가능하신 분만 신청해주세요.
+            선정되신 분께는 <strong>개별 연락</strong>드리고, 정확한 시간은 그때 맞춥니다.
+          </p>
+
+          <form id="hsForm" method="POST" target="hidden_iframe">
+            <div class="field">
+              <label for="h-name">성함 <span class="req">*</span></label>
+              <input type="text" id="h-name" name="entry.HS_NAME" required placeholder="예: 홍길동" autocomplete="name">
+            </div>
+
+            <div class="field">
+              <label for="h-tel">연락처 <span class="req">*</span>
+                <span class="hint">선정 안내에만 사용합니다</span>
+              </label>
+              <input type="tel" id="h-tel" name="entry.HS_TEL" required placeholder="010-0000-0000" inputmode="tel" autocomplete="tel">
+            </div>
+
+            <div class="field">
+              <label for="h-addr">주소 <span class="req">*</span>
+                <span class="hint">방문 가능 지역인지 확인하는 데만 씁니다</span>
+              </label>
+              <input type="text" id="h-addr" name="entry.HS_ADDR" required placeholder="예: 서울시 마포구 ○○동" autocomplete="street-address">
+            </div>
+
+            <div class="field">
+              <label>8/13(목) 방문이 가능하신가요? <span class="req">*</span></label>
+              <div class="hs-radio">
+                <label for="h-d1"><input type="radio" id="h-d1" name="entry.HS_DATE" value="가능합니다" required><span>가능합니다</span></label>
+                <label for="h-d2"><input type="radio" id="h-d2" name="entry.HS_DATE" value="조율이 필요합니다"><span>조율이 필요해요</span></label>
+              </div>
+            </div>
+
+            <div class="consent">
+              <label class="consent-row" for="h-portrait">
+                <input type="checkbox" id="h-portrait" required>
+                <span>촬영 및 초상권 사용에 동의합니다 <span class="req">*</span></span>
+              </label>
+              <p class="terms">
+                방문 현장을 <strong>사진·영상으로 촬영</strong>해 수경마켓 콘텐츠(릴스·피드 등)에 사용합니다.
+                아기와 보호자가 함께 나올 수 있으며, <strong>공개를 원하지 않는 장면은 촬영 전·후 언제든 말씀해주시면 빼드립니다.</strong>
+                기저귀 교체처럼 노출 우려가 있는 장면은 처음부터 찍지 않습니다.
+              </p>
+
+              <label class="consent-row" for="h-agree" style="margin-top:11px;">
+                <input type="checkbox" id="h-agree" required>
+                <span>개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></span>
+              </label>
+              <p class="terms">
+                수집 항목: <strong>성함, 연락처, 주소</strong>, 방문 가능 여부 · 이용 목적: 홈스파 대상자 선정 및 방문 안내 ·
+                보유 기간: <strong>이벤트 종료 후 30일 내 파기</strong> · 동의를 거부하실 수 있으며, 이 경우 응모가 어렵습니다.
+              </p>
+            </div>
+
+            <button type="submit" class="submit">홈스파 응모하기 🛁</button>
+          </form>
+        </div>
+      </details>
     </li>
   </ul>
 
@@ -1525,6 +1626,27 @@ footer p:last-child{ margin-bottom:0; }
     ENTRY_ITEM: 'entry.1235378257'   // 가장 기대되는 제품
   };
 
+  /* ══════════════════════════════════════════════════════════
+     ①-2 찾아가는 홈스파 응모폼 — 별도 구글폼이 필요합니다
+     ══════════════════════════════════════════════════════════
+     위 알림 신청과 수집 항목이 달라서 폼을 따로 만들어야 합니다.
+     구글폼 질문 5개를 이 순서로 만드세요.
+       1) 성함 (단답형)
+       2) 연락처 (단답형)
+       3) 주소 (단답형)
+       4) 8/13(목) 방문 가능 여부 (객관식: 가능합니다 / 조율이 필요합니다)
+       5) 동의 (객관식 또는 단답형 — 아래 HS_AGREE 로 "동의함"이 전송됩니다)
+     FORM_ID·entry ID 를 찾는 방법은 위 ①과 동일합니다.
+     ────────────────────────────────────────────────────────── */
+  var CONFIG_HS = {
+    FORM_ID:     'PASTE_HOMESPA_FORM_ID',
+    ENTRY_NAME:  'entry.000000001',  // 성함
+    ENTRY_TEL:   'entry.000000002',  // 연락처
+    ENTRY_ADDR:  'entry.000000003',  // 주소
+    ENTRY_DATE:  'entry.000000004',  // 8/13 방문 가능 여부
+    ENTRY_AGREE: 'entry.000000005'   // 촬영·개인정보 동의 여부
+  };
+
   var OPEN_DATE  = '2026-08-19';
   var CLOSE_DATE = '2026-08-21';
 
@@ -1570,6 +1692,36 @@ footer p:last-child{ margin-bottom:0; }
     openModal();
     setTimeout(function () { form.reset(); }, 400);
   });
+
+  /* ── 찾아가는 홈스파 응모폼 ── */
+  var hsForm = document.getElementById('hsForm');
+  if (hsForm) {
+    var hsReady = CONFIG_HS.FORM_ID.indexOf('PASTE_') === -1 &&
+                  CONFIG_HS.ENTRY_NAME.indexOf('000000') === -1;
+    if (hsReady) {
+      hsForm.action = 'https://docs.google.com/forms/d/e/' + CONFIG_HS.FORM_ID + '/formResponse';
+      document.getElementById('h-name').name = CONFIG_HS.ENTRY_NAME;
+      document.getElementById('h-tel').name  = CONFIG_HS.ENTRY_TEL;
+      document.getElementById('h-addr').name = CONFIG_HS.ENTRY_ADDR;
+      Array.prototype.forEach.call(
+        hsForm.querySelectorAll('input[type="radio"]'),
+        function (r) { r.name = CONFIG_HS.ENTRY_DATE; }
+      );
+      var hidden = document.createElement('input');
+      hidden.type  = 'hidden';
+      hidden.name  = CONFIG_HS.ENTRY_AGREE;
+      hidden.value = '촬영·개인정보 모두 동의함';
+      hsForm.appendChild(hidden);
+    }
+    hsForm.addEventListener('submit', function (e) {
+      if (!hsReady) {
+        e.preventDefault();
+        console.warn('[수경마켓] 홈스파 폼 CONFIG_HS 가 아직 비어 있습니다. 입력값이 저장되지 않습니다.');
+      }
+      openModal();
+      setTimeout(function () { hsForm.reset(); }, 400);
+    });
+  }
 
   function toDate(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
   (function renderDday() {
