@@ -707,7 +707,7 @@ p:last-child{ margin-bottom:0; }
 }
 .hs-radio{ display:flex; gap:8px; flex-wrap:wrap; }
 .hs-radio label{
-  flex:1; min-width:104px; display:flex; align-items:center; gap:7px;
+  flex:1 1 calc(50% - 4px); min-width:150px; display:flex; align-items:center; gap:7px;
   font-size:13.5px; font-weight:600; cursor:pointer;
   border:1px solid var(--line); border-radius:3px; padding:10px 11px; margin:0;
   background:var(--card);
@@ -1359,7 +1359,7 @@ footer p:last-child{ margin-bottom:0; }
         <summary>찾아가는 홈스파 이벤트 응모하기</summary>
         <div class="hs-form">
           <p class="hs-note">
-            <strong>2가정만 선정합니다.</strong> 8/13(목)에 방문할 예정이라 그날 가능하신 분만 신청해주세요.
+            <strong>2가정만 선정합니다.</strong> 방문 가능한 날은 <strong>8/13(목) · 8/14(금) 부산 · 8/15(토) 영주</strong> 세 날짜예요.
             선정되신 분께는 <strong>개별 연락</strong>드리고, 정확한 시간은 그때 맞춥니다.
           </p>
 
@@ -1391,11 +1391,22 @@ footer p:last-child{ margin-bottom:0; }
             </div>
 
             <div class="field">
-              <label>8/13(목) 방문이 가능하신가요? <span class="req">*</span></label>
+              <label>8/13(목) 집에 방문드려도 괜찮으실까요? <span class="req">*</span>
+                <span class="hint">그날이 어려우시면 아래 다른 날짜도 골라주세요</span>
+              </label>
               <div class="hs-radio">
-                <label for="h-d1"><input type="radio" id="h-d1" name="entry.HS_DATE" value="가능합니다" required><span>가능합니다</span></label>
+                <label for="h-d1"><input type="radio" id="h-d1" name="entry.HS_DATE" value="가능합니다" required><span>8/13(목) 가능해요</span></label>
                 <label for="h-d2"><input type="radio" id="h-d2" name="entry.HS_DATE" value="조율이 필요합니다"><span>조율이 필요해요</span></label>
+                <label for="h-d3"><input type="radio" id="h-d3" name="entry.HS_DATE" value="14일(금) 부산 가능해요."><span>8/14(금) 부산 가능해요</span></label>
+                <label for="h-d4"><input type="radio" id="h-d4" name="entry.HS_DATE" value="15일(토) 영주 가능해요."><span>8/15(토) 영주 가능해요</span></label>
               </div>
+            </div>
+
+            <div class="field">
+              <label for="h-month">아기 개월수를 적어주세요! <span class="req">*</span>
+                <span class="hint">개월수에 맞춰 스파 온도와 루틴을 준비해가요</span>
+              </label>
+              <input type="text" id="h-month" name="entry.HS_MONTH" required placeholder="예: 8개월" inputmode="numeric">
             </div>
 
             <div class="field">
@@ -1421,7 +1432,7 @@ footer p:last-child{ margin-bottom:0; }
                 <span>개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></span>
               </label>
               <p class="terms">
-                수집 항목: <strong>성함, 연락처, 주소·상세주소</strong>, 방문 가능 여부, 남겨주신 한마디 · 이용 목적: 홈스파 대상자 선정 및 방문 안내 ·
+                수집 항목: <strong>성함, 연락처, 주소·상세주소</strong>, 방문 가능 일정, 아기 개월수, 남겨주신 한마디 · 이용 목적: 홈스파 대상자 선정 및 방문 안내 ·
                 보유 기간: <strong>이벤트 종료 후 30일 내 파기</strong> · 동의를 거부하실 수 있으며, 이 경우 응모가 어렵습니다.
               </p>
             </div>
@@ -1639,7 +1650,8 @@ footer p:last-child{ margin-bottom:0; }
     ENTRY_TEL:   'entry.667854414',   // 연락처
     ENTRY_ADDR:  'entry.18550041',    // 주소
     ENTRY_ADDR2: 'entry.288992828',   // 상세주소 (동·호수)
-    ENTRY_DATE:  'entry.1614207667',  // 8/13 방문 가능 여부
+    ENTRY_DATE:  'entry.1614207667',  // 방문 가능 일정
+    ENTRY_MONTH: 'entry.1575927248',  // 아기 개월수
     ENTRY_AGREE: 'entry.998217367',   // 동의 여부 (초상권·개인정보)
     ENTRY_NOTE:  'entry.1969846944'   // 한마디 (선택)
   };
@@ -1702,6 +1714,7 @@ footer p:last-child{ margin-bottom:0; }
       document.getElementById('h-addr').name  = CONFIG_HS.ENTRY_ADDR;
       document.getElementById('h-addr2').name = CONFIG_HS.ENTRY_ADDR2;
       document.getElementById('h-note').name  = CONFIG_HS.ENTRY_NOTE;
+      document.getElementById('h-month').name = CONFIG_HS.ENTRY_MONTH;
       Array.prototype.forEach.call(
         hsForm.querySelectorAll('input[type="radio"]'),
         function (r) { r.name = CONFIG_HS.ENTRY_DATE; }
