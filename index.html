@@ -518,23 +518,6 @@ p:last-child{ margin-bottom:0; }
 .f-plus{ font-family:var(--mono); font-size:17px; font-weight:700; opacity:.65; }
 .formula .f-out{ font-size:14px; font-weight:700; margin:0; line-height:1.6; }
 
-/* 상황별 사용법 */
-.usecase-more .usecase{ margin-top:0; }
-.usecase{ margin-top:15px; border:1px solid var(--line); background:var(--white); padding:15px 14px; border-radius:3px; }
-.usecase .u-lbl{
-  font-family:var(--mono);
-  display:block; font-size:10.5px; font-weight:700; letter-spacing:.09em;
-  color:var(--green-mid); margin-bottom:10px;
-}
-.u-t{ width:100%; border-collapse:collapse; }
-.u-t td{ font-size:13.5px; padding:8px 0; border-bottom:1px dashed var(--line-soft); line-height:1.6; vertical-align:top; }
-.u-t tr:last-child td{ border-bottom:0; }
-.u-when{ width:74px; font-weight:700; color:var(--green); padding-right:9px !important; white-space:nowrap; }
-.usecase .u-f{
-  font-size:12px; color:var(--ink-soft); margin:11px 0 0;
-  padding-top:10px; border-top:1px dashed var(--line-soft); line-height:1.65;
-}
-
 /* ─────────── 03 Q&A 말풍선 ─────────── */
 .qa-blk{ margin-bottom:26px; }
 .qa-tagline{
@@ -600,7 +583,6 @@ p:last-child{ margin-bottom:0; }
 .creed .ci{ flex:none; font-size:15px; line-height:1.5; }
 .creed .ct{ font-size:14px; font-weight:700; display:block; margin-bottom:2px; letter-spacing:-0.02em; }
 .creed .cd{ font-size:12.5px; color:var(--ink-soft); display:block; line-height:1.6; }
-.creed .cond{ display:inline-block; font-style:normal; font-size:11.5px; color:var(--ink-faint); margin-top:3px; }
 
 /* ─────────── 04-1 사지 마세요 (경고 테이프) ─────────── */
 .danger{ margin-top:6px; }
@@ -869,6 +851,17 @@ p:last-child{ margin-bottom:0; }
 .field label{ display:block; font-size:13.5px; font-weight:700; margin-bottom:7px; letter-spacing:-0.02em; }
 .field .req{ color:var(--red); margin-left:3px; }
 .field .hint{ display:block; font-size:11.5px; font-weight:400; color:var(--ink-faint); margin-top:3px; }
+.field .opt{ color:var(--ink-faint); font-weight:600; margin-left:3px; }
+.field textarea{
+  width:100%; font-family:inherit; font-size:16px; color:var(--ink);
+  background:var(--card); border:1px solid var(--line);
+  border-radius:3px; padding:12px; resize:vertical; line-height:1.6;
+  -webkit-appearance:none; appearance:none;
+}
+.field textarea:focus{
+  outline:none; border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(43,89,63,.13);
+}
 .field input, .field select{
   width:100%; font-family:inherit; font-size:16px; color:var(--ink);
   background:var(--card); border:1px solid var(--line);
@@ -1280,7 +1273,6 @@ footer p:last-child{ margin-bottom:0; }
   <ul class="creed">
     <li><span class="ci">🚫</span><div><span class="ct">컨셉 원료 ZERO</span><span class="cd">0.1%만 넣는 눈속임 성분은 싹 빼고, 피부가 진짜 변화를 느낄 수 있게 유효 성분을 아낌없이 꽉 채웠습니다</span></div></li>
     <li><span class="ci">💬</span><div><span class="ct">가구매 · 가짜 리뷰 0%</span><span class="cd">올라온 후기는 전부 실제 구매자가 쓴 것이라고 하셨어요</span></div></li>
-    <li><span class="ci">↩️</span><div><span class="ct">30일 트러블 반품제</span><span class="cd">아기 피부에 트러블이 나면 30일 안에 반품<br><em class="cond">단 고객센터 사전접수 필수, 1/4 이상 쓴 제품은 반품 불가</em></span></div></li>
     <li><span class="ci">🗨️</span><div><span class="ct">카톡 1:1 상담 무료</span><span class="cd">아기 피부 관련해 따로 비용 없이 상담해주신대요</span></div></li>
   </ul>
 </section>
@@ -1386,9 +1378,16 @@ footer p:last-child{ margin-bottom:0; }
 
             <div class="field">
               <label for="h-addr">주소 <span class="req">*</span>
-                <span class="hint">방문 가능 지역인지 확인하는 데만 씁니다</span>
+                <span class="hint">도로명 또는 지번까지 적어주세요</span>
               </label>
-              <input type="text" id="h-addr" name="entry.HS_ADDR" required placeholder="예: 서울시 마포구 ○○동" autocomplete="street-address">
+              <input type="text" id="h-addr" name="entry.HS_ADDR" required placeholder="예: 서울시 마포구 월드컵북로 396" autocomplete="street-address">
+            </div>
+
+            <div class="field">
+              <label for="h-addr2">상세주소 <span class="req">*</span>
+                <span class="hint">동·호수까지 있어야 찾아갈 수 있어요</span>
+              </label>
+              <input type="text" id="h-addr2" name="entry.HS_ADDR2" required placeholder="예: 101동 1203호" autocomplete="address-line2">
             </div>
 
             <div class="field">
@@ -1397,6 +1396,13 @@ footer p:last-child{ margin-bottom:0; }
                 <label for="h-d1"><input type="radio" id="h-d1" name="entry.HS_DATE" value="가능합니다" required><span>가능합니다</span></label>
                 <label for="h-d2"><input type="radio" id="h-d2" name="entry.HS_DATE" value="조율이 필요합니다"><span>조율이 필요해요</span></label>
               </div>
+            </div>
+
+            <div class="field">
+              <label for="h-note">편하게 대화할 수 있는 분이신가요? 한마디 남겨주세요 <span class="opt">(선택)</span>
+                <span class="hint">저에게 하고 싶은 말, 친구님의 성격이나 스타일 등을 편하게 남겨주시면 감사해요 :)</span>
+              </label>
+              <textarea id="h-note" name="entry.HS_NOTE" rows="3" placeholder="아무 말씀이나 편하게 남겨주세요"></textarea>
             </div>
 
             <div class="consent">
@@ -1415,7 +1421,7 @@ footer p:last-child{ margin-bottom:0; }
                 <span>개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></span>
               </label>
               <p class="terms">
-                수집 항목: <strong>성함, 연락처, 주소</strong>, 방문 가능 여부 · 이용 목적: 홈스파 대상자 선정 및 방문 안내 ·
+                수집 항목: <strong>성함, 연락처, 주소·상세주소</strong>, 방문 가능 여부, 남겨주신 한마디 · 이용 목적: 홈스파 대상자 선정 및 방문 안내 ·
                 보유 기간: <strong>이벤트 종료 후 30일 내 파기</strong> · 동의를 거부하실 수 있으며, 이 경우 응모가 어렵습니다.
               </p>
             </div>
@@ -1632,8 +1638,10 @@ footer p:last-child{ margin-bottom:0; }
     ENTRY_NAME:  'entry.1002512374',  // 성함
     ENTRY_TEL:   'entry.667854414',   // 연락처
     ENTRY_ADDR:  'entry.18550041',    // 주소
+    ENTRY_ADDR2: 'entry.288992828',   // 상세주소 (동·호수)
     ENTRY_DATE:  'entry.1614207667',  // 8/13 방문 가능 여부
-    ENTRY_AGREE: 'entry.998217367'    // 동의 여부 (초상권·개인정보)
+    ENTRY_AGREE: 'entry.998217367',   // 동의 여부 (초상권·개인정보)
+    ENTRY_NOTE:  'entry.1969846944'   // 한마디 (선택)
   };
 
   var OPEN_DATE  = '2026-08-19';
@@ -1691,7 +1699,9 @@ footer p:last-child{ margin-bottom:0; }
       hsForm.action = 'https://docs.google.com/forms/d/e/' + CONFIG_HS.FORM_ID + '/formResponse';
       document.getElementById('h-name').name = CONFIG_HS.ENTRY_NAME;
       document.getElementById('h-tel').name  = CONFIG_HS.ENTRY_TEL;
-      document.getElementById('h-addr').name = CONFIG_HS.ENTRY_ADDR;
+      document.getElementById('h-addr').name  = CONFIG_HS.ENTRY_ADDR;
+      document.getElementById('h-addr2').name = CONFIG_HS.ENTRY_ADDR2;
+      document.getElementById('h-note').name  = CONFIG_HS.ENTRY_NOTE;
       Array.prototype.forEach.call(
         hsForm.querySelectorAll('input[type="radio"]'),
         function (r) { r.name = CONFIG_HS.ENTRY_DATE; }
