@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>수경마켓 × 영롱</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --paper:#FBFAF7; --ink:#1A1D1B; --muted:#6B7168; --line:#E4E1D9;
+  --green:#0E3A2C; --mint:#34A97B; --mint-bg:#EAF5EF; --mint-line:#CFE7DB;
+  --orange:#C9573A; --orange-bg:#FBF0EC; --orange-line:#F0D6CD;
+  --gold:#9E7B3F; --gold-bg:#FDFAF1;
+  --card:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo",sans-serif;
+  font-size:16.5px; line-height:1.82; letter-spacing:-.014em;
+  word-break:keep-all; overflow-wrap:break-word;
+}
+.wrap{max-width:660px;margin:0 auto;padding:0 22px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+
+.eyebrow{font-size:11.5px;letter-spacing:.2em;font-weight:800;color:var(--mint);margin-bottom:12px}
+.eyebrow.o{color:var(--orange)} .eyebrow.g{color:var(--gold)}
+h1{font-size:32px;line-height:1.3;font-weight:800;letter-spacing:-.04em}
+h2{font-size:25px;line-height:1.34;font-weight:800;letter-spacing:-.04em;margin-bottom:18px}
+h3{font-size:18.5px;font-weight:700;margin-bottom:10px;letter-spacing:-.03em;line-height:1.5}
+h4{font-size:15.5px;font-weight:700;margin-bottom:7px;letter-spacing:-.02em}
+p{margin-bottom:16px} p:last-child{margin-bottom:0}
+.hl{background:linear-gradient(transparent 60%,#CDEBDC 60%);font-weight:700}
+.big{font-size:20px;font-weight:700;line-height:1.6;letter-spacing:-.03em}
+.sub{color:var(--muted);font-size:15px}
+.small{font-size:13.5px;color:var(--muted);line-height:1.72}
+.tiny{font-size:12px;color:#8B9089;line-height:1.7}
+a{color:var(--green)}
+
+.hero{background:var(--green);color:#fff;padding:56px 0 46px}
+.hero h1{color:#fff} .hero h1 em{font-style:normal;color:#7FD9AE}
+.hero .lede{color:#BFD3CB;margin-top:20px;font-size:15.5px;line-height:1.8}
+.stamp{display:inline-block;border:1px solid rgba(255,255,255,.28);border-radius:3px;font-size:10.5px;letter-spacing:.16em;font-weight:800;color:#9FC7B6;padding:4px 9px;margin-bottom:18px}
+.herogif{display:block;width:100%;max-width:270px;margin:26px auto 0;border-radius:14px;box-shadow:0 14px 38px rgba(0,0,0,.3)}
+
+.summary{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px;margin-top:-26px;position:relative;box-shadow:0 10px 32px rgba(14,58,44,.09)}
+.pitch{font-size:16.5px;line-height:1.7;letter-spacing:-.025em;font-weight:600;margin-bottom:16px}
+.pitch b{font-weight:800}
+.herostat{background:var(--green);border-radius:6px;padding:18px 20px;text-align:center;margin-bottom:14px}
+.herostat .k{font-size:11px;letter-spacing:.16em;font-weight:800;color:#7FD9AE;margin-bottom:8px}
+.herostat .v{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.035em;line-height:1.45}
+.herostat .s{font-size:12.5px;color:#A8C1B6;margin-top:7px}
+.sumgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin:0 0 16px}
+.sumgrid div{background:#FAFAF7;padding:13px 12px}
+.sumgrid .k{font-size:10.5px;color:var(--muted);font-weight:700;letter-spacing:.04em;margin-bottom:3px}
+.sumgrid .v{font-size:16px;font-weight:800;color:var(--green);letter-spacing:-.03em;line-height:1.3}
+.sumgrid .v small{font-size:11px;font-weight:600;color:var(--muted);display:block;margin-top:3px;letter-spacing:0;line-height:1.45}
+
+.img{border:1px dashed #C4C9C0;border-radius:8px;background:#F4F3EF;padding:30px 18px;text-align:center;margin:22px 0}
+.img .n{font-size:10.5px;letter-spacing:.16em;font-weight:800;color:var(--muted);margin-bottom:7px}
+.img .d{font-size:13.5px;color:#7A8078;line-height:1.65}
+.img img{max-width:100%;border-radius:6px;display:block;margin:0 auto}
+.imgcap{font-size:12.5px;color:#8B9089;text-align:center;margin-top:-12px;margin-bottom:22px}
+.gifsm{display:block;width:100%;max-width:250px;margin:22px auto 0;border-radius:12px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px;margin:20px 0}
+.card.mint{background:var(--mint-bg);border-color:var(--mint-line)}
+.card.dark{background:var(--green);border-color:var(--green);color:#fff}
+.card.dark .small,.card.dark .tiny{color:#A8C1B6}
+.card.warn{background:var(--orange-bg);border-color:var(--orange-line)}
+.card.gold{background:var(--gold-bg);border-color:#EADFC4}
+
+.scene{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--mint);border-radius:0 8px 8px 0;padding:18px 20px;margin:14px 0;font-size:16.5px;line-height:1.75}
+
+.rec{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:19px 20px;margin:20px 0}
+.rec .line{display:flex;gap:11px;margin-bottom:13px;font-size:15.5px;line-height:1.72}
+.rec .line:last-child{margin-bottom:0}
+.rec .line .sp{flex:0 0 46px;font-size:12px;font-weight:800;color:var(--muted);padding-top:4px;letter-spacing:-.02em}
+.rec .line.k .sp{color:var(--mint)}
+.rec .line.k .tx{color:#3A4A42}
+.rec .line .tx{flex:1}
+.rec .line .tx b{font-weight:800}
+
+.qa{margin:34px 0 0}
+.qa .ask{font-size:20px;font-weight:800;letter-spacing:-.035em;line-height:1.5;margin-bottom:14px}
+.qa .ask::before{content:"“";color:var(--mint)}
+.qa .ask::after{content:"”";color:var(--mint)}
+.mine{background:var(--gold-bg);border:1px dashed #C8AC77;border-radius:8px;padding:15px 17px;margin:18px 0 0}
+.mine .lbl{font-size:10.5px;letter-spacing:.16em;font-weight:800;color:var(--gold);margin-bottom:7px}
+.mine p{font-size:15.5px;margin-bottom:9px}
+
+ul.bul{list-style:none;margin:14px 0}
+ul.bul li{position:relative;padding-left:16px;margin-bottom:10px;font-size:15.5px;line-height:1.72}
+ul.bul li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--mint)}
+.card.warn ul.bul li::before{background:var(--orange)}
+.card.dark ul.bul li::before{background:#7FD9AE}
+
+details{border:1px solid var(--line);border-radius:8px;background:var(--card);margin:18px 0;overflow:hidden}
+details summary{cursor:pointer;list-style:none;padding:15px 18px;font-weight:700;font-size:15px;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"＋";font-size:15px;color:var(--mint);font-weight:800}
+details[open] summary::after{content:"－"}
+details[open] summary{border-bottom:1px solid var(--line)}
+.dbody{padding:18px}
+
+.tablewrap{overflow-x:auto;margin:16px 0;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:380px;font-size:14.5px;background:var(--card)}
+th,td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:left}
+tr:last-child td{border-bottom:none}
+th{background:#F4F2ED;font-weight:700;font-size:12.5px;color:var(--muted);letter-spacing:.03em}
+td.price{font-weight:800;color:var(--green)}
+td.was{color:#9AA096;text-decoration:line-through;font-size:13px}
+
+.case{border:1px solid var(--orange-line);border-radius:8px;background:var(--card);padding:19px;margin:16px 0}
+.case .n{font-size:10.5px;letter-spacing:.16em;font-weight:800;color:var(--orange);margin-bottom:7px}
+.case .turn{margin-top:13px;padding-top:13px;border-top:1px dotted var(--orange-line);font-size:15px;color:#3A4A42}
+.case .turn b{color:var(--green)}
+
+.ev{border:1px solid var(--line);border-radius:8px;background:var(--card);padding:19px;margin:14px 0}
+.ev .n{font-size:10.5px;letter-spacing:.16em;font-weight:800;color:var(--gold);margin-bottom:7px}
+.ev.hero-ev{border:1.5px solid var(--green);background:var(--mint-bg);padding:24px}
+.worth{display:inline-block;background:var(--green);color:#fff;border-radius:4px;font-size:13px;font-weight:800;padding:5px 11px;margin:6px 0 12px;letter-spacing:-.02em}
+
+.cta{display:block;background:var(--green);color:#fff;text-align:center;text-decoration:none;font-weight:800;padding:18px;border-radius:8px;margin:12px 0;letter-spacing:-.025em;font-size:16.5px}
+.cta.alt{background:var(--card);color:var(--green);border:1.5px solid var(--green)}
+.cta small{display:block;font-weight:500;font-size:12.5px;opacity:.72;margin-top:4px;letter-spacing:0}
+.ctanote{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+
+.share{background:var(--mint-bg);border:1px solid var(--mint-line);border-radius:8px;padding:22px;margin:22px 0}
+.share .lbl{font-size:11px;letter-spacing:.14em;font-weight:800;color:#1E7A55;margin-bottom:12px}
+
+.fill{background:#FFF0A8;color:#5F4A00;border-radius:3px;padding:1px 6px;font-weight:800;font-size:.93em}
+.todo{background:#FFE8E2;color:#8A3A22;border-radius:3px;padding:1px 6px;font-weight:800;font-size:.9em}
+hr.sep{border:none;border-top:1px solid var(--line);margin:30px 0}
+footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
+
+@media (max-width:480px){
+  body{font-size:16px}
+  h1{font-size:27px} h2{font-size:22px} .qa .ask{font-size:18px}
+  .sumgrid{grid-template-columns:1fr}
+  .herostat .v{font-size:18px}
+  .rec .line{flex-direction:column;gap:2px}
+  .rec .line .sp{flex:none;padding-top:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="wrap">
+    <span class="stamp">마켓 오픈 전에 먼저 보시라고 만든 페이지</span>
+    <h1>임신부터 출산,<br>그 이후까지<br><em>제가 계속 먹고 있는</em><br>유산균이랑 칼마디</h1>
+    <img class="herogif" src="images/hero.gif" alt="영롱 이스트바이오틱스 데이앤나잇, 세이프 칼마디K2X">
+    <p class="lede">
+      좋다고 말하기 전에, 왜 좋은지부터 말씀드리려고요.<br>
+      지난달에 부산 가서 약사인 대표님께 한 시간 넘게 물어보고 왔어요.<br><br>
+      그날 들은 얘기 그대로 적어둡니다.
+    </p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="summary">
+    <p class="pitch">
+      1년 먹어보고 좋았던 <b>유산균이랑 칼마디</b>예요.<br>
+      이번 추석에 양가 어머니께 드리려고, 이렇게 데려왔어요.
+    </p>
+    <div class="herostat">
+      <div class="k">온 가족이 같이 먹어요</div>
+      <div class="v">임신 중에도 · 아이도 · 부모님도</div>
+      <div class="s">약사가 설계한 안전 함량</div>
+    </div>
+    <div class="sumgrid">
+      <div><div class="k">마켓 오픈</div><div class="v">9월 2일<small>3일간 · 9월 4일까지</small></div></div>
+      <div><div class="k">가격</div><div class="v">41,900원~<small>1개월치부터 · 길게 사시면 최대 32%</small></div></div>
+      <div><div class="k">추석 전 배송</div><div class="v">9월 4일<small>까지 주문하시면 연휴 전 도착</small></div></div>
+    </div>
+    <a class="cta" href="{{알림신청_폼}}">🔔 오픈 알림 받아두기</a>
+    <p class="ctanote" style="margin-top:10px">전 제품 무료배송 · 도서·산간 3,000원</p>
+  </div>
+</div>
+
+<!-- ── 01 ── -->
+<div class="wrap">
+<section>
+  <div class="eyebrow">01</div>
+  <h2>저도 마트에서 파는 거<br>먹던 사람이었어요</h2>
+
+  <p>가루로 된 거 있잖아요. 스틱 뜯어서 입에 털어 넣는 거. 매대에 있는 건 웬만하면 다 먹어봤어요.</p>
+  <p>맛있어요. 새콤달콤하고. 먹기도 편하고요.</p>
+  <p class="big">근데 계속 뭔가 걸렸어요.<br>이게… 진짜 효과가 있나?</p>
+  <p>딱히 뭐가 달라지는 것 같지도 않고. 그렇다고 안 먹자니 찜찜하고. 그냥 습관처럼 먹었던 것 같아요.</p>
+
+  <img src="images/img01-powder.jpg" alt="여러 종류의 가루형 유산균 스틱" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:22px">이런 거요. 종류별로 참 많이도 먹었어요.</p>
+
+  <p>그러다 작년 봄에 유산균을 이걸로 옮겼어요. 물론 제 돈으로요.</p>
+</section>
+
+<!-- ── 02 ── -->
+<section>
+  <div class="eyebrow">02</div>
+  <h2>임신 중기에,<br>뼈가 시리기 시작했어요</h2>
+
+  <p class="big">내 뼈가 녹고 있나?</p>
+  <p>진짜 그런 느낌이었어요. 살면서 처음 느껴보는 시린 통증이었고요.</p>
+  <p>처음엔 기분 탓인 줄 알았어요. 임신하면 예민해지니까요. <strong>근데 아니더라고요.</strong></p>
+
+  <h3 style="margin-top:28px">그래서 칼슘을 찾아봤어요</h3>
+  <p>"칼슘을 먹어야 되나?" 하는 고민이 그때 시작됐어요. 칼슘이 뼈에 좋다는 말, 특히 칼마디가 좋다는 말을 듣고 이것저것 다 찾아봤고요.</p>
+  <p>그러다 알게 된 게 있었어요.</p>
+  <p class="hl big">칼슘만 많이 먹는다고<br>그게 다 제 뼈가 되는 게 아니었어요.<br>비타민K2가 있어야 한다고요.</p>
+  <p>여러 종류 칼마디를 먹어보다가 정착한 게 이 제품이에요. 현직 약사가 <strong>임산부, 수유부도 먹을 수 있게</strong> 설계했다고 하고, 성분도 하나하나 너무 좋아서요.</p>
+
+  <h3 style="margin-top:28px">그래서 카드뉴스까지 만들었어요</h3>
+  <p>제가 알아본 걸 정리해서요. 문의가 오면 종종 추천도 드렸고요.</p>
+
+  <img src="images/img02-cardnews.jpg" alt="작년에 만든 칼마디 카드뉴스" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:24px">작년에 만든 카드뉴스예요</p>
+
+  <p>그리고 그때 <strong>제가 먼저 연락드렸었어요.</strong> 협찬해 달라는 게 아니라요.</p>
+  <p class="big">"제 돈 주고 살 테니,<br>고생하는 우리 팔로워분들께<br>선물로 주시면 안 될까요?"</p>
+  <p>담당자님 설득하는 데 두 달 걸렸어요. 제품인지 검증하고, 이러이러하게 쓰겠다고 계속 말씀드리고. 그렇게 <strong>30분께 나눠드렸습니다.</strong></p>
+
+  <img src="images/img03-share.jpg" alt="나눔 받으신 분들이 올려주신 후기" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:8px">받아가신 분들이 올려주신 것들이에요. 아직도 드시는 분들 계세요.</p>
+</section>
+
+<!-- ── 03 ── -->
+<section>
+  <div class="eyebrow">03</div>
+  <h2>그런데 출산하고 나서,<br>한동안 못 챙겼어요</h2>
+
+  <p>이렇게까지 챙기던 사람이었는데요. 출산 전후로 정신이 없어서 서랍에 넣어놓고 그냥 잊어버렸어요.</p>
+  <p>그리고 몇 달 뒤에, 몸이 완전히 달라져 있더라고요.</p>
+
+  <h3 style="margin-top:28px">하나는 화장실</h3>
+  <p>저 살면서 변비 겪어본 적이 거의 없거든요. 진짜로요.</p>
+  <p>근데 출산하고 나니까 <strong>피가 같이 나올 정도로</strong> 아팠어요. 화장실 가는 게 무서워지더라고요.</p>
+
+  <img class="gifsm" src="images/img04-toilet.gif" alt="화장실에서 힘들어하는 모습">
+  <p class="imgcap" style="margin-top:10px">이거 웃으면서 찍었지만, 진짜 안 웃겼어요</p>
+
+  <p>솔직히 그때 자존감 좀 무너졌어요. 몸이 내 마음대로 안 되는 게 이런 거구나 싶었고.</p>
+
+  <h3 style="margin-top:28px">또 하나는, 그 시린 느낌이 다시 온 것</h3>
+  <p>임신 중기에 느꼈던 그거요. 이번엔 손목까지 왔어요. 아기 안고 일어설 때마다 시큰했고, 뼈 안쪽이 시린 느낌이 가시질 않았어요.</p>
+  <p>먹다 말았으니까 그럴 만도 했죠.</p>
+
+  <h3 style="margin-top:28px">근데 그때 제일 답답했던 건</h3>
+  <p class="big">약을 함부로 못 먹는다는 거였어요.</p>
+  <p>아이한테 갈까 봐요. 아픈데 먹을 수 있는 게 없는 상태. 그게 제일 힘들었어요.</p>
+  <p>그래서 서랍에 넣어뒀던 거를 다시 꺼냈어요. 이번엔 진짜 안 빼먹고요.</p>
+
+  <hr class="sep">
+
+  <p>왜 갑자기 그렇게 됐는지는, 나중에 대표님한테 듣고 알았어요.</p>
+
+  <div class="share">
+    <div class="lbl">📎 이 부분만 캡처해서 보내셔도 돼요</div>
+    <p class="big" style="margin-bottom:12px">임신하고 아이를 낳는 동안,<br>엄마 몸의 칼슘이 아이한테 갑니다.</p>
+    <p style="margin-bottom:0">아이 뼈를 만드는 과정에서 엄마 칼슘이 전달돼요. 내가 안 채우면 <strong>내 뼈에서 빠져나가는 구조</strong>인 거예요.<br>몸이 이상했던 게 아니라, 원래 그렇게 되어 있는 거였어요.</p>
+  </div>
+
+  <p>그러니까 <strong>평소 먹던 양으로는 모자라지는 구간</strong>이 있었던 거예요. 임신하고 출산하면서 필요한 양 자체가 달라진 건데, 저는 하필 그때 못 챙기고 있었고요.</p>
+  <p>이거 알고 나서 좀 억울했어요. 나만 유난인 줄 알았거든요.</p>
+
+  <img src="images/img05-desk.jpg" alt="영롱 데이앤나잇과 세이프 칼마디K2X" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:22px">지금은 이렇게 손 닿는 데 둬요. 안 보이면 또 잊어버리니까요.</p>
+
+  <p>주변에 선물했더니 반응이 저보다 더 좋았어요. 특히 <strong>친정엄마랑 시어머니.</strong> 두 분 다 지금까지 매일 드세요. 뼈 얘기는 어머니들이 훨씬 절실하시더라고요.</p>
+  <p>저는 일 때문에 지방 다니는 날이 많은데, 그럴수록 이거 하나는 챙기게 돼요.</p>
+
+  <img src="images/img06-parents.jpg" alt="부모님께 제품을 챙겨드리는 모습" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:22px">박스 뜯어서 이건 아침에, 이건 자기 전에… 설명하는 게 제일 오래 걸려요</p>
+
+  <h3 style="margin-top:34px">그러다 추석이 다가왔어요</h3>
+  <p>저 매년 이맘때 똑같았어요. 뭘 사드려야 하나 며칠 고민하다가 결국 무난한 걸로 넘어가는 거요. 받으시는 분도 "뭘 이런 걸" 하시고, 저도 좀 아쉽고.</p>
+  <p>근데 올해는 고민이 없었어요. <strong>두 분이 이미 1년째 드시고 계신 거니까요.</strong></p>
+  <p>어차피 제 돈으로 사서 보내드릴 거였는데, 이왕이면 <strong>같이 챙기실 수 있게 하고 싶었어요.</strong> 그래서 마켓을 열었습니다.</p>
+  <p class="small">추석 전에 받으시려면 9월 4일까지는 주문하셔야 해요.</p>
+</section>
+
+<!-- ── 03 상황묘사 ── -->
+<section>
+  <div class="eyebrow o">04</div>
+  <h2>이런 날,<br>있으셨어요?</h2>
+  <p class="sub">하나라도 걸리시면 아래부터 읽어보셔도 돼요. 아니면 그냥 닫으셔도 되고요.</p>
+
+  <div class="scene" style="margin-top:24px">화장실에 앉아서 한참을 있는데 밖에서 아기가 울어요. 마음은 급한데 몸은 안 되고. 결국 그냥 나온 적 있으세요?</div>
+
+  <div class="scene">아기 안고 일어서는데 손목이 시큰하고, 밤에 누우면 어깨랑 무릎 안쪽이 이상하게 시려요. 나이 든 것도 아닌데.</div>
+
+  <div class="scene">유산균 먹고 있긴 한데 언제부터 먹었는지도 모르겠고 뭐가 달라졌는지도 모르겠어요. 그냥 남은 거 아까워서 먹고 있어요.</div>
+
+  <div class="scene">친정엄마가 무릎 아프다고 하시는데 뭘 사드려야 할지 모르겠어요. 추석은 다가오는데 올해도 그냥 무난한 걸로 넘어갈 것 같고요.</div>
+
+  <p style="margin-top:24px">저 넷 다 제 얘기였어요. 마지막 건 특히요.</p>
+</section>
+
+<!-- ── 04 ── -->
+<section>
+  <div class="eyebrow">05</div>
+  <h2>그래서 물어보러<br>부산까지 갔어요</h2>
+
+  <p>요즘 감사하게도 광고 제안을 꽤 받아요. 이름 대면 아는 유산균 브랜드에서 "금액은 원하시는 대로 말씀해 주시라"는 얘기까지 들었고요. 솔직히 흔들렸어요. 영광이기도 했고.</p>
+  <p>근데 <strong>제가 1년 먹은 걸 소개하고 싶었어요.</strong> 그게 저한테는 더 맞는 일 같았거든요.</p>
+  <p>그래서 이번엔 제가 먼저 연락드렸어요. 제품 공부를 제대로 하고 싶다고요. 지난달에 부산 가서 약사인 대표님께 한 시간 넘게 들었고, 아래는 그날 나눈 얘기예요.</p>
+
+  <img src="images/img07-meeting.jpg" alt="영롱 본사에서 대표님께 제품 교육을 받는 모습" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:8px">뒤에 띄워진 게 그날 제일 놀랐던 장면이에요. "영롱은 오랫동안 칼슘 제품을 만들지 않았습니다"</p>
+</section>
+
+<!-- ── 05 Q&A ── -->
+<section>
+  <div class="eyebrow g">06</div>
+  <h2>여러분이<br>물어보실 것들</h2>
+  <p class="sub">제가 대신 물어봤어요. 대표님 답을 거의 그대로 옮깁니다.</p>
+
+  <!-- Q1 -->
+  <div class="qa">
+    <div class="ask">임신 중인데 먹어도 되나요? 수유 중에는요?</div>
+    <div class="rec">
+      <div class="line k"><div class="sp">수경</div><div class="tx">임산부나 수유부는요? 이거 먹어도 돼요?</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx"><b>너무 추천드립니다.</b> 임신 중에는 아이 뼈를 만들면서 엄마 칼슘이 아이에게 전달되니까, 오히려 더 필요하신 시기예요.</div></div>
+      <div class="line k"><div class="sp">수경</div><div class="tx">아이가 먹어도 되나요?</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">저희 딸도 아침마다 먹습니다. 저는 <b>안전한 걸 굉장히 중요시</b>하기 때문에, 식사에서 부족한 양만큼만 채우는 걸 목표로 하고 있어요.</div></div>
+    </div>
+    <div class="mine">
+      <div class="lbl">수경</div>
+      <p style="margin-bottom:0">유산균도 임신 중엔 변비가 오기 쉬워서 더 권한다고 하셨어요. 임신 중, 출산 후, 그리고 아이까지 다 되는 거라 저는 이 부분이 제일 마음에 놓였어요.</p>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa">
+    <div class="ask">지금 먹는 거 있는데, 겹치나요?</div>
+    <p>이게 제일 많이 오실 질문 같아서 따로 여쭤봤어요. 조리원에서 받은 것도 있고, 철분제도 드시고 계실 테니까요.</p>
+    <div class="rec">
+      <div class="line"><div class="sp">대표님</div><div class="tx">멀티비타민 제품들은 <b>상호작용이 고려가 안 된 경우가 많아요.</b> 예를 들면 철분하고 칼슘은 같이 먹으면 서로 흡수를 방해하거든요.</div></div>
+      <div class="line k"><div class="sp">수경</div><div class="tx">그러면 영롱에서 그런 고민도 봐주시나요?</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">고객센터로 연락 주시면 <b>선별해 드려요.</b> 드시고 계신 게 있으면 "요거 요거 지금 중복되니까 드시지 마시라" 이렇게 정리해 드립니다.</div></div>
+    </div>
+    <div class="mine">
+      <div class="lbl">수경</div>
+      <p>영양제 회사인데 <strong>더 먹으라가 아니라 덜 먹으라고</strong> 정리해 주시는 게 좀 인상적이었어요.</p>
+      <p style="margin-bottom:0">드시는 게 많으신 분은 마켓 전에 미리 문의해 보세요. 채널은 <span class="todo">{{고객센터 확인}}</span></p>
+    </div>
+    <div class="card warn">
+      <h4>같이 드실 때 이것만 기억하시면 돼요</h4>
+      <ul class="bul">
+        <li><b>철분제</b> 드시면 칼마디랑 시간 띄우기</li>
+        <li>다른 <b>약</b> 드시면 칼슘·마그네슘은 <b>2시간 이상</b> 간격</li>
+        <li><b>항생제</b> 드시는 중이면 데이 캡슐은 쉬고 나잇 캡슐만</li>
+        <li><b>항응고제(와파린 등)</b> 드시는 분은 칼마디를 드시면 안 돼요. 먼저 선생님께 여쭤보세요</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa">
+    <div class="ask">싼 거랑 뭐가 달라요?</div>
+    <p>제가 제일 궁금했던 거요. 마트에서 가루 유산균 타 먹으면서 늘 했던 그 생각.</p>
+    <div class="rec">
+      <div class="line k"><div class="sp">수경</div><div class="tx">균수가 100억이면 많은 건가요? 다들 100억 100억 하잖아요.</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">우리 몸엔 이미 <b>100조 마리</b>가 살고 있어요. 100억은 그중에 만분의 일이에요. 만분의 일을 넣느냐 이만분의 일을 넣느냐는 생각보다 큰 차이가 아니고요.</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">들어가자마자 죽는 균이라면 100억을 넣든 10억을 넣든 크게 중요한 포인트가 아닙니다. <b class="hl">중요한 건 살아서 대장까지 가느냐예요.</b></div></div>
+    </div>
+    <img src="images/img08-meeting2.jpg" alt="100억 대 100조를 설명하는 대표님" style="width:100%;border-radius:8px;display:block;margin:20px 0 8px">
+    <p class="imgcap" style="margin-top:0;margin-bottom:20px">화면에 띄워놓고 이 얘기를 하셨어요. 100억 vs 100조</p>
+
+    <p>유산균 만드는 회사 대표님이 균수 마케팅을 직접 부정하신 거예요. 그다음 얘기가 더 셌고요.</p>
+    <div class="rec">
+      <div class="line k"><div class="sp">수경</div><div class="tx">'19종 혼합 유산균'이라고 적힌 것들은요?</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">소비자원 조사를 보면, 값싼 제품일수록 19종이라 적혀 있어도 <b>제일 싼 균주가 80%</b>를 차지하고 비싼 균주는 1%도 안 되는 경우가 많아요. 뒷면 원료명에 그냥 '19종 혼합 유산균'이라고만 적혀 있으면, 그렇게 섞여 나온 원료를 그대로 담은 겁니다.</div></div>
+    </div>
+    <div class="mine">
+      <div class="lbl">수경</div>
+      <p style="margin-bottom:0">저 화장품 회사 다녀봐서 이거 바로 알아들었어요. 마케팅 원료 0.3% 넣고 헤드라인 뽑는 거랑 똑같은 구조더라고요. 제 의심이 아주 틀린 건 아니었던 거죠.</p>
+    </div>
+
+    <details>
+      <summary>그럼 이건 뭐가 다른가요 (성분 이야기)</summary>
+      <div class="dbody">
+        <h4>캡슐이 두 개예요</h4>
+        <p><b>🌙 나잇 캡슐 (자기 전)</b> — 자는 동안 장이라는 밭을 갈아둡니다. 김치 유래 유산균(플란타룸·카제이) + 부원료 볼라디 효모균 250mg.</p>
+        <p><b>☀️ 데이 캡슐 (아침 공복)</b> — 갈아둔 밭에 씨를 뿌립니다. 배변활동에 도움 주는 유산균 6종. 위산에 약하니까 장에서만 녹는 장용 코팅.</p>
+        <hr class="sep" style="margin:18px 0">
+        <h4>볼라디 효모균</h4>
+        <p>소아과에서 항생제랑 같이 처방되는 가루약 있잖아요. <b>그 의약품의 주성분</b>이 이 균이에요. 진핵생물이라 항생제에 안 죽고, 열·위산·담즙에도 강해서 살아서 대장까지 갑니다.</p>
+        <p class="small">※ 아직 건강기능식품 기능성 원료로는 허가 전이라 <b>부원료</b>로 250mg 들어 있어요. 설사를 멈추게 하거나 변비를 뚫는 치료약이 아니라, 장이 스스로 정상으로 돌아가게 돕는 균이라고 이해하시면 됩니다.</p>
+        <hr class="sep" style="margin:18px 0">
+        <h4>투입 1,000억, 표기 100억</h4>
+        <p>국내는 보장 균수를 100억까지밖에 표기 못 해요. 넣은 것과 표기할 수 있는 게 달라요.</p>
+        <p class="small">※ 브랜드 내부 검사 기준이고, 라벨 표기는 100억입니다.</p>
+        <hr class="sep" style="margin:18px 0">
+        <h4>상온 보관</h4>
+        <p>냉장 꼭 해야 하는 제품이면 체온 36.5도에서는 어떻게 버티겠어요. 이건 그냥 서랍에 두셔도 돼요.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa">
+    <div class="ask">칼슘은 왜 이제야 나왔어요?</div>
+    <p>이건 제가 안 물어봤는데 대표님이 먼저 꺼내신 얘기예요. 듣고 좀 놀랐어요.</p>
+    <div class="rec">
+      <div class="line"><div class="sp">대표님</div><div class="tx">영롱은 오랫동안 <b>칼슘 제품을 만들지 않았습니다.</b> 골 손실 위험이 큰 60대 이상에게만 권해 왔어요.</div></div>
+      <div class="line k"><div class="sp">수경</div><div class="tx">네? 왜요?</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">식사로 칼슘을 충분히 드신 그룹은 동맥 석회화 위험이 오히려 낮게 나왔는데, <b>보충제로만 드신 그룹은 위험이 더 높게</b> 나온 연구들이 있었거든요.</div></div>
+    </div>
+    <p>몸속 칼슘의 99%는 뼈에 있고 1%가 혈액에 있대요. 혈액에 칼슘이 모자라면 몸이 <strong>뼈에서 빼서 씁니다.</strong> 근데 그렇게 나온 칼슘은 스스로 뼈로 못 돌아가요. 갈 곳을 못 찾으면 혈관에 쌓이고요.</p>
+    <p class="big hl">칼슘은 얼마나 먹느냐가 아니라,<br>어디로 가느냐의 문제였던 거예요.</p>
+    <div class="rec">
+      <div class="line"><div class="sp">대표님</div><div class="tx">그런데 최근에 이걸 해결할 수 있는 <b>비타민K2</b>가 답으로 떠올랐어요. 혈액 속 칼슘을 뼈로 옮겨주는 운반 단백질을 활성화시키는 역할입니다. 영롱은 한국에서 K2를 가장 빨리 도입한 회사고요.</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">제품 이름에 <b>'세이프'</b>를 붙인 이유입니다.</div></div>
+    </div>
+    <div class="mine">
+      <div class="lbl">수경</div>
+      <p style="margin-bottom:0">저 이 제품 작년에 공부해서 카드뉴스까지 만들었었는데요. <strong>이 얘기는 몰랐어요.</strong> 파는 회사가 "우리 그동안 이거 안 만들었습니다"라고 말하는 걸 처음 들어봤어요.</p>
+    </div>
+
+    <details>
+      <summary>숫자에 이유가 있대요 (성분 이야기)</summary>
+      <div class="dbody">
+        <div class="tablewrap" style="margin-top:0">
+        <table>
+          <thead><tr><th>성분</th><th>함량</th><th>형태</th></tr></thead>
+          <tbody>
+            <tr><td><b>칼슘</b></td><td>320mg</td><td>구연산칼슘 + 해조칼슘</td></tr>
+            <tr><td><b>마그네슘</b></td><td>160mg</td><td>현미미강 쌀마그네슘</td></tr>
+            <tr><td><b>비타민D3</b></td><td>2,000IU</td><td>건조효모 유래</td></tr>
+            <tr><td><b>비타민K2</b></td><td>120mcg</td><td>국내산 바실러스나토균 · MK-7</td></tr>
+            <tr><td><b>PGA</b></td><td>60mg</td><td>낫토 유래 · 개별인정형</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <ul class="bul">
+          <li><b>왜 320mg만?</b> 한국인 권장량이 800~900mg인데 실제로는 500mg쯤 먹어요. 부족한 만큼만 채우는 거예요. 다 넣으면 과잉이 되니까.</li>
+          <li><b>왜 2:1?</b> 우리 몸속 칼슘·마그네슘 비율이 2:1이라서요. 흡수를 올리는 건 D3랑 PGA랑 K2가 하고, 마그네슘은 균형 담당이에요.</li>
+          <li><b>왜 K2 중에 MK-7?</b> MK-4는 반감기가 한 시간이라 하루 세 번 먹어야 해요. MK-7은 사흘이라 하루 한 번으로 충분하고요.</li>
+          <li><b>왜 가루?</b> 이 함량을 알약으로 만들면 큰 알로 <b>6~8알</b>이에요. 그래서 입에서 녹는 가루 두 포로 만들었대요.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa">
+    <div class="ask">둘 다 사야 되나요? 하나만 사면 뭐부터요?</div>
+    <p>솔직히 두 개 다 하면 한 달에 10만원이에요. 적은 돈 아니잖아요. 저라면 이렇게 골라요.</p>
+    <div class="card mint">
+      <p style="margin-bottom:0" class="big">하나만 고르신다면 <span class="hl">유산균부터요.</span></p>
+    </div>
+    <p>저도 유산균이 먼저였어요. 작년 봄에 이거부터 시작했고, 칼마디는 여름에 더한 거라서요.</p>
+    <p>그리고 이쪽이 <strong>변화가 좀 더 빨리 느껴지는 편</strong>이에요. 칼슘은 솔직히 오래 걸려요. 뼈는 그렇게 빨리 안 바뀌니까요.</p>
+    <p>다만 <strong>뼈가 시리고 관절이 불편한 게 더 급하시면</strong> 칼마디를 먼저 보셔도 돼요. 부모님 선물이라면 특히 이쪽이고요.</p>
+    <div class="mine">
+      <div class="lbl">수경</div>
+      <p style="margin-bottom:0"><strong>1개월치부터 있어요.</strong> 길게 사시면 싸지는 건 맞는데, 안 맞으실 수도 있으니까 한 달 드셔보고 정하셔도 돼요.</p>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa">
+    <div class="ask">얼마나 먹어야 알 수 있어요?</div>
+    <div class="rec">
+      <div class="line k"><div class="sp">수경</div><div class="tx">효과는 언제부터 느낄 수 있어요?</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">개인차가 있지만 <b>2주 정도는</b> 지켜보시기를 권해요. 장 환경을 정상으로 되돌리는 과정이라 꾸준히 드시는 게 중요합니다.</div></div>
+    </div>
+    <p>먹자마자 달라지는 건 아니에요. 저도 서서히 달라졌지 어느 날 갑자기는 아니었어요.</p>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa">
+    <div class="ask">캡슐 못 삼켜요 / 맛은 어때요?</div>
+    <ul class="bul">
+      <li><b>칼마디K2X</b> — 알약 아니고 <b>가루</b>예요. 레몬맛이고 천연 향료 썼대요. 자극적으로 달진 않아요. 물에 타도 되는데 침전물이 좀 생겨서 그냥 털어 넣는 걸 권하시더라고요.</li>
+      <li><b>데이앤나잇</b> — 이건 캡슐이에요. 크기는 보통이고요. <span class="todo">{{실물 크기 비교컷 촬영}}</span></li>
+    </ul>
+    <div class="mine">
+      <div class="lbl">수경</div>
+      <p style="margin-bottom:0">저한테는 이게 은근 컸어요. 애 보다 보면 물 떠오는 것도 일이거든요. 가루라서 그냥 뜯어서 입에 털어 넣으면 끝이니까 안 빼먹게 되더라고요.</p>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa">
+    <div class="ask">언제 먹는 게 제일 좋아요?</div>
+    <p>이거 물어보다가 제가 좀 부끄러워졌어요.</p>
+    <div class="rec">
+      <div class="line k"><div class="sp">수경</div><div class="tx">저 사실 아침에 데이랑 나잇 두 알을 그냥 같이 먹고 있었거든요…</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">(웃음) 안 드시는 것보단 훨씬 낫습니다. 근데 <b>나잇을 자기 전에</b> 드시면 자는 동안 장 환경을 가꿔놓고, 아침에 <b>데이</b>가 그 위에 유익균을 넣어주는 순서예요. 그렇게 드셔야 설계한 대로 작동합니다.</div></div>
+    </div>
+    <p><strong>1년 먹고 이번에 알았어요.</strong> 혹시 지금 저처럼 드시는 분 계실까 봐 꼭 적어둡니다.</p>
+
+    <img src="images/img09-howto.png" alt="먹는 법 한 장 요약" style="width:100%;border-radius:10px;display:block;margin:22px 0 8px">
+    <p class="imgcap" style="margin-top:0">📎 이 장만 캡처해 두셔도 돼요</p>
+  </div>
+</section>
+
+<!-- ── 06 사지 마세요 ── -->
+<section>
+  <div class="eyebrow o">07</div>
+  <h2>이런 분은<br>사지 마세요</h2>
+  <p class="sub">이 얘기 안 하면 위에 쓴 것도 믿을 이유가 없어지니까요.</p>
+
+  <div class="case" style="margin-top:24px">
+    <div class="n">CASE 01</div>
+    <h3>지금 드시는 게 잘 맞으시면, 바꾸지 마세요</h3>
+    <p>잘 맞는 걸 굳이 갈아탈 이유는 없어요.</p>
+    <p style="margin-bottom:0">저는 안 맞아서 옮긴 거지, 남들 것도 다 별로라는 얘기가 아니에요.</p>
+    <div class="turn">▸ <b>다만</b> 먹고 있는데도 뭐가 달라졌는지 모르겠다면, 그때 한 번 보셔도 돼요.</div>
+  </div>
+
+  <div class="case">
+    <div class="n">CASE 02</div>
+    <h3>먹자마자 달라지길 바라시는 분</h3>
+    <p>이건 약이 아니에요. 장이 바뀌는 데만 최소 2주고, 칼슘은 더 걸려요. 한 달 먹고 "별로던데" 하실 거면 안 사시는 게 나아요.</p>
+    <div class="turn">▸ <b>대신</b> 2주만 제대로 지켜봐 주실 수 있으면, 그때부터는 판단이 서실 거예요.</div>
+  </div>
+
+  <div class="case">
+    <div class="n">CASE 03</div>
+    <h3>무리해서 길게 사시려는 분</h3>
+    <p>6개월치가 제일 싼 건 맞아요. 근데 안 맞으실 수도 있고, 그러면 그게 더 아까워요.</p>
+    <div class="turn">▸ <b>1개월치부터 있어요.</b> 드셔보고 늘리셔도 돼요.</div>
+  </div>
+</section>
+
+<!-- ── 07 이벤트 ── -->
+<section>
+  <div class="eyebrow g">08</div>
+  <h2>이번 마켓 이벤트</h2>
+
+  <div class="ev hero-ev">
+    <div class="n" style="color:var(--green)">특별 이벤트 · 2가정</div>
+    <h3 style="font-size:22px">〈수경이가 간다〉<br>제가 직접 찾아갑니다</h3>
+    <span class="worth">103,000원 상당 · 두 제품 다 들고</span>
+    <p>데이앤나잇(55,000원)과 칼마디K2X(48,000원), 두 가지를 들고 <strong>직접 찾아뵙습니다.</strong> 전국 어디든이요.</p>
+    <p>그런데 제품만 두고 오는 자리는 아니에요. 화면으로만 뵙던 분을 만나서 <strong>어떻게 드시면 되는지 하나하나 알려드리고 오려고요.</strong> 제가 부산에서 한 시간 넘게 들은 거, 그대로 전해드릴게요.</p>
+    <hr class="sep" style="margin:18px 0">
+    <h4>이렇게 두 분을 찾습니다</h4>
+    <ul class="bul">
+      <li><b>부모님께 선물해 드리고 싶은 분</b> — 그런데 사연이 있으신 분</li>
+      <li><b>육아에 지친 엄마·아빠에게 선물해 주고 싶은 분</b></li>
+    </ul>
+    <p class="small" style="margin-bottom:0">본인이 받고 싶으셔도 되고, 대신 신청해 주셔도 돼요. 사연 보고 두 분 고르겠습니다.</p>
+  </div>
+
+  <div class="ev">
+    <div class="n">인스타에서 · 릴스 댓글</div>
+    <h3>칼마디편 4분 · 유산균편 4분</h3>
+    <p style="margin-bottom:0">제품별 릴스 올릴 때 댓글로 진행해요. 총 8분께 드립니다.</p>
+  </div>
+
+  <div class="ev">
+    <div class="n">인스타에서 · 라이브</div>
+    <h3>실시간 댓글 — 칼마디 4분 · 유산균 4분</h3>
+    <p style="margin-bottom:0">마켓 기간에 라이브 한 번 켤게요. 그 자리에서 총 8분께 드립니다.</p>
+  </div>
+
+  <div class="ev">
+    <div class="n">구매하시면 · 선착순</div>
+    <h3>100분 — 비건 콜라겐 10포</h3>
+    <p style="margin-bottom:0">오픈 후 결제 완료 기준 선착순이에요.</p>
+  </div>
+
+  <div class="ev">
+    <div class="n">구매하시면 · 인증</div>
+    <h3>추첨 5분 — 비건 콜라겐 10포</h3>
+    <p style="margin-bottom:0">구매 인증 남겨주신 분들 중에서 추첨해요.</p>
+  </div>
+
+  <div class="ev">
+    <div class="n">구매하시면 · 구매왕</div>
+    <h3>최다 구매 5분 — 사신 제품 1개월분 추가</h3>
+    <p style="margin-bottom:0">사은품 말고 <strong>본품</strong>으로 드리고 싶어서 따로 요청드린 부분이에요.</p>
+  </div>
+</section>
+
+<!-- ── 08 가격 ── -->
+<section>
+  <div class="eyebrow">09</div>
+  <h2>가격이랑 일정</h2>
+
+  <div class="card gold">
+    <p style="margin-bottom:0">가격표부터 들이미는 마켓은 하기 싫었어요. 무엇을 얼마에보다 <strong>무엇을 왜 골랐는지</strong>가 먼저 읽혔으면 해서 뒤로 뺐습니다. 여기까지 읽어주셔서 감사해요.</p>
+  </div>
+
+  <div class="card mint" style="margin-top:22px">
+    <p style="margin-bottom:8px"><b>오픈</b> 9월 2일 · 3일간 · 전 제품 무료배송 (도서·산간 3,000원)</p>
+    <p style="margin-bottom:0"><b>추석 전에 받으시려면</b> 9월 4일까지 주문해 주세요. 연휴가 <b>9월 24일부터 26일</b>이라 그 전에 도착하려면 서둘러야 해요.</p>
+  </div>
+
+  <h3 style="margin-top:26px">이스트바이오틱스 데이앤나잇</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>수량</th><th>정상가</th><th>마켓가</th><th>할인</th></tr></thead>
+    <tbody>
+      <tr><td>1개월</td><td class="was">55,000</td><td class="price">50,900원</td><td>8%</td></tr>
+      <tr><td>2개월</td><td class="was">110,000</td><td class="price">95,700원</td><td>13%</td></tr>
+      <tr><td>4개월</td><td class="was">220,000</td><td class="price">183,900원</td><td>17%</td></tr>
+      <tr><td>6개월</td><td class="was">330,000</td><td class="price">263,900원</td><td>20%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 style="margin-top:24px">세이프 칼마디K2X</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>수량</th><th>정상가</th><th>마켓가</th><th>할인</th></tr></thead>
+    <tbody>
+      <tr><td>1개월</td><td class="was">48,000</td><td class="price">41,900원</td><td>13%</td></tr>
+      <tr><td>2개월</td><td class="was">96,000</td><td class="price">78,900원</td><td>18%</td></tr>
+      <tr><td>4개월</td><td class="was">192,000</td><td class="price">135,900원</td><td>29%</td></tr>
+      <tr><td>6개월</td><td class="was">288,000</td><td class="price">196,900원</td><td>32%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">쿠폰은 중복이 안 되고, 적립금·등급 할인은 같이 적용돼요.</p>
+</section>
+
+<!-- ── 09 CTA ── -->
+<section>
+  <div class="eyebrow">10</div>
+  <h2>신청은 여기서</h2>
+
+  <a class="cta" href="{{알림신청_폼}}">🔔 오픈 알림 신청
+    <small>성함 · 연락처 · 관심 제품만 받아요</small></a>
+
+  <p class="ctanote"><span class="tiny">수집한 정보는 마켓 종료 후 30일 안에 파기해요.</span></p>
+
+  <hr class="sep">
+
+  <h3 style="margin-top:34px">두 분 만나고 왔어요</h3>
+  <p>〈수경이가 간다〉는 신청 마감됐습니다.</p>
+  <p>두 가정만 모실 수 있어서, 고르는 게 제일 오래 걸렸어요. 부모님께 드리고 싶다는 분 한 분, 육아에 지친 엄마·아빠께 드리고 싶다는 분 한 분. 그렇게 두 분 댁에 다녀왔습니다.</p>
+  <p>데이앤나잇이랑 칼마디, 둘 다 들고 갔어요. 근데 제품만 두고 오는 자리는 아니라서요. 이건 아침에, 이건 자기 전에. 그거 하나하나 알려드리고 왔어요.</p>
+  <img src="images/img10-visit.jpg" alt="〈수경이가 간다〉 방문 현장" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
+  <p class="imgcap" style="margin-top:0;margin-bottom:22px"><span class="todo">{{방문 사진 캡션}}</span></p>
+  <p>그날 얘기는 마켓 열면서 따로 올릴게요.</p>
+
+  <hr class="sep">
+
+  <p class="big" style="text-align:center;color:var(--muted)">1년은 먹어봐야<br>말할 수 있다고 생각했어요.</p>
+  <p style="text-align:center" class="small">여기까지 읽고 결정하셔도 늦지 않아요.</p>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="small">
+      본문의 후기는 <b>제 개인적인 경험</b>이고, 효과는 사람마다 다를 수 있어요. 이 제품들은 질병의 예방이나 치료를 위한 의약품이 아닙니다.
+    </p>
+    <hr class="sep">
+    <p class="tiny">
+      <b>영롱 이스트바이오틱스 데이앤나잇</b> · 건강기능식품 · 60캡슐(1개월) · 1일 2캡슐<br>
+      프로바이오틱스 — 유산균 증식 및 유해균 억제, 배변활동 원활 및 장 건강에 도움을 줄 수 있음 / 비타민D — 뼈의 형성과 유지에 필요
+    </p>
+    <p class="tiny" style="margin-top:10px">
+      <b>영롱 세이프 칼마디K2X</b> · 건강기능식품 · 분말 · 60포(1개월) · 1일 2포<br>
+      뼈와 치아 형성에 필요 / 신경과 근육 기능 유지에 필요 / 정상적인 혈액응고에 필요 / 골다공증 발생위험감소에 도움을 줌 / 체내 칼슘 흡수 촉진에 도움을 줄 수 있음
+    </p>
+    <p class="tiny" style="margin-top:10px">
+      항응고제(와파린 등) 드시는 분은 섭취 전 전문가와 상담하세요. 제품 문의는 영롱 고객센터로 부탁드려요 — <span class="todo">{{고객센터}}</span>
+    </p>
+    <p class="tiny" style="margin-top:10px">
+      본 게시물은 영롱과의 유료 광고를 포함하며, 판매에 따른 수수료를 지급받습니다. 가격·구성·혜택은 오픈 시점에 조정될 수 있어요.
+    </p>
+    <p class="tiny" style="margin-top:16px;color:#9AA096">© 2026 수경마켓 · 검색에 노출되지 않는 페이지입니다</p>
+  </div>
+</footer>
+
+</body>
+</html>
