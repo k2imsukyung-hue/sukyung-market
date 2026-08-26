@@ -9,11 +9,21 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --paper:#FBFAF7; --ink:#1A1D1B; --muted:#6B7168; --line:#E4E1D9;
-  --green:#0E3A2C; --mint:#34A97B; --mint-bg:#EAF5EF; --mint-line:#CFE7DB;
-  --orange:#C9573A; --orange-bg:#FBF0EC; --orange-line:#F0D6CD;
-  --gold:#9E7B3F; --gold-bg:#FDFAF1;
-  --card:#FFFFFF;
+  /* ===== 제품 실물 기반 컬러칩 ===== */
+  /* 칼마디K2X 박스 — 세이지 그린 */
+  --forest:#1E4A38; --sage:#4F8267; --sage-bg:#EDF2EB; --sage-line:#D5E1D2;
+  /* 데이앤나잇 박스 — 라벤더 / 딥퍼플 */
+  --plum:#463C7E; --lav:#7C6FB5; --lav-bg:#F1EEF8; --lav-line:#DED7EF;
+  /* Night 블리스터 — 네이비 */
+  --navy:#2E3653; --navy-bg:#EDEFF4; --navy-line:#D5DAE6;
+  /* 캡슐 — 크림 샌드 */
+  --sand:#9C7742; --sand-bg:#FAF5EA; --sand-line:#EADFC7;
+  /* 중립 */
+  --paper:#FCFBF8; --ink:#1A1D1B; --muted:#6B7168; --line:#E3E0D8; --card:#FFFFFF;
+  /* 아래 규칙들이 쓰는 기존 이름 — 위 칩으로 연결 */
+  --green:var(--forest); --mint:var(--sage); --mint-bg:var(--sage-bg); --mint-line:var(--sage-line);
+  --orange:var(--navy); --orange-bg:var(--navy-bg); --orange-line:var(--navy-line);
+  --gold:var(--sand); --gold-bg:#F4EADA;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -25,6 +35,30 @@ body{
 }
 .wrap{max-width:660px;margin:0 auto;padding:0 22px}
 section{padding:56px 0;border-top:1px solid var(--line)}
+/* ── 섹션 배경 톤: 인접 섹션끼리 항상 다른 색 ── */
+section.tint{border-top:none;margin:0 -22px;padding-left:22px;padding-right:22px}
+section.tint + section{border-top:none}
+.s-sage{background:var(--sage-bg)}
+.s-lav{background:var(--lav-bg)}
+.s-sand{background:var(--sand-bg)}
+.s-navy{background:var(--navy-bg)}
+section.s-sage .eyebrow{color:var(--forest)}
+section.s-lav  .eyebrow{color:var(--plum)}
+section.s-sand .eyebrow{color:#8A6533}
+section.s-navy .eyebrow{color:var(--navy)}
+/* 톤 배경 위에서 카드가 묻히지 않게 */
+.s-sage .card.mint{background:#E0EBDD;border-color:#C4D8C4}
+.s-sand .card.gold,.s-sand .mine{background:#FFFDF8}
+.s-navy .case{background:var(--card)}
+.s-lav  ul.bul li::before,.s-lav  details summary::after{color:var(--lav);background:var(--lav)}
+.s-sand ul.bul li::before,.s-sand details summary::after{color:var(--sand);background:var(--sand)}
+.s-navy ul.bul li::before{background:var(--navy)}
+.s-lav  .scene{border-left-color:var(--lav)}
+.s-lav  .qa .ask::before,.s-lav  .qa .ask::after{color:var(--lav)}
+.s-sand .qa .ask::before,.s-sand .qa .ask::after{color:var(--sand)}
+.s-lav  .hl{background:linear-gradient(transparent 60%,#DCD3F2 60%)}
+.s-sand .hl{background:linear-gradient(transparent 60%,#EEDFC2 60%)}
+.s-navy .hl{background:linear-gradient(transparent 60%,#D6DCEA 60%)}
 
 .eyebrow{font-size:11.5px;letter-spacing:.2em;font-weight:800;color:var(--mint);margin-bottom:12px}
 .eyebrow.o{color:var(--orange)} .eyebrow.g{color:var(--gold)}
@@ -33,7 +67,7 @@ h2{font-size:25px;line-height:1.34;font-weight:800;letter-spacing:-.04em;margin-
 h3{font-size:18.5px;font-weight:700;margin-bottom:10px;letter-spacing:-.03em;line-height:1.5}
 h4{font-size:15.5px;font-weight:700;margin-bottom:7px;letter-spacing:-.02em}
 p{margin-bottom:16px} p:last-child{margin-bottom:0}
-.hl{background:linear-gradient(transparent 60%,#CDEBDC 60%);font-weight:700}
+.hl{background:linear-gradient(transparent 60%,#CFE3D4 60%);font-weight:700}
 .big{font-size:20px;font-weight:700;line-height:1.6;letter-spacing:-.03em}
 .sub{color:var(--muted);font-size:15px}
 .small{font-size:13.5px;color:var(--muted);line-height:1.72}
@@ -41,7 +75,7 @@ p{margin-bottom:16px} p:last-child{margin-bottom:0}
 a{color:var(--green)}
 
 .hero{background:var(--green);color:#fff;padding:56px 0 46px}
-.hero h1{color:#fff} .hero h1 em{font-style:normal;color:#7FD9AE}
+.hero h1{color:#fff} .hero h1 em{font-style:normal;color:#9DCBAF}
 .hero .lede{color:#BFD3CB;margin-top:20px;font-size:15.5px;line-height:1.8}
 .stamp{display:inline-block;border:1px solid rgba(255,255,255,.28);border-radius:3px;font-size:10.5px;letter-spacing:.16em;font-weight:800;color:#9FC7B6;padding:4px 9px;margin-bottom:18px}
 .herogif{display:block;width:100%;max-width:270px;margin:26px auto 0;border-radius:14px;box-shadow:0 14px 38px rgba(0,0,0,.3)}
@@ -50,7 +84,7 @@ a{color:var(--green)}
 .pitch{font-size:16.5px;line-height:1.7;letter-spacing:-.025em;font-weight:600;margin-bottom:16px}
 .pitch b{font-weight:800}
 .herostat{background:var(--green);border-radius:6px;padding:18px 20px;text-align:center;margin-bottom:14px}
-.herostat .k{font-size:11px;letter-spacing:.16em;font-weight:800;color:#7FD9AE;margin-bottom:8px}
+.herostat .k{font-size:11px;letter-spacing:.16em;font-weight:800;color:#9DCBAF;margin-bottom:8px}
 .herostat .v{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.035em;line-height:1.45}
 .herostat .s{font-size:12.5px;color:#A8C1B6;margin-top:7px}
 .sumgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin:0 0 16px}
@@ -88,7 +122,7 @@ a{color:var(--green)}
 .qa .ask{font-size:20px;font-weight:800;letter-spacing:-.035em;line-height:1.5;margin-bottom:14px}
 .qa .ask::before{content:"“";color:var(--mint)}
 .qa .ask::after{content:"”";color:var(--mint)}
-.mine{background:var(--gold-bg);border:1px dashed #C8AC77;border-radius:8px;padding:15px 17px;margin:18px 0 0}
+.mine{background:#FFFDF8;border:1px dashed #C9AE83;border-radius:8px;padding:15px 17px;margin:18px 0 0}
 .mine .lbl{font-size:10.5px;letter-spacing:.16em;font-weight:800;color:var(--gold);margin-bottom:7px}
 .mine p{font-size:15.5px;margin-bottom:9px}
 
@@ -96,7 +130,7 @@ ul.bul{list-style:none;margin:14px 0}
 ul.bul li{position:relative;padding-left:16px;margin-bottom:10px;font-size:15.5px;line-height:1.72}
 ul.bul li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--mint)}
 .card.warn ul.bul li::before{background:var(--orange)}
-.card.dark ul.bul li::before{background:#7FD9AE}
+.card.dark ul.bul li::before{background:#9DCBAF}
 
 details{border:1px solid var(--line);border-radius:8px;background:var(--card);margin:18px 0;overflow:hidden}
 details summary{cursor:pointer;list-style:none;padding:15px 18px;font-weight:700;font-size:15px;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -177,7 +211,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
     <div class="sumgrid">
       <div><div class="k">마켓 오픈</div><div class="v">9월 2일<small>3일간 · 9월 4일까지</small></div></div>
       <div><div class="k">가격</div><div class="v">41,900원~<small>1개월치부터 · 길게 사시면 최대 32%</small></div></div>
-      <div><div class="k">추석 전 배송</div><div class="v">9월 4일<small>까지 주문하시면 연휴 전 도착</small></div></div>
+      <div><div class="k">추석 선물</div><div class="v">연휴 전 도착<small>올해 연휴는 9월 24~26일</small></div></div>
     </div>
     <a class="cta" href="{{알림신청_폼}}">🔔 오픈 알림 받아두기</a>
     <p class="ctanote" style="margin-top:10px">전 제품 무료배송 · 도서·산간 3,000원</p>
@@ -202,7 +236,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 </section>
 
 <!-- ── 02 ── -->
-<section>
+<section class="tint s-sage">
   <div class="eyebrow">02</div>
   <h2>임신 중기에,<br>뼈가 시리기 시작했어요</h2>
 
@@ -286,7 +320,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 </section>
 
 <!-- ── 03 상황묘사 ── -->
-<section>
+<section class="tint s-lav">
   <div class="eyebrow o">04</div>
   <h2>이런 날,<br>있으셨어요?</h2>
   <p class="sub">하나라도 걸리시면 아래부터 읽어보셔도 돼요. 아니면 그냥 닫으셔도 되고요.</p>
@@ -316,7 +350,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 </section>
 
 <!-- ── 05 Q&A ── -->
-<section>
+<section class="tint s-sand">
   <div class="eyebrow g">06</div>
   <h2>여러분이<br>물어보실 것들</h2>
   <p class="sub">제가 대신 물어봤어요. 대표님 답을 거의 그대로 옮깁니다.</p>
@@ -409,19 +443,19 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
     <div class="ask">칼슘은 왜 이제야 나왔어요?</div>
     <p>이건 제가 안 물어봤는데 대표님이 먼저 꺼내신 얘기예요. 듣고 좀 놀랐어요.</p>
     <div class="rec">
-      <div class="line"><div class="sp">대표님</div><div class="tx">영롱은 오랫동안 <b>칼슘 제품을 만들지 않았습니다.</b> 골 손실 위험이 큰 60대 이상에게만 권해 왔어요.</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">저희는 <b>칼슘 제품이 상대적으로 굉장히 늦게 출시가 됐어요.</b> 이유가 있습니다.</div></div>
       <div class="line k"><div class="sp">수경</div><div class="tx">네? 왜요?</div></div>
       <div class="line"><div class="sp">대표님</div><div class="tx">식사로 칼슘을 충분히 드신 그룹은 동맥 석회화 위험이 오히려 낮게 나왔는데, <b>보충제로만 드신 그룹은 위험이 더 높게</b> 나온 연구들이 있었거든요.</div></div>
+      <div class="line"><div class="sp">대표님</div><div class="tx">그래서 이거는 <b>아직까지 제품을 출시할 단계가 아니다</b>라고 생각을 해서, 저희가 칼슘이 상대적으로 늦게 나왔습니다.</div></div>
     </div>
     <p>몸속 칼슘의 99%는 뼈에 있고 1%가 혈액에 있대요. 혈액에 칼슘이 모자라면 몸이 <strong>뼈에서 빼서 씁니다.</strong> 근데 그렇게 나온 칼슘은 스스로 뼈로 못 돌아가요. 갈 곳을 못 찾으면 혈관에 쌓이고요.</p>
     <p class="big hl">칼슘은 얼마나 먹느냐가 아니라,<br>어디로 가느냐의 문제였던 거예요.</p>
     <div class="rec">
       <div class="line"><div class="sp">대표님</div><div class="tx">그런데 최근에 이걸 해결할 수 있는 <b>비타민K2</b>가 답으로 떠올랐어요. 혈액 속 칼슘을 뼈로 옮겨주는 운반 단백질을 활성화시키는 역할입니다. 영롱은 한국에서 K2를 가장 빨리 도입한 회사고요.</div></div>
-      <div class="line"><div class="sp">대표님</div><div class="tx">제품 이름에 <b>'세이프'</b>를 붙인 이유입니다.</div></div>
     </div>
     <div class="mine">
       <div class="lbl">수경</div>
-      <p style="margin-bottom:0">저 이 제품 작년에 공부해서 카드뉴스까지 만들었었는데요. <strong>이 얘기는 몰랐어요.</strong> 파는 회사가 "우리 그동안 이거 안 만들었습니다"라고 말하는 걸 처음 들어봤어요.</p>
+      <p style="margin-bottom:0">저 이 제품 작년에 공부해서 카드뉴스까지 만들었었는데요. <strong>이 얘기는 몰랐어요.</strong> 파는 회사가 "우리는 이거 늦게 냈습니다"라고 먼저 말하는 걸 처음 들어봤어요.</p>
     </div>
 
     <details>
@@ -504,7 +538,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 </section>
 
 <!-- ── 06 사지 마세요 ── -->
-<section>
+<section class="tint s-navy">
   <div class="eyebrow o">07</div>
   <h2>이런 분은<br>사지 마세요</h2>
   <p class="sub">이 얘기 안 하면 위에 쓴 것도 믿을 이유가 없어지니까요.</p>
@@ -533,7 +567,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 </section>
 
 <!-- ── 07 이벤트 ── -->
-<section>
+<section class="tint s-sage">
   <div class="eyebrow g">08</div>
   <h2>이번 마켓 이벤트</h2>
 
@@ -626,7 +660,7 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 </section>
 
 <!-- ── 09 CTA ── -->
-<section>
+<section class="tint s-sand">
   <div class="eyebrow">10</div>
   <h2>신청은 여기서</h2>
 
@@ -637,13 +671,13 @@ footer{background:#F2F0EA;padding:34px 0 50px;border-top:1px solid var(--line)}
 
   <hr class="sep">
 
-  <h3 style="margin-top:34px">두 분 만나고 왔어요</h3>
-  <p>〈수경이가 간다〉는 신청 마감됐습니다.</p>
-  <p>두 가정만 모실 수 있어서, 고르는 게 제일 오래 걸렸어요. 부모님께 드리고 싶다는 분 한 분, 육아에 지친 엄마·아빠께 드리고 싶다는 분 한 분. 그렇게 두 분 댁에 다녀왔습니다.</p>
-  <p>데이앤나잇이랑 칼마디, 둘 다 들고 갔어요. 근데 제품만 두고 오는 자리는 아니라서요. 이건 아침에, 이건 자기 전에. 그거 하나하나 알려드리고 왔어요.</p>
-  <img src="images/img10-visit.jpg" alt="〈수경이가 간다〉 방문 현장" style="width:100%;border-radius:8px;display:block;margin:22px 0 8px">
-  <p class="imgcap" style="margin-top:0;margin-bottom:22px"><span class="todo">{{방문 사진 캡션}}</span></p>
-  <p>그날 얘기는 마켓 열면서 따로 올릴게요.</p>
+  <h3 style="margin-top:34px">두 분, 정해졌습니다</h3>
+  <p>〈수경이가 간다〉는 신청 마감됐고, <b>두 분 선정도 끝났어요.</b></p>
+  <p>두 가정만 모실 수 있어서 고르는 게 제일 오래 걸렸어요. 부모님께 드리고 싶다는 분 한 분, 육아에 지친 엄마·아빠께 드리고 싶다는 분 한 분. 그렇게 두 분으로 정했습니다.</p>
+  <p>데이앤나잇이랑 칼마디, 둘 다 들고 찾아뵐 거예요. 근데 제품만 두고 오는 자리는 아니라서요. 이건 아침에, 이건 자기 전에. 그거 하나하나 알려드리고 오려고요.</p>
+  <div class="card mint" style="margin-top:22px">
+    <p style="margin-bottom:0"><b>다녀와서 다음 편으로 올릴게요.</b> 두 분 댁에서 어떤 얘기가 오갔는지 그대로 담아 올 생각이에요. 기대해 주세요.</p>
+  </div>
 
   <hr class="sep">
 
