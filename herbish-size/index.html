@@ -70,7 +70,9 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 .cols button{font:inherit;font-size:12.5px;color:var(--sub);background:transparent;border:1px solid var(--line);border-radius:99px;padding:3px 10px;cursor:pointer;min-height:30px}
 .cols button[aria-pressed="true"]{color:var(--ink);border-color:var(--beige);background:var(--beige-soft)}
 .flag{grid-column:1/-1;font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:7px 10px}
-.flag.good{background:var(--beige-soft);color:var(--green)}
+.pitch{grid-column:1/-1;font-size:13.5px;line-height:1.6;background:var(--beige-soft);color:var(--green);border-radius:10px;padding:9px 12px}
+.pitch b{display:block;font-size:12px;letter-spacing:.04em;color:#8C7458;margin-bottom:2px}
+.flag.good{background:#EEF2EF;color:var(--green)}
 .ref{font-size:13.5px;background:var(--paper);border:1px dashed var(--beige);border-radius:14px;padding:12px 14px;color:var(--sub)}
 .ref b{color:var(--ink)}
 .foot{display:flex;flex-direction:column;gap:8px}
@@ -130,6 +132,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
   <footer class="foot">
     <a class="btn main" href="https://hubbish.com/product/list.html?cate_no=460" target="_blank" rel="noopener"><span>허비쉬 마켓 바로가기</span><span>10/26 10시 오픈 ›</span></a>
     <a class="btn" href="https://pf.kakao.com/_GygFX" target="_blank" rel="noopener"><span>그래도 고민되면 카톡으로 물어보기</span><span>수경이네 ›</span></a>
+    <a class="btn" href="https://www.instagram.com/k.imsukyung/" target="_blank" rel="noopener"><span>인스타그램 들어가기</span><span>@k.imsukyung ›</span></a>
     <p class="note">실측은 옷을 펼쳐 놓고 잰 단면 길이라 1~3cm 차이가 날 수 있어요. 체형에 따라 다르게 맞을 수 있으니, 가지고 있는 잠옷 길이와 비교해 보시면 가장 정확해요. 매일 밤 9시 라이브에서도 바로 봐 드려요.</p>
   </footer>
 </div>
@@ -151,6 +154,15 @@ var S={who:"w",h:160,sz:"66",st:"no",fit:"std",mh:183,msz:"105",col:{}};
 try{var saved=JSON.parse(localStorage.getItem("hb-size")||"null");if(saved)for(var k in saved)S[k]=saved[k]}catch(e){}
 if(!S.col)S.col={};
 
+// 베이지 박스: 제품마다 사고 싶어지는 특장점 (제품공부 셀링포인트 기준)
+var PITCH={
+  p01:"가슴 아래 높은 허리선이라 다리는 길어 보이고, 아래로 퍼지는 실루엣이 배를 자연스럽게 감싸줘요. 이너캡이라 브라 없이 입고, 티셔츠처럼 편한데 차려입은 듯 우아해요. 컬러가 8가지라 고르는 재미도 있어요.",
+  p03:"각진 스퀘어넥이 얼굴을 작아 보이게 해요. 넥라인 프릴 속 얇은 고무줄 덕분에 조이지 않으면서 노출 걱정이 없고, 이번 라인업 중 할인율이 28%로 가장 커요.",
+  p02:"프릴 드레스 디자인을 그대로 바지로 만들어서 자다가 치맛단이 말려 올라갈 일이 없어요. 허벅지는 슬림하고 무릎선이 높은 부츠컷이라 다리가 길어 보여요. 할인율 28%예요.",
+  p04:"A라인 플레어 상의가 바지 허리선을 살짝 덮어서 배·옆구리·팔뚝을 자연스럽게 가려줘요. 품이 넉넉해 77까지 편하고, 양쪽 주머니에 조이지 않는 밴드까지 실용적이에요.",
+  p05:"단정한 셔츠 칼라라 잠옷 같지 않아서 택배 받을 때도, 잠깐 나갈 때도 그대로 괜찮아요. 단추가 없어 엎드려 자도 안 배기고, 모달 95%라 부드러워요. 남편 러닝 다 버리고 이것만 입혀요.",
+  p06:"캐시미어처럼 포근한 미세 기모라 겨울에 딱이에요. 니트 셋업 같아서 손님이 와도, 여행 가서도 멋스러워요. 여성용 코지 셔츠 세트와 커플룩도 돼요."
+};
 function idx(v){return ["44","55","55h","66","77","88"].indexOf(v)}
 function card(p){
   var cls=p.size.length>2?"size small":"size";if(p.none)cls="size none";
@@ -159,6 +171,7 @@ function card(p){
     '<div class="body"><div class="head"><div class="'+cls+'">'+p.size+'</div><div class="pname">'+p.name+'<small>'+p.price+'</small></div></div>'+
     '<div class="why">'+p.why+'</div><div class="meas">'+p.meas+'</div></div>'+
     '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러">'+co.c.map(function(n,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'">'+n+'</button>'}).join("")+'</div>'+
+    '<div class="pitch"><b>이래서 좋아요</b>'+PITCH[p.id]+'</div>'+
     (p.flag?'<div class="flag'+(p.good?' good':'')+'">'+p.flag+'</div>':'')+'</div>';
 }
 function women(){
@@ -203,7 +216,6 @@ function men(){
   else if(c===105){a.size=(h>=180||loose)?"XXL":"XL";a.why=a.size==="XXL"?"남편이 183cm·86kg·평소 105인데 XXL을 입어요. 키가 크면 기장 때문에 XXL이 편해요.":"105면 XL, 넉넉하게 원하면 XXL이에요."}
   else{a.size="XXL";a.why="105 이상이면 XXL이에요. 맨즈 중 XXL은 이 제품뿐이에요."}
   a.meas={L:"L 가슴 54.5 · 상의 총장 71cm",XL:"XL 가슴 57 · 상의 총장 74cm",XXL:"XXL 가슴 60 · 상의 총장 76cm"}[a.size];
-  if(a.size==="XXL")a.flag="XXL은 컬러당 5장뿐이에요. 오픈 시간에 맞춰 들어와 주세요.";
   out.push(a);
   var b={id:"p06",name:"코지 맨즈 셔츠 세트",price:"104,600원"};
   if(c<=95){b.size=loose?"XL":"L";b.why="상의 95~100이면 L이에요."}
@@ -211,7 +223,7 @@ function men(){
   else if(c===105){b.size="XL";b.why="코지는 XL까지예요. 남편(183cm·평소 105)도 XL을 입어요."}
   else{b.size="없음";b.none=1;b.why="코지는 XL까지라 110 이상이면 작을 수 있어요. 심플 칼라 XXL을 보세요."}
   b.meas=b.size==="L"?"L 가슴 53 · 상의 총장 71cm":"XL 가슴 56 · 상의 총장 74cm";
-  if(!b.none)b.flag="밀도 있게 따뜻한데 입으면 가벼운 겨울용이에요. 진한 색은 처음 몇 번 단독 세탁해 주세요.",b.good=1;
+  if(!b.none)b.flag="진한 색은 처음 몇 번 단독 세탁해 주세요.";
   out.push(b);
   return out;
 }
