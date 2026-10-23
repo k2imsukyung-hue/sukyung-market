@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>허비쉬 사이즈 찾기</title>
+<meta property="og:title" content="허비쉬 사이즈 찾기 · 수경이네">
+<meta property="og:description" content="키랑 평소 사이즈만 고르면 제품마다 맞는 사이즈를 바로 알려드려요.">
+<meta property="og:image" content="img/p01_4.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Gowun+Batang:wght@700&family=Gowun+Dodum&display=swap">
+<style>
+/* 허비쉬 로고 컬러: 딥그린 띠 + 베이지 글자, 본문은 밝은 아이보리 */
+:root{
+  --bg:#F7F4EF;        /* 밝은 아이보리 */
+  --paper:#FFFFFF;
+  --green:#22373A;     /* 로고 띠 딥그린 */
+  --beige:#C4AE96;     /* 로고 글자 베이지 */
+  --beige-soft:#EFE7DD;
+  --ink:#22373A;
+  --sub:#6B7573;
+  --line:#E4DDD3;
+  --chip:#EEEAE3;
+  --warn:#8A5A1E; --warn-soft:#F8EEDF;
+  --logo:"Cormorant Garamond","Times New Roman",serif;
+  --display:"Gowun Batang","AppleMyungjo",serif;
+  --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.6;padding-bottom:40px}
+img{max-width:100%;display:block}
+.top{background:var(--green);color:var(--beige);padding:26px max(16px,env(safe-area-inset-left,0px)) 22px}
+.top .in{max-width:540px;margin:0 auto}
+.logo{font-family:var(--logo);font-weight:500;font-size:34px;letter-spacing:.14em;line-height:1}
+.top .tag{display:block;margin-top:10px;font-size:12.5px;letter-spacing:.03em;color:#E2D5C6;opacity:.9}
+.wrap{max-width:540px;margin:0 auto;display:flex;flex-direction:column;gap:18px;padding:22px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+h1,h2{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:27px;line-height:1.25}
+.lede{margin:6px 0 0;color:var(--sub);font-size:14.5px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:8px}
+.lab{font-size:13px;color:var(--sub);letter-spacing:.02em}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:inherit;font-size:14.5px;color:var(--ink);background:var(--chip);border:1.5px solid transparent;border-radius:99px;padding:6px 14px;cursor:pointer;min-height:38px}
+.chips button[aria-pressed="true"]{background:var(--green);color:#F3ECE3;border-color:var(--green)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offset:2px}
+.hgt{display:flex;align-items:center;gap:10px}
+.hgt button{font:inherit;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer}
+.hgt input{width:100%;min-width:0;flex:1;accent-color:var(--green)}
+.hgt output{font-family:var(--display);font-size:22px;min-width:76px;text-align:right;font-variant-numeric:tabular-nums}
+.res{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;grid-template-columns:108px 1fr;gap:12px 14px;align-items:start}
+.ph{position:relative;width:108px;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--chip)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.body{display:flex;flex-direction:column;gap:4px;min-width:0}
+.head{display:flex;align-items:center;gap:10px}
+.size{flex:none;font-family:var(--display);font-size:22px;line-height:1;display:grid;place-items:center;min-width:48px;height:48px;padding:0 8px;border-radius:12px;background:var(--green);color:var(--beige)}
+.size.small{font-size:17px}
+.size.none{background:var(--chip);color:var(--sub);font-size:14px}
+.pname{font-weight:700;font-size:15px;line-height:1.35;min-width:0}
+.pname small{display:block;font-weight:400;color:var(--sub);font-size:12.5px}
+.why{font-size:14px}
+.meas{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.cols{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:5px}
+.cols button{font:inherit;font-size:12.5px;color:var(--sub);background:transparent;border:1px solid var(--line);border-radius:99px;padding:3px 10px;cursor:pointer;min-height:30px}
+.cols button[aria-pressed="true"]{color:var(--ink);border-color:var(--beige);background:var(--beige-soft)}
+.flag{grid-column:1/-1;font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:7px 10px}
+.flag.good{background:var(--beige-soft);color:var(--green)}
+.ref{font-size:13.5px;background:var(--paper);border:1px dashed var(--beige);border-radius:14px;padding:12px 14px;color:var(--sub)}
+.ref b{color:var(--ink)}
+.foot{display:flex;flex-direction:column;gap:8px}
+.btn{display:flex;justify-content:space-between;align-items:center;gap:10px;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.btn.main{background:var(--green);color:#F3ECE3;border-color:var(--green)}
+.btn.main span:last-child{color:var(--beige)}
+.btn span:last-child{white-space:nowrap;font-size:13px}
+.note{font-size:12.5px;color:var(--sub);margin:0}
+@media (max-width:360px){.card{grid-template-columns:88px 1fr}.ph{width:88px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <div class="logo">HUBBISH</div>
+  <span class="tag">수경이네 · 허비쉬 마켓 10/26(월) 10시 ~ 10/29(목)</span>
+</div></div>
+
+<div class="wrap">
+  <header>
+    <h1>허비쉬 사이즈 찾기</h1>
+    <p class="lede">키랑 평소 사이즈만 고르면 제품마다 어떤 사이즈가 맞을지 바로 보여드려요. 허비쉬 실측표와 저랑 남편이 직접 입어 본 사이즈를 기준으로 했어요.</p>
+  </header>
+
+  <section class="panel" aria-label="내 정보">
+    <div class="field"><span class="lab" id="l-who">누가 입어요?</span>
+      <div class="chips" id="who" role="group" aria-labelledby="l-who">
+        <button type="button" data-v="w" aria-pressed="true">저요 (우먼)</button>
+        <button type="button" data-v="m" aria-pressed="false">남편 (맨즈)</button>
+      </div></div>
+    <div class="field"><span class="lab" id="l-h">키</span>
+      <div class="hgt"><button type="button" id="hm" aria-label="키 1cm 줄이기">−</button>
+        <input type="range" id="h" min="145" max="195" step="1" value="160" aria-labelledby="l-h">
+        <button type="button" id="hp" aria-label="키 1cm 늘리기">+</button>
+        <output id="ho" for="h">160cm</output></div></div>
+    <div class="field" id="f-sz"><span class="lab" id="l-sz">평소 입는 상의 사이즈</span>
+      <div class="chips" id="sz" role="group" aria-labelledby="l-sz"></div></div>
+    <div class="field" id="f-st"><span class="lab" id="l-st">지금 어떤 시기예요?</span>
+      <div class="chips" id="st" role="group" aria-labelledby="l-st">
+        <button type="button" data-v="no" aria-pressed="true">해당 없음</button>
+        <button type="button" data-v="preg" aria-pressed="false">임신 중</button>
+        <button type="button" data-v="nurse" aria-pressed="false">수유 중</button>
+      </div></div>
+    <div class="field"><span class="lab" id="l-fit">좋아하는 핏</span>
+      <div class="chips" id="fit" role="group" aria-labelledby="l-fit">
+        <button type="button" data-v="std" aria-pressed="true">평소처럼</button>
+        <button type="button" data-v="loose" aria-pressed="false">넉넉하게</button>
+      </div></div>
+  </section>
+
+  <section aria-live="polite">
+    <h2 style="font-size:20px;margin-bottom:10px">추천 사이즈</h2>
+    <div class="res" id="res"></div>
+  </section>
+
+  <div class="ref" id="ref"></div>
+
+  <footer class="foot">
+    <a class="btn main" href="https://hubbish.com/product/list.html?cate_no=460" target="_blank" rel="noopener"><span>허비쉬 마켓 바로가기</span><span>10/26 10시 오픈 ›</span></a>
+    <a class="btn" href="https://pf.kakao.com/_GygFX" target="_blank" rel="noopener"><span>그래도 고민되면 카톡으로 물어보기</span><span>수경이네 ›</span></a>
+    <p class="note">실측은 옷을 펼쳐 놓고 잰 단면 길이라 1~3cm 차이가 날 수 있어요. 체형에 따라 다르게 맞을 수 있으니, 가지고 있는 잠옷 길이와 비교해 보시면 가장 정확해요. 매일 밤 9시 라이브에서도 바로 봐 드려요.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+var W=[["44","44"],["55","55 (S)"],["55h","55반"],["66","66 (M)"],["77","77 (L)"],["88","88"]];
+var M=[["95","95 (L)"],["100","100"],["105","105 (XL)"],["110","110 이상"]];
+// 제품별 컬러 사진 (img/p번호_순번.jpg), 첫 화면 컬러는 d
+var COL={
+  p01:{d:4,c:["딥베이지","딥블루","라벤더블루","모브핑크","버터","블랙","블루그레이","페일민트"]},
+  p02:{d:2,c:["라벤더그레이","모브핑크","블랙"]},
+  p03:{d:2,c:["라벤더그레이","모브핑크","블랙","올리브"]},
+  p04:{d:1,c:["네이비","다크그린","버터"]},
+  p05:{d:2,c:["그레이","다크그린","다크네이비","스모크브라운"]},
+  p06:{d:3,c:["네이비","멜란지그레이","베이지"]}
+};
+var S={who:"w",h:160,sz:"66",st:"no",fit:"std",mh:183,msz:"105",col:{}};
+try{var saved=JSON.parse(localStorage.getItem("hb-size")||"null");if(saved)for(var k in saved)S[k]=saved[k]}catch(e){}
+if(!S.col)S.col={};
+
+function idx(v){return ["44","55","55h","66","77","88"].indexOf(v)}
+function card(p){
+  var cls=p.size.length>2?"size small":"size";if(p.none)cls="size none";
+  var co=COL[p.id],ci=S.col[p.id]||co.d;
+  return '<div class="card"><div class="ph"><img src="img/'+p.id+'_'+ci+'.jpg" alt="'+p.name+' '+co.c[ci-1]+'" loading="lazy" width="480" height="640"></div>'+
+    '<div class="body"><div class="head"><div class="'+cls+'">'+p.size+'</div><div class="pname">'+p.name+'<small>'+p.price+'</small></div></div>'+
+    '<div class="why">'+p.why+'</div><div class="meas">'+p.meas+'</div></div>'+
+    '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러">'+co.c.map(function(n,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'">'+n+'</button>'}).join("")+'</div>'+
+    (p.flag?'<div class="flag'+(p.good?' good':'')+'">'+p.flag+'</div>':'')+'</div>';
+}
+function women(){
+  var i=idx(S.sz),h=S.h,loose=S.fit==="loose",out=[];
+  // 엠파이어: S 55 이하·163 미만 / M 55반 이상·163 이상 / L 77·170 이상. S·M 품 차이 1~2cm, 기장 차이 7cm
+  var e;
+  if(i>=4)e={size:"L",why:i===5?"이번 라인업에서 L은 엠파이어뿐이에요. 88이면 여유가 넉넉하진 않을 수 있어요.":"77이면 L이에요. L은 품과 기장이 같이 커져요."};
+  else if(i<=1)e={size:(h>=168||loose)?"M":"S",why:(h>=168?"품은 S면 되는데, 키가 커서 기장이 긴 M을 권해요.":loose?"넉넉하게 원하시면 M. S와 M은 품이 1~2cm만 달라서 M도 크게 남지 않아요.":"55 이하면 S예요.")};
+  else{ var m=h>=163||loose||i===3&&h>160; e={size:m?"M":"S",why:m?"55반~66이면 M이에요. 키가 있으면 기장이 7cm 긴 M이 더 예쁘게 떨어져요.":"품은 S·M이 1~2cm 차이라, 키 163cm 아래면 기장이 맞는 S가 잘 맞아요."}; }
+  if(loose&&e.size==="S"){e.size="M"}
+  e.id="p01";e.name="롱슬리브 엠파이어 드레스";e.price="73,300원";
+  e.meas={S:"S 가슴 45 · 총장 117cm",M:"M 가슴 46 · 총장 124cm",L:"L 가슴 48 · 총장 127cm"}[e.size];
+  if(S.st==="preg"){e.flag="임신 중이면 이게 제일 편해요. 저도 만삭 74kg일 때 입었어요.";e.good=1}
+  else if(S.st==="nurse"){e.flag="수유 O — V넥 스냅 단추만 열면 돼요.";e.good=1}
+  out.push(e);
+  // 프릴 드레스: S 44~55·160 미만 / M 55~66·160 이상
+  var d={id:"p03",name:"스퀘어 프릴 드레스",price:"78,800원"};
+  if(i>=4){d.size="없음";d.none=1;d.why="S·M뿐이라 77 이상이면 여유가 부족할 수 있어요. 엠파이어 L을 먼저 보세요.";d.meas="M 허리 38 · 총장 115cm"}
+  else if(i<=1){d.size=loose&&h>=160?"M":"S";d.why="44~55면 S예요.";d.meas="S 허리 36 · 총장 111cm"}
+  else{d.size=(h>160||loose)?"M":"S";d.why=d.size==="M"?"55~66에 키 160cm 넘으면 M이에요.":"이 드레스는 기준이 작게 잡혀 있어요. 저는 160cm·평소 M인데 S를 입어요.";d.meas=d.size==="M"?"M 허리 38 · 총장 115cm":"S 허리 36 · 총장 111cm"}
+  if(S.st==="nurse"&&!d.none){d.flag="수유 O — 저도 수유하면서 잘 입었어요.";d.good=1}
+  out.push(d);
+  // 프릴 세트: S 55 이하·163 미만 / M 55반 이상·163 이상
+  var s={id:"p02",name:"스퀘어 프릴 세트",price:"98,400원"};
+  if(i>=4){s.size="없음";s.none=1;s.why="S·M뿐이라 77 이상이면 맞는 사이즈가 없을 수 있어요. 세트를 원하시면 플레어 셔링을 보세요.";s.meas="M 하의 허리 35 · 총장 94cm"}
+  else{s.size=(i>=2||h>=163||loose)?"M":"S";s.why=s.size==="M"?"55반 이상이거나 키 163cm 이상이면 M이에요. 저도 세트는 M을 입어요.":"55 이하·163cm 미만이면 S예요.";s.meas=s.size==="M"?"M 상의 총장 65 · 하의 총장 94cm":"S 상의 총장 63 · 하의 총장 91cm"}
+  if(S.st==="nurse"&&!s.none){s.flag="수유 O — 저도 수유하면서 잘 입었어요.";s.good=1}
+  out.push(s);
+  // 플레어 셔링: 같은 기준, 품이 넉넉해 77까지 편하다는 안내
+  var f={id:"p04",name:"플레어 셔링 세트",price:"89,700원"};
+  if(i===5){f.size="없음";f.none=1;f.why="77까지 편하다고 안내돼 있어요. 88이면 엠파이어 L을 먼저 보세요.";f.meas="M 상의 가슴 53cm"}
+  else{f.size=(i>=2||h>=163||loose)?"M":"S";f.why=i===4?"품이 넉넉해서 77까지 편하게 입는다고 안내돼 있어요.":f.size==="M"?"55반 이상이거나 키 163cm 이상이면 M이에요.":"55 이하·163cm 미만이면 S예요. 원래 넉넉한 옷이에요.";f.meas=f.size==="M"?"M 상의 가슴 53 · 하의 총장 94cm":"S 상의 가슴 51 · 하의 총장 90cm"}
+  if(S.st!=="no"&&!f.none)f.flag=S.st==="nurse"?"수유용으로는 권하지 않아요. 저도 수유할 때 입어 봤는데 뜯어짐 문제가 있었어요.":"배가 많이 나온 시기엔 원피스(엠파이어)가 더 편해요.";
+  out.push(f);
+  return out;
+}
+function men(){
+  var c=+S.msz,h=S.mh,loose=S.fit==="loose",out=[];
+  var a={id:"p05",name:"맨즈 심플 칼라 세트",price:"96,400원"};
+  if(c<=95){a.size=loose?"XL":"L";a.why="상의 95~100이면 L이에요."}
+  else if(c===100){a.size=(h>=175||loose)?"XL":"L";a.why=a.size==="XL"?"100에 키 175cm 이상이면 XL이에요.":"100에 키 175cm 미만이면 L이에요."}
+  else if(c===105){a.size=(h>=180||loose)?"XXL":"XL";a.why=a.size==="XXL"?"남편이 183cm·86kg·평소 105인데 XXL을 입어요. 키가 크면 기장 때문에 XXL이 편해요.":"105면 XL, 넉넉하게 원하면 XXL이에요."}
+  else{a.size="XXL";a.why="105 이상이면 XXL이에요. 맨즈 중 XXL은 이 제품뿐이에요."}
+  a.meas={L:"L 가슴 54.5 · 상의 총장 71cm",XL:"XL 가슴 57 · 상의 총장 74cm",XXL:"XXL 가슴 60 · 상의 총장 76cm"}[a.size];
+  if(a.size==="XXL")a.flag="XXL은 컬러당 5장뿐이에요. 오픈 시간에 맞춰 들어와 주세요.";
+  out.push(a);
+  var b={id:"p06",name:"코지 맨즈 셔츠 세트",price:"104,600원"};
+  if(c<=95){b.size=loose?"XL":"L";b.why="상의 95~100이면 L이에요."}
+  else if(c===100){b.size=(h>=175||loose)?"XL":"L";b.why=b.size==="XL"?"100에 키 175cm 이상이면 XL이에요.":"100에 키 175cm 미만이면 L이에요."}
+  else if(c===105){b.size="XL";b.why="코지는 XL까지예요. 남편(183cm·평소 105)도 XL을 입어요."}
+  else{b.size="없음";b.none=1;b.why="코지는 XL까지라 110 이상이면 작을 수 있어요. 심플 칼라 XXL을 보세요."}
+  b.meas=b.size==="L"?"L 가슴 53 · 상의 총장 71cm":"XL 가슴 56 · 상의 총장 74cm";
+  if(!b.none)b.flag="밀도 있게 따뜻한데 입으면 가벼운 겨울용이에요. 진한 색은 처음 몇 번 단독 세탁해 주세요.",b.good=1;
+  out.push(b);
+  return out;
+}
+function chips(el,list,cur){el.innerHTML=list.map(function(x){return '<button type="button" data-v="'+x[0]+'" aria-pressed="'+(x[0]===cur)+'">'+x[1]+'</button>'}).join("")}
+function render(){
+  var w=S.who==="w";
+  document.querySelectorAll("#who button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===S.who)});
+  document.querySelectorAll("#st button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===S.st)});
+  document.querySelectorAll("#fit button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===S.fit)});
+  document.getElementById("f-st").hidden=!w;
+  chips(document.getElementById("sz"),w?W:M,w?S.sz:S.msz);
+  var h=w?S.h:S.mh,r=document.getElementById("h");r.value=h;document.getElementById("ho").textContent=h+"cm";
+  document.getElementById("res").innerHTML=(w?women():men()).map(card).join("");
+  document.getElementById("ref").innerHTML=w?
+    "<b>제가 입은 사이즈</b> · 160cm, 평소 상의 M(55~66) → 엠파이어 S · 프릴 드레스 S · 세트는 M. 만삭 74kg일 때도 엠파이어를 입었어요.":
+    "<b>남편이 입은 사이즈</b> · 183cm, 86kg, 평소 상의 XL(105) → 심플 칼라 XXL · 코지 셔츠 XL.";
+  try{localStorage.setItem("hb-size",JSON.stringify(S))}catch(e){}
+}
+function seth(v){v=Math.max(145,Math.min(195,v));if(S.who==="w")S.h=v;else S.mh=v;render()}
+document.getElementById("who").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.who=b.dataset.v;render()}});
+document.getElementById("sz").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(S.who==="w")S.sz=b.dataset.v;else S.msz=b.dataset.v;render()});
+document.getElementById("st").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.st=b.dataset.v;render()}});
+document.getElementById("fit").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.fit=b.dataset.v;render()}});
+document.getElementById("res").addEventListener("click",function(e){var b=e.target.closest(".cols button");if(!b)return;S.col[b.parentNode.dataset.p]=+b.dataset.i;render()});
+document.getElementById("h").addEventListener("input",function(e){seth(+e.target.value)});
+document.getElementById("hm").addEventListener("click",function(){seth((S.who==="w"?S.h:S.mh)-1)});
+document.getElementById("hp").addEventListener("click",function(){seth((S.who==="w"?S.h:S.mh)+1)});
+render();
+})();
+</script>
+</body>
+</html>
