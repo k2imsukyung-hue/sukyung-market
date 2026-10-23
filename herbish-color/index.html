@@ -81,6 +81,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 .btn.main span:last-child{color:var(--beige)}
 .btn.sub{background:var(--beige-soft);border-color:var(--beige)}
 .btn span:last-child{white-space:nowrap;font-size:13px}
+.go{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#F3ECE3;background:var(--green);border-radius:10px;padding:9px 12px;font-size:13.5px}
+.go span:last-child{color:var(--beige);white-space:nowrap}
 .note{font-size:12.5px;color:var(--sub);margin:0}
 @media (max-width:360px){.card{grid-template-columns:88px 1fr}.ph{width:88px}}
 </style>
@@ -165,6 +167,9 @@ var P=[
   {id:"p06",who:"m",name:"코지 맨즈 셔츠 세트",price:"104,600원",c:[
     {n:"네이비",t:"c",m:"calm",pick:"남편 PICK",dark:1},{n:"멜란지그레이",t:"n",m:"calm"},{n:"베이지",t:"w",m:"bright"}]}
 ];
+// 컬러별 허비쉬 마켓 상품 번호 (hubbish.com/product/x/번호/category/460/display/1/)
+var LINK={"p01": {"블랙": 2031, "블루그레이": 2032, "딥블루": 2033, "딥베이지": 2034, "모브핑크": 2035, "라벤더블루": 2036, "페일민트": 2037, "버터": 2038}, "p04": {"네이비": 2046, "다크그린": 2047, "버터": 2048}, "p03": {"블랙": 2042, "라벤더그레이": 2043, "올리브": 2044, "모브핑크": 2045}, "p02": {"블랙": 2039, "라벤더그레이": 2040, "모브핑크": 2041}, "p05": {"다크그린": 2027, "그레이": 2028, "스모크브라운": 2029, "다크네이비": 2030}, "p06": {"네이비": 2024, "멜란지그레이": 2025, "베이지": 2026}};
+function plink(id,c){return "https://hubbish.com/product/x/"+LINK[id][c]+"/category/460/display/1/"}
 var S={who:"w",tone:"n",mood:"calm",care:"no",col:{}};
 try{var saved=JSON.parse(localStorage.getItem("hb-color")||"null");if(saved)for(var k in saved)S[k]=saved[k]}catch(e){}
 if(!S.col)S.col={};
@@ -204,6 +209,7 @@ function card(p){
     '<div class="why">'+reason(top.x)+'</div>'+
     (alt.length?'<div class="alt">이것도 좋아요 · '+alt.join(", ")+'</div>':'')+'</div>'+
     '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러 사진 보기">'+p.c.map(function(x,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'"'+(i+1===top.i?' class="top1"':'')+'>'+x.n+'</button>'}).join("")+'</div>'+
+    '<a class="go" href="'+plink(p.id,shown.n)+'" target="_blank" rel="noopener"><span>'+shown.n+' 상품 보러가기</span><span>'+p.price+' ›</span></a>'+
     flag+'</div>';
 }
 function press(id,v){document.querySelectorAll("#"+id+" button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===v)})}

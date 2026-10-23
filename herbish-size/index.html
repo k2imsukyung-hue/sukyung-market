@@ -81,6 +81,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 .btn.main span:last-child{color:var(--beige)}
 .btn.sub{background:var(--beige-soft);border-color:var(--beige)}
 .btn span:last-child{white-space:nowrap;font-size:13px}
+.go{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#F3ECE3;background:var(--green);border-radius:10px;padding:9px 12px;font-size:13.5px}
+.go span:last-child{color:var(--beige);white-space:nowrap}
 .note{font-size:12.5px;color:var(--sub);margin:0}
 @media (max-width:360px){.card{grid-template-columns:88px 1fr}.ph{width:88px}}
 </style>
@@ -165,6 +167,9 @@ var PITCH={
   p05:"단정한 셔츠 칼라라 잠옷 같지 않아서 택배 받을 때도, 잠깐 나갈 때도 그대로 괜찮아요. 단추가 없어 엎드려 자도 안 배기고, 모달 95%라 부드러워요. 남편 러닝 다 버리고 이것만 입혀요.",
   p06:"캐시미어처럼 포근한 미세 기모라 겨울에 딱이에요. 니트 셋업 같아서 손님이 와도 괜찮고, 여행 갈 때 기내에서도, 호텔에서도 멋스러워요. 단추 없이 티셔츠처럼 입고 벗어서 편해요."
 };
+// 컬러별 허비쉬 마켓 상품 번호 (hubbish.com/product/x/번호/category/460/display/1/)
+var LINK={"p01": {"블랙": 2031, "블루그레이": 2032, "딥블루": 2033, "딥베이지": 2034, "모브핑크": 2035, "라벤더블루": 2036, "페일민트": 2037, "버터": 2038}, "p04": {"네이비": 2046, "다크그린": 2047, "버터": 2048}, "p03": {"블랙": 2042, "라벤더그레이": 2043, "올리브": 2044, "모브핑크": 2045}, "p02": {"블랙": 2039, "라벤더그레이": 2040, "모브핑크": 2041}, "p05": {"다크그린": 2027, "그레이": 2028, "스모크브라운": 2029, "다크네이비": 2030}, "p06": {"네이비": 2024, "멜란지그레이": 2025, "베이지": 2026}};
+function plink(id,c){return "https://hubbish.com/product/x/"+LINK[id][c]+"/category/460/display/1/"}
 function idx(v){return ["44","55","55h","66","77","88"].indexOf(v)}
 function card(p){
   var cls=p.size.length>2?"size small":"size";if(p.none)cls="size none";
@@ -173,7 +178,7 @@ function card(p){
     '<div class="body"><div class="head"><div class="'+cls+'">'+p.size+'</div><div class="pname">'+p.name+'<small>'+p.price+'</small></div></div>'+
     '<div class="why">'+p.why+'</div><div class="meas">'+p.meas+'</div></div>'+
     '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러">'+co.c.map(function(n,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'">'+n+'</button>'}).join("")+'</div>'+
-    '<div class="pitch"><b>이래서 좋아요</b>'+PITCH[p.id]+'</div>'+
+    '<a class="go" href="'+plink(p.id,co.c[ci-1])+'" target="_blank" rel="noopener"><span>'+co.c[ci-1]+' 상품 보러가기</span><span>'+p.price+' ›</span></a>'+'<div class="pitch"><b>이래서 좋아요</b>'+PITCH[p.id]+'</div>'+
     (p.flag?'<div class="flag'+(p.good?' good':'')+'">'+p.flag+'</div>':'')+'</div>';
 }
 function women(){
