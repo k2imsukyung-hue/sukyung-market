@@ -191,7 +191,7 @@ function women(){
   if(loose&&e.size==="S"){e.size="M"}
   e.id="p01";e.name="롱슬리브 엠파이어 드레스";e.price="73,300원";
   e.meas={S:"S 가슴 45 · 총장 117cm",M:"M 가슴 46 · 총장 124cm",L:"L 가슴 48 · 총장 127cm"}[e.size];
-  if(S.st==="preg"){e.flag="임신 중이면 이게 제일 편해요. 저도 만삭 74kg일 때 입었어요.";e.good=1}
+  if(S.st==="preg"){e.flag="임신 중이라면 엠파이어·프릴 드레스가 편해요. 허리선이 가슴 바로 밑이라 배 쪽이 여유 있게 퍼져요. 저도 임신 때 둘 다 입었어요.";e.good=1}
   else if(S.st==="nurse"){e.flag="수유 O — V넥 스냅 단추만 열면 돼요.";e.good=1}
   out.push(e);
   // 프릴 드레스: S 44~55·160 미만 / M 55~66·160 이상
@@ -200,6 +200,7 @@ function women(){
   else if(i<=1){d.size=loose&&h>=160?"M":"S";d.why="44~55면 S예요.";d.meas="S 허리 36 · 총장 111cm"}
   else{d.size=(h>160||loose)?"M":"S";d.why=d.size==="M"?"55~66에 키 160cm 넘으면 M이에요.":"이 드레스는 기준이 작게 잡혀 있어요. 저는 160cm·평소 M인데 S를 입어요.";d.meas=d.size==="M"?"M 허리 38 · 총장 115cm":"S 허리 36 · 총장 111cm"}
   if(S.st==="nurse"&&!d.none){d.flag="수유 O — 저도 수유하면서 잘 입었어요.";d.good=1}
+  else if(S.st==="preg"&&!d.none){d.flag="임신 중이라면 엠파이어·프릴 드레스가 편해요. 허리선이 가슴 바로 밑이라 배 쪽이 여유 있게 퍼져요. 저도 임신 때 입었어요.";d.good=1}
   out.push(d);
   // 프릴 세트: S 55 이하·163 미만 / M 55반 이상·163 이상
   var s={id:"p02",name:"스퀘어 프릴 세트",price:"98,400원"};
@@ -211,7 +212,7 @@ function women(){
   var f={id:"p04",name:"플레어 셔링 세트",price:"89,700원"};
   if(i===5){f.size="없음";f.none=1;f.why="77까지 편하다고 안내돼 있어요. 88이면 엠파이어 L을 먼저 보세요.";f.meas="M 상의 가슴 53cm"}
   else{f.size=(i>=2||h>=163||loose)?"M":"S";f.why=i===4?"품이 넉넉해서 77까지 편하게 입는다고 안내돼 있어요.":f.size==="M"?"55반 이상이거나 키 163cm 이상이면 M이에요.":"55 이하·163cm 미만이면 S예요. 원래 넉넉한 옷이에요.";f.meas=f.size==="M"?"M 상의 가슴 53 · 하의 총장 94cm":"S 상의 가슴 51 · 하의 총장 90cm"}
-  if(S.st!=="no"&&!f.none)f.flag=S.st==="nurse"?"수유용으로는 권하지 않아요. 저도 수유할 때 입어 봤는데 뜯어짐 문제가 있었어요.":"배가 많이 나온 시기엔 원피스(엠파이어)가 더 편해요.";
+  if(S.st!=="no"&&!f.none)f.flag=S.st==="nurse"?"수유용으로는 권하지 않아요. 저도 수유할 때 입어 봤는데 뜯어짐 문제가 있었어요.":"배가 많이 나온 시기엔 원피스(엠파이어·프릴 드레스)가 더 편해요.";
   out.push(f);
   return out;
 }
