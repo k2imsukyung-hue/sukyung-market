@@ -199,14 +199,14 @@ function women(){
   if(i>=4){d.size="없음";d.none=1;d.why="S·M뿐이라 77 이상이면 여유가 부족할 수 있어요. 엠파이어 L을 먼저 보세요.";d.meas="M 허리 38 · 총장 115cm"}
   else if(i<=1){d.size=loose&&h>=160?"M":"S";d.why="44~55면 S예요.";d.meas="S 허리 36 · 총장 111cm"}
   else{d.size=(h>160||loose)?"M":"S";d.why=d.size==="M"?"55~66에 키 160cm 넘으면 M이에요.":"이 드레스는 기준이 작게 잡혀 있어요. 저는 160cm·평소 M인데 S를 입어요.";d.meas=d.size==="M"?"M 허리 38 · 총장 115cm":"S 허리 36 · 총장 111cm"}
-  if(S.st==="nurse"&&!d.none){d.flag="수유 O — 저도 수유하면서 잘 입었어요.";d.good=1}
+  if(S.st==="nurse"&&!d.none){d.flag="수유 O — 늘려서 꺼내 수유하면 돼요.";d.good=1}
   else if(S.st==="preg"&&!d.none){d.flag="임신 중이라면 엠파이어·프릴 드레스가 편해요. 허리선이 가슴 바로 밑이라 배 쪽이 여유 있게 퍼져요. 저도 임신 때 입었어요.";d.good=1}
   out.push(d);
   // 프릴 세트: S 55 이하·163 미만 / M 55반 이상·163 이상
   var s={id:"p02",name:"스퀘어 프릴 세트",price:"98,400원"};
   if(i>=4){s.size="없음";s.none=1;s.why="S·M뿐이라 77 이상이면 맞는 사이즈가 없을 수 있어요. 세트를 원하시면 플레어 셔링을 보세요.";s.meas="M 하의 허리 35 · 총장 94cm"}
   else{s.size=(i>=2||h>=163||loose)?"M":"S";s.why=s.size==="M"?"55반 이상이거나 키 163cm 이상이면 M이에요. 저도 세트는 M을 입어요.":"55 이하·163cm 미만이면 S예요.";s.meas=s.size==="M"?"M 상의 총장 65 · 하의 총장 94cm":"S 상의 총장 63 · 하의 총장 91cm"}
-  if(S.st==="nurse"&&!s.none){s.flag="수유 O — 저도 수유하면서 잘 입었어요.";s.good=1}
+  if(S.st==="nurse"&&!s.none){s.flag="수유 O — 늘려서 꺼내 수유하면 돼요.";s.good=1}
   out.push(s);
   // 플레어 셔링: 같은 기준, 품이 넉넉해 77까지 편하다는 안내
   var f={id:"p04",name:"플레어 셔링 세트",price:"89,700원"};
