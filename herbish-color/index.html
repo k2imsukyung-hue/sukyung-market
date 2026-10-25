@@ -81,7 +81,11 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 .moods div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 12px;display:flex;flex-direction:column;gap:3px}
 .moods b{font-size:14.5px}
 .moods p{margin:0;font-size:12.5px;color:var(--sub);line-height:1.45}
-.moods small{font-size:12.5px;color:var(--ink)}
+.sw{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 10px}
+.sw li{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--ink)}
+.sw i,.cols i,.desc i{display:inline-block;width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.12);flex:none}
+.cols i{width:12px;height:12px;margin-right:4px;vertical-align:-1px}
+.desc i{width:14px;height:14px;margin-right:6px;vertical-align:-1px}
 .pair{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:6px}
 @media (max-width:360px){.moods{grid-template-columns:1fr}}
 .flag{grid-column:1/-1;font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:7px 10px}
@@ -122,10 +126,10 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
   <section aria-label="무드로 고르기">
     <h2>이름 말고 '어떤 밤'으로 골라 보세요</h2>
     <div class="moods">
-      <div><b>🌙 호텔 밤</b><p>잠옷인데 이대로 택배 받으러 나가도 되는 단정함</p><small>블랙 · 딥블루 · 네이비 · 다크네이비</small></div>
-      <div><b>☔ 비 오는 오후</b><p>창밖에 비 오는데 이불 속에서 커피 마시는 느낌</p><small>블루그레이 · 라벤더그레이 · 그레이 · 멜란지그레이</small></div>
-      <div><b>🌼 봄 햇살</b><p>아침에 얼굴이 환해 보이는, 사진 찍으면 제일 예쁜 색</p><small>버터 · 페일민트 · 라벤더블루 · 모브핑크</small></div>
-      <div><b>🌲 숲속 오두막</b><p>나무 바닥, 장작, 따뜻한 차 한 잔</p><small>딥베이지 · 올리브 · 다크그린 · 스모크브라운 · 베이지</small></div>
+      <div><b>🌙 호텔 밤</b><p>잠옷인데 이대로 택배 받으러 나가도 되는 단정함</p><ul class="sw"><li><i style="background:#1F1E1F"></i>블랙</li><li><i style="background:#2C3A6B"></i>딥블루</li><li><i style="background:#262B45"></i>네이비</li><li><i style="background:#1E2438"></i>다크네이비</li></ul></div>
+      <div><b>☔ 비 오는 오후</b><p>창밖에 비 오는데 이불 속에서 커피 마시는 느낌</p><ul class="sw"><li><i style="background:#46557A"></i>블루그레이</li><li><i style="background:#8F93A6"></i>라벤더그레이</li><li><i style="background:#4A4E57"></i>그레이</li><li><i style="background:#A9A8AE"></i>멜란지그레이</li></ul></div>
+      <div><b>🌼 봄 햇살</b><p>아침에 얼굴이 환해 보이는, 사진 찍으면 제일 예쁜 색</p><ul class="sw"><li><i style="background:#EADDAA"></i>버터</li><li><i style="background:#B9CFCB"></i>페일민트</li><li><i style="background:#B3B7C9"></i>라벤더블루</li><li><i style="background:#C2948F"></i>모브핑크</li></ul></div>
+      <div><b>🌲 숲속 오두막</b><p>나무 바닥, 장작, 따뜻한 차 한 잔</p><ul class="sw"><li><i style="background:#B7A08A"></i>딥베이지</li><li><i style="background:#94A486"></i>올리브</li><li><i style="background:#2E4F55"></i>다크그린</li><li><i style="background:#4F4842"></i>스모크브라운</li><li><i style="background:#D4C2AA"></i>베이지</li></ul></div>
     </div>
   </section>
 
@@ -197,6 +201,8 @@ var LINK={"p01": {"블랙": 2031, "블루그레이": 2032, "딥블루": 2033, "�
 // 무드 4가지 (어떤 밤을 보내고 싶은지)
 var MOOD={night:"🌙 호텔 밤",rain:"☔ 비 오는 오후",spring:"🌼 봄 햇살",forest:"🌲 숲속 오두막"};
 // 컬러 설명 (공식몰 사진 기준, 실물은 라이브에서 확인)
+// 컬러칩 (공식몰 사진에서 뽑은 대표색)
+var HEX={"블랙":"#1F1E1F","딥블루":"#2C3A6B","네이비":"#262B45","다크네이비":"#1E2438","블루그레이":"#46557A","라벤더그레이":"#8F93A6","그레이":"#4A4E57","멜란지그레이":"#A9A8AE","버터":"#EADDAA","페일민트":"#B9CFCB","라벤더블루":"#B3B7C9","모브핑크":"#C2948F","딥베이지":"#B7A08A","올리브":"#94A486","다크그린":"#2E4F55","스모크브라운":"#4F4842","베이지":"#D4C2AA"};
 var D={
   "블랙":["night","가장 단정한 색이에요. 잠옷인데 이대로 택배 받으러 나가도 될 만큼 깔끔해요. 피부톤 상관없이 잘 어울려요."],
   "딥블루":["night","잉크를 막 떨어뜨린 듯한 선명한 파랑, 밤 10시 하늘 같은 색이에요. 블루그레이보다 또렷하고 단정해요."],
@@ -269,9 +275,9 @@ function card(p,ti){
     '<div class="pick">'+top.x.n+(tag?'<span>'+tag+'</span>':'')+'</div>'+
     '<div class="why">'+reason(top.x)+'</div>'+
     (alt.length?'<div class="alt">이것도 좋아요 · '+alt.join(", ")+'</div>':'')+'</div>'+
-    '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러 사진 보기">'+p.c.map(function(x,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'"'+(i+1===top.i?' class="top1"':'')+'>'+x.n+'</button>'}).join("")+'</div>'+
+    '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러 사진 보기">'+p.c.map(function(x,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'"'+(i+1===top.i?' class="top1"':'')+'><i style="background:'+HEX[x.n]+'"></i>'+x.n+'</button>'}).join("")+'</div>'+
     '<a class="go" href="'+plink(p.id,shown.n)+'" target="_blank" rel="noopener"><span>'+shown.n+' 상품 보러가기</span><span>'+p.price+' ›</span></a>'+
-    (D[shown.n]?'<div class="desc"><b>'+shown.n+'</b><span>'+MOOD[D[shown.n][0]]+'</span><p>'+D[shown.n][1]+'</p></div>':'')+
+    (D[shown.n]?'<div class="desc"><b><i style="background:'+HEX[shown.n]+'"></i>'+shown.n+'</b><span>'+MOOD[D[shown.n][0]]+'</span><p>'+D[shown.n][1]+'</p></div>':'')+
     flag+'</div>';
 }
 function press(id,v){document.querySelectorAll("#"+id+" button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===v)})}
