@@ -238,9 +238,27 @@ function reason(x){
   if(x.pop===2)r.push("1차 마켓 판매 2위 컬러예요.");
   return r.join(" ");
 }
-function card(p){
+// 제품마다 서로 다른 컬러가 추천되도록 조합 전체에서 점수가 가장 높은 것을 고름 (같은 무드만 겹치지 않게도 조금 가산)
+function assign(list){
+  var best=null,bestS=-1e9;
+  (function go(k,used,picked,sum){
+    if(k===list.length){
+      var moods={};picked.forEach(function(i,j){var d=D[list[j].c[i-1].n];if(d)moods[d[0]]=1});
+      var t=sum+Object.keys(moods).length*.5;
+      if(t>bestS){bestS=t;best=picked.slice()}
+      return;
+    }
+    list[k].c.forEach(function(x,i){
+      if(used[x.n])return;
+      used[x.n]=1;picked.push(i+1);go(k+1,used,picked,sum+score(x));picked.pop();delete used[x.n];
+    });
+  })(0,{},[],0);
+  var m={};list.forEach(function(p,j){m[p.id]=best?best[j]:1});
+  return m;
+}
+function card(p,ti){
   var ranked=p.c.map(function(x,i){return {x:x,i:i+1,s:score(x)}}).sort(function(a,b){return b.s-a.s});
-  var top=ranked[0],alt=ranked.slice(1,3).map(function(r){return r.x.n});
+  var top={x:p.c[ti-1],i:ti},alt=ranked.filter(function(r){return r.i!==ti}).slice(0,2).map(function(r){return r.x.n});
   var ci=S.col[p.id]||top.i,shown=p.c[ci-1];
   var tag=top.x.pick||(top.x.pop===1?"1차 인기 1위":top.x.pop===2?"1차 인기 2위":"");
   var flag="";
@@ -259,7 +277,8 @@ function card(p){
 function press(id,v){document.querySelectorAll("#"+id+" button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===v)})}
 function render(){
   press("who",S.who);press("tone",S.tone);press("mood",S.mood);
-  document.getElementById("res").innerHTML=P.filter(function(p){return p.who===S.who}).map(card).join("");
+  var list=P.filter(function(p){return p.who===S.who}),as=assign(list);
+  document.getElementById("res").innerHTML=list.map(function(p){return card(p,as[p.id])}).join("");
   try{localStorage.setItem("hb-color",JSON.stringify(S))}catch(e){}
 }
 function bind(id,key){document.getElementById(id).addEventListener("click",function(e){var b=e.target.closest("button");if(b){S[key]=b.dataset.v;S.col={};render()}})}
