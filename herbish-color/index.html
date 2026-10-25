@@ -73,6 +73,17 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 .cols button{font:inherit;font-size:12.5px;color:var(--sub);background:transparent;border:1px solid var(--line);border-radius:99px;padding:3px 10px;cursor:pointer;min-height:30px}
 .cols button[aria-pressed="true"]{color:var(--ink);border-color:var(--beige);background:var(--beige-soft)}
 .cols button.top1{color:var(--green);font-weight:700}
+.desc{grid-column:1/-1;background:var(--beige-soft);border-radius:12px;padding:10px 12px}
+.desc b{font-family:var(--display);font-size:16px;margin-right:8px}
+.desc span{font-size:12.5px;color:var(--sub)}
+.desc p{margin:4px 0 0;font-size:14px}
+.moods{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.moods div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 12px;display:flex;flex-direction:column;gap:3px}
+.moods b{font-size:14.5px}
+.moods p{margin:0;font-size:12.5px;color:var(--sub);line-height:1.45}
+.moods small{font-size:12.5px;color:var(--ink)}
+.pair{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:6px}
+@media (max-width:360px){.moods{grid-template-columns:1fr}}
 .flag{grid-column:1/-1;font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:7px 10px}
 .flag.good{background:#EEF2EF;color:var(--green)}
 .foot{display:flex;flex-direction:column;gap:8px}
@@ -96,7 +107,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 <div class="wrap">
   <header>
     <h1>허비쉬 컬러 추천</h1>
-    <p class="lede">피부톤이랑 원하는 느낌만 고르면 제품마다 어울리는 컬러를 골라 드려요. 아래 컬러 이름을 누르면 사진도 바뀌어요.</p>
+    <p class="lede">피부톤이랑 원하는 느낌만 고르면 제품마다 어울리는 컬러를 골라 드려요. 아래 컬러 이름을 누르면 사진이랑 컬러 설명이 같이 바뀌어요.</p>
   </header>
 
   <section class="best" aria-label="인기 컬러와 수경이네 PICK">
@@ -106,6 +117,26 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
       <figure><div class="ph"><img src="../herbish-size/img/p03_4.jpg" alt="스퀘어 프릴 드레스 올리브" width="480" height="640" loading="lazy"></div><figcaption><b>동서 PICK</b>프릴 드레스 올리브</figcaption></figure>
       <figure><div class="ph"><img src="../herbish-size/img/p06_1.jpg" alt="코지 맨즈 셔츠 세트 네이비" width="480" height="640" loading="lazy"></div><figcaption><b>남편 PICK</b>코지 셔츠 세트 네이비</figcaption></figure>
     </div>
+  </section>
+
+  <section aria-label="무드로 고르기">
+    <h2>이름 말고 '어떤 밤'으로 골라 보세요</h2>
+    <div class="moods">
+      <div><b>🌙 호텔 밤</b><p>잠옷인데 이대로 택배 받으러 나가도 되는 단정함</p><small>블랙 · 딥블루 · 네이비 · 다크네이비</small></div>
+      <div><b>☔ 비 오는 오후</b><p>창밖에 비 오는데 이불 속에서 커피 마시는 느낌</p><small>블루그레이 · 라벤더그레이 · 그레이 · 멜란지그레이</small></div>
+      <div><b>🌼 봄 햇살</b><p>아침에 얼굴이 환해 보이는, 사진 찍으면 제일 예쁜 색</p><small>버터 · 페일민트 · 라벤더블루 · 모브핑크</small></div>
+      <div><b>🌲 숲속 오두막</b><p>나무 바닥, 장작, 따뜻한 차 한 잔</p><small>딥베이지 · 올리브 · 다크그린 · 스모크브라운 · 베이지</small></div>
+    </div>
+  </section>
+
+  <section class="best" aria-label="헷갈리는 컬러">
+    <h2 style="margin:0">헷갈리는 컬러, 이렇게 달라요</h2>
+    <ul class="pair">
+      <li><b>딥블루 vs 블루그레이</b> · 딥블루는 밤 10시 하늘처럼 선명하고, 블루그레이는 회색 물 한 방울 섞은 비 오는 새벽 바다예요.</li>
+      <li><b>라벤더블루 vs 페일민트</b> · 라벤더블루는 보랏빛 새벽하늘(우아), 페일민트는 수영장 물빛 초록(상큼)이에요.</li>
+      <li><b>딥베이지 vs 버터</b> · 딥베이지는 밀크티(차분), 버터는 햇살 받은 크림(화사)이에요.</li>
+      <li><b>네이비 vs 딥블루</b> · 네이비는 검정에 가까운 단정함, 딥블루는 파란 기가 더 살아 있어요.</li>
+    </ul>
   </section>
 
   <section class="panel" aria-label="내 취향">
@@ -125,12 +156,6 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
       <div class="chips" id="mood" role="group" aria-labelledby="l-mood">
         <button type="button" data-v="calm" aria-pressed="true">차분하고 무난하게</button>
         <button type="button" data-v="bright" aria-pressed="false">화사하게</button>
-      </div></div>
-    <div class="field"><span class="lab" id="l-care">신경 쓰이는 것</span>
-      <div class="chips" id="care" role="group" aria-labelledby="l-care">
-        <button type="button" data-v="no" aria-pressed="true">특별히 없어요</button>
-        <button type="button" data-v="sheer" aria-pressed="false">비침이 걱정돼요</button>
-        <button type="button" data-v="gift" aria-pressed="false">선물할 거예요</button>
       </div></div>
   </section>
 
@@ -169,8 +194,30 @@ var P=[
 ];
 // 컬러별 허비쉬 마켓 상품 번호 (hubbish.com/product/x/번호/category/460/display/1/)
 var LINK={"p01": {"블랙": 2031, "블루그레이": 2032, "딥블루": 2033, "딥베이지": 2034, "모브핑크": 2035, "라벤더블루": 2036, "페일민트": 2037, "버터": 2038}, "p04": {"네이비": 2046, "다크그린": 2047, "버터": 2048}, "p03": {"블랙": 2042, "라벤더그레이": 2043, "올리브": 2044, "모브핑크": 2045}, "p02": {"블랙": 2039, "라벤더그레이": 2040, "모브핑크": 2041}, "p05": {"다크그린": 2027, "그레이": 2028, "스모크브라운": 2029, "다크네이비": 2030}, "p06": {"네이비": 2024, "멜란지그레이": 2025, "베이지": 2026}};
+// 무드 4가지 (어떤 밤을 보내고 싶은지)
+var MOOD={night:"🌙 호텔 밤",rain:"☔ 비 오는 오후",spring:"🌼 봄 햇살",forest:"🌲 숲속 오두막"};
+// 컬러 설명 (공식몰 사진 기준, 실물은 라이브에서 확인)
+var D={
+  "블랙":["night","가장 단정한 색이에요. 잠옷인데 이대로 택배 받으러 나가도 될 만큼 깔끔해요. 피부톤 상관없이 잘 어울려요."],
+  "딥블루":["night","잉크를 막 떨어뜨린 듯한 선명한 파랑, 밤 10시 하늘 같은 색이에요. 블루그레이보다 또렷하고 단정해요."],
+  "네이비":["night","검정에 가까운 짙은 남색이에요. 블랙보다 부드럽고, 딥블루보다 차분해요."],
+  "다크네이비":["night","네이비보다 한 톤 더 깊은, 거의 검정에 가까운 남색이에요. 가장 클래식한 느낌이에요."],
+  "블루그레이":["rain","딥블루에 회색 물을 한 방울 섞은 색, 비 오는 새벽 바다 같아요. 딥블루가 또렷하다면 블루그레이는 힘 뺀 편안함이 있어요."],
+  "라벤더그레이":["rain","보랏빛이 은은하게 도는 회색이에요. 창밖에 비 오는 날 이불 속에서 커피 마시는 느낌이에요."],
+  "그레이":["rain","차분한 회색이에요. 누가 입어도 무난해서 매일 손이 가는 색이에요."],
+  "멜란지그레이":["rain","여러 실이 섞여 결이 은은하게 보이는 회색이에요. 포근하고 편안한 느낌이에요."],
+  "버터":["spring","햇살 받은 크림 같은 연노랑이에요. 얼굴이 환해 보여서 사진에 예쁘게 나와요. 밝은 색이라 살구색 속옷이랑 입으면 더 깔끔해요."],
+  "페일민트":["spring","물빛이 도는 연초록, 수영장 물 같은 색이에요. 라벤더블루보다 상큼해요. 밝은 색이라 살구색 속옷이랑 입으면 더 깔끔해요."],
+  "라벤더블루":["spring","보랏빛이 살짝 도는 하늘색, 새벽하늘 같은 색이에요. 페일민트보다 우아한 느낌이에요."],
+  "모브핑크":["spring","회색이 살짝 섞인 차분한 분홍이에요. 사랑스럽지만 과하지 않아서 피부톤 상관없이 잘 어울려요."],
+  "딥베이지":["forest","우유 넣은 밀크티 같은 색이에요. 버터가 화사하다면 딥베이지는 차분하고 따뜻해요."],
+  "올리브":["forest","올리브 열매 같은 차분한 초록이에요. 나무 바닥에 따뜻한 차 한 잔 같은 느낌이에요."],
+  "다크그린":["forest","깊은 숲 같은 진한 초록이에요. 사진에서는 청록빛이 살짝 돌아요."],
+  "스모크브라운":["forest","연기가 낀 듯 부드러운 갈색이에요. 장작 타는 오두막처럼 포근해요."],
+  "베이지":["forest","따뜻하고 부드러운 베이지예요. 편안하고 자연스러운 느낌이에요."]
+};
 function plink(id,c){return "https://hubbish.com/product/x/"+LINK[id][c]+"/category/460/display/1/"}
-var S={who:"w",tone:"n",mood:"calm",care:"no",col:{}};
+var S={who:"w",tone:"n",mood:"calm",col:{}};
 try{var saved=JSON.parse(localStorage.getItem("hb-color")||"null");if(saved)for(var k in saved)S[k]=saved[k]}catch(e){}
 if(!S.col)S.col={};
 
@@ -178,9 +225,7 @@ function score(x){
   var s=0;
   if(S.tone==="n")s+=1;else if(x.t===S.tone)s+=3;else if(x.t==="n")s+=2;
   if(x.m===S.mood)s+=2;
-  if(S.care==="sheer"&&x.sheer)s-=6;
-  if(S.care==="gift"){if(x.pop)s+=3;if(x.m==="calm")s+=1;if(x.pick)s+=1}
-  if(x.pop)s+=x.pop===1?.6:.4;
+    if(x.pop)s+=x.pop===1?.6:.4;
   if(x.pick)s+=.5;
   return s;
 }
@@ -191,7 +236,6 @@ function reason(x){
   r.push(x.m==="calm"?"차분해서 매일 입기 무난해요.":"화사해서 사진에도 예쁘게 나와요.");
   if(x.pop===1)r.push("1차 마켓 판매 1위 컬러예요.");
   if(x.pop===2)r.push("1차 마켓 판매 2위 컬러예요.");
-  if(S.care==="gift"&&x.m==="calm")r.push("취향 덜 타서 선물로 안전해요.");
   return r.join(" ");
 }
 function card(p){
@@ -200,8 +244,7 @@ function card(p){
   var ci=S.col[p.id]||top.i,shown=p.c[ci-1];
   var tag=top.x.pick||(top.x.pop===1?"1차 인기 1위":top.x.pop===2?"1차 인기 2위":"");
   var flag="";
-  if(shown.sheer)flag='<div class="flag">'+shown.n+'처럼 밝은 색은 어두운 속옷을 입으면 살짝 비칠 수 있어요.</div>';
-  else if(shown.dark)flag='<div class="flag">진한 색이라 처음 몇 번은 단독 세탁해 주세요.</div>';
+  if(shown.dark)flag='<div class="flag">진한 색이라 처음 몇 번은 단독 세탁해 주세요.</div>';
   else if(shown.pick)flag='<div class="flag good">'+shown.pick+' — 직접 골라서 입는 컬러예요.</div>';
   return '<div class="card"><div class="ph"><img src="../herbish-size/img/'+p.id+'_'+ci+'.jpg" alt="'+p.name+' '+shown.n+'" loading="lazy" width="480" height="640"></div>'+
     '<div class="body"><div class="pname">'+p.name+'<small>'+p.price+' · '+p.c.length+'컬러</small></div>'+
@@ -210,16 +253,17 @@ function card(p){
     (alt.length?'<div class="alt">이것도 좋아요 · '+alt.join(", ")+'</div>':'')+'</div>'+
     '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러 사진 보기">'+p.c.map(function(x,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'"'+(i+1===top.i?' class="top1"':'')+'>'+x.n+'</button>'}).join("")+'</div>'+
     '<a class="go" href="'+plink(p.id,shown.n)+'" target="_blank" rel="noopener"><span>'+shown.n+' 상품 보러가기</span><span>'+p.price+' ›</span></a>'+
+    (D[shown.n]?'<div class="desc"><b>'+shown.n+'</b><span>'+MOOD[D[shown.n][0]]+'</span><p>'+D[shown.n][1]+'</p></div>':'')+
     flag+'</div>';
 }
 function press(id,v){document.querySelectorAll("#"+id+" button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===v)})}
 function render(){
-  press("who",S.who);press("tone",S.tone);press("mood",S.mood);press("care",S.care);
+  press("who",S.who);press("tone",S.tone);press("mood",S.mood);
   document.getElementById("res").innerHTML=P.filter(function(p){return p.who===S.who}).map(card).join("");
   try{localStorage.setItem("hb-color",JSON.stringify(S))}catch(e){}
 }
 function bind(id,key){document.getElementById(id).addEventListener("click",function(e){var b=e.target.closest("button");if(b){S[key]=b.dataset.v;S.col={};render()}})}
-bind("who","who");bind("tone","tone");bind("mood","mood");bind("care","care");
+bind("who","who");bind("tone","tone");bind("mood","mood");
 document.getElementById("res").addEventListener("click",function(e){var b=e.target.closest(".cols button");if(!b)return;S.col[b.parentNode.dataset.p]=+b.dataset.i;render()});
 render();
 })();
