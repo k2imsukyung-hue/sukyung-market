@@ -86,7 +86,11 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 .sw i,.cols i,.desc i{display:inline-block;width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.12);flex:none}
 .cols i{width:12px;height:12px;margin-right:4px;vertical-align:-1px}
 .desc i{width:14px;height:14px;margin-right:6px;vertical-align:-1px}
-.pair{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.pair{list-style:none;margin:0;padding:0;font-size:14px;display:flex;flex-direction:column;gap:12px}
+.pair b{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.pair small{font-weight:400;color:var(--sub);font-size:12px}
+.pc{display:inline-flex;align-items:center;gap:5px}
+.pc i{display:inline-block;width:20px;height:20px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
 @media (max-width:360px){.moods{grid-template-columns:1fr}}
 .flag{grid-column:1/-1;font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:7px 10px}
 .flag.good{background:#EEF2EF;color:var(--green)}
@@ -136,10 +140,10 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
   <section class="best" aria-label="헷갈리는 컬러">
     <h2 style="margin:0">헷갈리는 컬러, 이렇게 달라요</h2>
     <ul class="pair">
-      <li><b>딥블루 vs 블루그레이</b> · 딥블루는 밤 10시 하늘처럼 선명하고, 블루그레이는 회색 물 한 방울 섞은 비 오는 새벽 바다예요.</li>
-      <li><b>라벤더블루 vs 페일민트</b> · 라벤더블루는 보랏빛 새벽하늘(우아), 페일민트는 수영장 물빛 초록(상큼)이에요.</li>
-      <li><b>딥베이지 vs 버터</b> · 딥베이지는 밀크티(차분), 버터는 햇살 받은 크림(화사)이에요.</li>
-      <li><b>네이비 vs 딥블루</b> · 네이비는 검정에 가까운 단정함, 딥블루는 파란 기가 더 살아 있어요.</li>
+      <li><b><span class="pc"><i style="background:#2C3A6B"></i>딥블루</span> <small>vs</small> <span class="pc"><i style="background:#46557A"></i>블루그레이</span></b>딥블루는 밤 10시 하늘처럼 선명하고, 블루그레이는 회색 물 한 방울 섞은 비 오는 새벽 바다예요.</li>
+      <li><b><span class="pc"><i style="background:#B3B7C9"></i>라벤더블루</span> <small>vs</small> <span class="pc"><i style="background:#B9CFCB"></i>페일민트</span></b>라벤더블루는 보랏빛 새벽하늘(우아), 페일민트는 수영장 물빛 초록(상큼)이에요.</li>
+      <li><b><span class="pc"><i style="background:#B7A08A"></i>딥베이지</span> <small>vs</small> <span class="pc"><i style="background:#EADDAA"></i>버터</span></b>딥베이지는 밀크티(차분), 버터는 햇살 받은 크림(화사)이에요.</li>
+      <li><b><span class="pc"><i style="background:#262B45"></i>네이비</span> <small>vs</small> <span class="pc"><i style="background:#2C3A6B"></i>딥블루</span></b>네이비는 검정에 가까운 단정함, 딥블루는 파란 기가 더 살아 있어요.</li>
     </ul>
   </section>
 
