@@ -94,6 +94,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--beige);outline-offs
 </div></div>
 
 <div class="wrap">
+<div role="note" style="margin:0 0 14px;padding:12px 14px;border-radius:12px;background:#FDECEC;color:#B3261E;font-weight:700;font-size:15px;line-height:1.5">⚠️ 스퀘어 프릴 드레스 <b>블랙 M</b>은 품절이에요</div>
   <header>
     <h1>허비쉬 사이즈 찾기</h1>
     <p class="lede">키랑 평소 사이즈만 고르면 제품마다 어떤 사이즈가 맞을지 바로 보여드려요. 허비쉬 실측표와 저랑 남편이 직접 입어 본 사이즈를 기준으로 했어요.</p>
@@ -202,6 +203,7 @@ function women(){
   else{d.size=(h>160||loose)?"M":"S";d.why=d.size==="M"?(h>160?"55~66에 키 160cm 넘으면 M이에요.":"넉넉하게 원하셔서 M이에요."):"이 드레스는 기준이 작게 잡혀 있어요. 저는 160cm·평소 M인데 S를 입어요.";d.meas=d.size==="M"?"M 허리 38 · 총장 115cm":"S 허리 36 · 총장 111cm"}
   if(S.st==="nurse"&&!d.none){d.flag="수유 O — 늘려서 꺼내 수유하면 돼요.";d.good=1}
   else if(S.st==="preg"&&!d.none){d.flag="임신 중이라면 엠파이어·프릴 드레스가 편해요. 허리선이 가슴 바로 밑이라 배 쪽이 여유 있게 퍼져요. 저도 임신 때 입었어요.";d.good=1}
+  if(d.size==="M"){d.why+=" ⚠️ 블랙 M은 품절이에요.";}
   out.push(d);
   // 프릴 세트: S 55 이하·163 미만 / M 55반 이상·163 이상
   var s={id:"p02",name:"스퀘어 프릴 세트",price:"98,400원"};
