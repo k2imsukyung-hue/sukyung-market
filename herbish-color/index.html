@@ -270,15 +270,17 @@ function card(p,ti){
   var ranked=p.c.map(function(x,i){return {x:x,i:i+1,s:score(x)}}).sort(function(a,b){return b.s-a.s});
   var top={x:p.c[ti-1],i:ti},alt=ranked.filter(function(r){return r.i!==ti}).slice(0,2).map(function(r){return r.x.n});
   var ci=S.col[p.id]||top.i,shown=p.c[ci-1];
-  var tag=top.x.pick||(top.x.pop===1?"1차 인기 1위":top.x.pop===2?"1차 인기 2위":"");
+  // 칩을 바꾸면 위 컬러명·설명도 고른 컬러로 바뀌게
+  var cur=ci===top.i?top.x:shown;
+  var tag=cur.pick||(cur.pop===1?"1차 인기 1위":cur.pop===2?"1차 인기 2위":"");
   var flag="";
   if(shown.dark)flag='<div class="flag">진한 색이라 처음 몇 번은 단독 세탁해 주세요.</div>';
   else if(shown.pick)flag='<div class="flag good">'+shown.pick+' — 직접 골라서 입는 컬러예요.</div>';
   return '<div class="card"><div class="ph"><img src="../herbish-size/img/'+p.id+'_'+ci+'.jpg" alt="'+p.name+' '+shown.n+'" loading="lazy" width="480" height="640"></div>'+
     '<div class="body"><div class="pname">'+p.name+'<small>'+p.price+' · '+p.c.length+'컬러</small></div>'+
-    '<div class="pick">'+top.x.n+(tag?'<span>'+tag+'</span>':'')+'</div>'+
-    '<div class="why">'+reason(top.x)+'</div>'+
-    (alt.length?'<div class="alt">이것도 좋아요 · '+alt.join(", ")+'</div>':'')+'</div>'+
+    '<div class="pick">'+cur.n+(tag?'<span>'+tag+'</span>':'')+'</div>'+
+    '<div class="why">'+reason(cur)+'</div>'+
+    (ci!==top.i?'<div class="alt">나에게 추천 · '+top.x.n+'</div>':alt.length?'<div class="alt">이것도 좋아요 · '+alt.join(", ")+'</div>':'')+'</div>'+
     '<div class="cols" data-p="'+p.id+'" role="group" aria-label="'+p.name+' 컬러 사진 보기">'+p.c.map(function(x,i){return '<button type="button" data-i="'+(i+1)+'" aria-pressed="'+(i+1===ci)+'"'+(i+1===top.i?' class="top1"':'')+'><i style="background:'+HEX[x.n]+'"></i>'+x.n+'</button>'}).join("")+'</div>'+
     '<a class="go" href="'+plink(p.id,shown.n)+'" target="_blank" rel="noopener"><span>'+shown.n+' 상품 보러가기</span><span>'+p.price+' ›</span></a>'+
     (D[shown.n]?'<div class="desc"><b><i style="background:'+HEX[shown.n]+'"></i>'+shown.n+'</b><span>'+MOOD[D[shown.n][0]]+'</span><p>'+D[shown.n][1]+'</p></div>':'')+
