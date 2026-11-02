@@ -1,0 +1,268 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>매장 영상 촬영안</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 폰으로 위에서 아래로 넘기며 한 장면씩 찍고 체크하는 촬영 카드 */
+:root{
+  --bg:#f3f5f8; --paper:#ffffff; --ink:#18223a; --sub:#5a6478; --line:#d9dee8;
+  --accent:#2b57d6; --accent-soft:#e6ecfb; --mark:#ffe766; --warn:#b4371f; --warn-soft:#fbe9e4; --ok:#1f7a4d; --ok-soft:#e3f4ea;
+  --f-sign:"Black Han Sans","Apple SD Gothic Neo",sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 72px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1,h2{font-family:var(--f-sign);font-weight:400;margin:0;text-wrap:balance}
+h1{font-size:clamp(28px,8vw,40px);line-height:1.15}
+h2{font-size:22px}
+p{margin:0}
+mark{background:var(--mark);color:inherit;padding:0 3px;border-radius:2px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--sub)}
+.muted{color:var(--sub);font-size:14px}
+header.top{padding-top:26px;display:flex;flex-direction:column;gap:10px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.stores{display:flex;gap:6px}
+.stores button{flex:1;font:inherit;font-weight:700;padding:10px 0;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.stores button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.progress{display:flex;align-items:center;gap:10px;font-size:14px}
+.track{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.fill{height:100%;background:var(--ok);width:0;transition:width .2s}
+.count{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:12px;scroll-margin-top:110px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px}
+.rules{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.rules li{display:flex;gap:10px;align-items:flex-start}
+.rules b{font-family:var(--f-mono);color:var(--accent);flex:none}
+.checks{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.checks label{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border-bottom:1px solid var(--line);cursor:pointer}
+.checks label:last-child{border-bottom:0}
+input[type=checkbox]{width:22px;height:22px;margin-top:2px;accent-color:var(--ok);flex:none}
+.checks input:checked+span{color:var(--sub);text-decoration:line-through}
+.checks small{display:block;color:var(--sub);font-size:13px}
+.no{background:var(--warn-soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.no h3{margin:0;font-size:15px;color:var(--warn)}
+.no ul{margin:0;padding-left:18px}
+.shot{background:var(--paper);border:2px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:150px minmax(0,1fr);align-items:start}
+.shot.done{border-color:var(--ok);background:var(--ok-soft)}
+.shot img{width:150px;max-width:100%;height:auto;aspect-ratio:406/720;object-fit:contain;display:block;background:#000;margin:12px 0 12px 12px;border-radius:8px}
+.shot .body{padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.shot .head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.num{font-family:var(--f-sign);font-size:26px;color:var(--accent);line-height:1}
+.shot h3{margin:0;font-size:17px}
+.sec{font-family:var(--f-mono);font-size:12px;color:var(--sub)}
+.who{font-size:13px;display:flex;gap:6px;flex-wrap:wrap}
+.who span{padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.steps{margin:0;padding-left:20px;font-size:15px;display:flex;flex-direction:column;gap:2px}
+.redo{font-size:13px;color:var(--warn)}
+.sub-line{font-size:12px;color:var(--sub);border-top:1px dashed var(--line);padding-top:6px}
+.shot label.got{display:flex;gap:10px;align-items:center;font-weight:700;padding:10px 12px;border-radius:10px;background:var(--bg);cursor:pointer}
+.shot.done label.got{background:var(--paper);color:var(--ok)}
+@media (max-width:460px){.shot{grid-template-columns:1fr}.shot img{width:min(240px,100%);margin:14px auto 0}}
+.copybox{background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.copybar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px 10px 16px;border-bottom:1px dashed var(--line)}
+.copybox pre{margin:0;padding:16px;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--f-body);font-size:15px}
+button.copy{font:inherit;font-size:14px;font-weight:700;padding:9px 16px;border-radius:10px;border:0;background:var(--accent);color:var(--paper);cursor:pointer}
+button.copy.done{background:var(--ok)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+footer{font-size:13px;color:var(--sub);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+
+</head><body>
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow">매장 영상 1편 · 장면 14개 · 30분이면 끝나요</span>
+  <h1>매장 영상 촬영안</h1>
+  <p>사장님이 보내준 동탄 영상과 <mark>똑같이</mark> 찍으면 돼요. 생각할 필요 없이 아래 장면을 순서대로 찍고, 찍으면 체크만 해 주세요. 자막과 편집은 저희가 해요.</p>
+</header>
+
+<div class="bar">
+  <div class="stores" role="group" aria-label="우리 매장 고르기">
+    <button type="button" data-store="파주" aria-pressed="true">파주</button>
+    <button type="button" data-store="김포" aria-pressed="false">김포</button>
+    <button type="button" data-store="대구" aria-pressed="false">대구</button>
+  </div>
+  <div class="progress"><div class="track"><div class="fill" id="fill"></div></div><span class="count" id="count">0 / 14</span></div>
+</div>
+
+<section>
+  <h2>언제 찍나요</h2>
+  <div class="box" style="display:flex;flex-direction:column;gap:8px">
+    <p style="font-size:18px;font-weight:700"><mark>평일 오전, 문 열기 전 1시간 ~ 문 연 직후</mark></p>
+    <p class="muted">예: 11시에 문 여는 매장이면 10시 ~ 11시 반</p>
+    <ul class="rules">
+      <li><b>✔</b><span>손님이 없어서 손님 얼굴 걱정 없이 편하게 찍어요</span></li>
+      <li><b>✔</b><span>밖이 밝아서 1번·14번 간판 장면이 또렷하게 나와요</span></li>
+      <li><b>✕</b><span>점심시간(12~2시), 저녁 6시 이후, 주말 낮은 피해요</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>촬영 전날 할 것</h2>
+  <div class="checks prep">
+    <label><input type="checkbox" data-k="d1"><span>상담 직원 미용실 가서 머리 하고 오기<small>얼굴이 크게 나오는 사람이에요. 머리가 제일 중요해요</small></span></label>
+    <label><input type="checkbox" data-k="d2"><span>상담 직원 옷 준비<small>정장이 제일 좋아요 (동탄 영상처럼). 정장이 없으면 최대한 비슷하게 맞춰 입고, 그것도 없으면 다린 흰 셔츠</small></span></label>
+    <label><input type="checkbox" data-k="d3"><span>매장 청소<small>바닥, 진열대, 상담 테이블, 유리문까지. 박스·쓰레기·개인 물건은 안 보이는 데로 치워요</small></span></label>
+  </div>
+</section>
+
+<section>
+  <h2>당일 먼저 준비하기</h2>
+  <div class="checks prep" id="prep">
+    <label><input type="checkbox" data-k="p1"><span>손님 역 1명<small>얼굴 안 나와요. 뒷모습과 손만 나와요. 밝은 옷이면 좋아요</small></span></label>
+    <label><input type="checkbox" data-k="p2"><span>상담 직원 1명<small>얼굴이 꼭 나와요. 전날 머리 하고, 정장(없으면 흰 셔츠) 입고 와요</small></span></label>
+    <label><input type="checkbox" data-k="p3"><span>찍는 사람 1명<small>폰 하나로 다 찍어요</small></span></label>
+    <label><input type="checkbox" data-k="p4"><span>요즘 잘 나가는 폰 3대<small>색깔 다른 걸로 (예: 아이폰 흰색·파랑·분홍)</small></span></label>
+    <label><input type="checkbox" data-k="p5"><span>폰 박스 1개, 쇼핑백 여러 개</span></label>
+    <label><input type="checkbox" data-k="p6"><span>사은품 5개 정도<small>필름, 케이스, 충전기 등 실제로 드리는 것</small></span></label>
+    <label><input type="checkbox" data-k="p7"><span>형광펜 1개, 요금제 안내 종이 1장<small>손님 이름·번호가 없는 빈 종이</small></span></label>
+    <label><input type="checkbox" data-k="p8"><span>찢어도 되는 종이 1장<small>장면 9에서 써요</small></span></label>
+    <label><input type="checkbox" data-k="p10"><span>나오는 폰 3대 깨끗하게 닦기<small>지문, 먼지, 얼룩 없게 천으로 앞뒤 다 닦아요. 찍기 직전에 한 번 더</small></span></label>
+    <label><input type="checkbox" data-k="p9"><span>매장 불 전부 켜기</span></label>
+    <label><input type="checkbox" data-k="p11"><span>찍는 폰 카메라 렌즈 닦기<small>옷 말고 안경닦이나 부드러운 천으로. 안 닦으면 영상이 뿌옇게 나와요</small></span></label>
+  </div>
+</section>
+
+<section>
+  <h2>찍을 때 지킬 것 4개</h2>
+  <div class="box">
+    <ul class="rules">
+      <li><b>1</b><span>폰은 <b>세로</b>로, 뒷카메라로 찍어요.</span></li>
+      <li><b>2</b><span>한 장면은 <b>5초</b>. 녹화 누르고 2초 기다렸다가 움직여요.</span></li>
+      <li><b>3</b><span>같은 장면을 <b>2번씩</b> 찍어요. 하나는 망해도 괜찮게요.</span></li>
+      <li><b>4</b><span>말은 안 해도 돼요. 소리는 저희가 다 지워요.</span></li>
+    </ul>
+  </div>
+  <div class="no">
+    <h3>이게 찍히면 그 장면은 못 써요</h3>
+    <ul><li>찍는 날 매장에 실제로 온 손님 얼굴 (뒤에 지나가는 것도 포함. 허락 없이 인스타에 나오면 문제가 돼요. 손님 역 하는 우리 쪽 사람은 괜찮아요)</li><li>가격표, 시세표, 가격 적힌 종이</li><li>신분증, 계약서, 가입 화면</li></ul>
+  </div>
+</section>
+
+<section id="shots">
+  <h2>장면 14개 순서대로</h2>
+  <p class="muted">왼쪽 사진은 동탄 영상의 같은 장면이에요. 이 사진처럼 찍으면 돼요.</p>
+  <div id="shot-list" style="display:flex;flex-direction:column;gap:14px"></div>
+</section>
+
+<section>
+  <h2>다 찍었으면</h2>
+  <div class="box">
+    <ul class="rules">
+      <li><b>1</b><span>단톡방에 영상을 올려요. 카톡에서 보낼 때 <b>'원본'</b>을 꼭 눌러 주세요.</span></li>
+      <li><b>2</b><span>아래 글을 복사해서 같이 보내 주세요. 체크한 대로 자동으로 써져요.</span></li>
+    </ul>
+  </div>
+  <div class="copybox">
+    <div class="copybar"><span class="eyebrow">단톡방에 보낼 글</span><button class="copy" type="button" id="copy-done">복사</button></div>
+    <pre id="done-text"></pre>
+  </div>
+</section>
+
+<footer>헷갈리면 단톡방에 "몇 번 장면 모르겠어요"라고 물어봐 주세요. 체크한 건 이 폰에 저장돼요.</footer>
+</div>
+
+<script>
+var SHOTS=[
+ {img:"ref/s15.jpg",t:"매장으로 들어가기",sec:"5초",who:["손님 역","찍는 사람"],
+  steps:["찍는 사람은 손님 역 뒤 3걸음에 서요","손님 역이 간판을 보면서 매장 문으로 걸어가요","간판이 화면 위쪽에 꼭 보이게","문 열고 들어가는 데까지 따라가며 찍어요"],
+  redo:"간판이 안 보이면 다시",sub:"{지역}까지 핸드폰 사러 간 곳?"},
+ {img:"ref/s02.jpg",t:"상담 테이블 어깨너머",sec:"5초",who:["손님 역","상담 직원","찍는 사람"],
+  steps:["손님 역은 테이블에 앉아요","찍는 사람은 손님 역 어깨 뒤에서 찍어요","직원이 종이를 손가락으로 짚으면서 설명하는 척해요","손님 역 얼굴은 안 보이게 뒤통수만"],
+  redo:"손님 역 얼굴이 보이면 다시",sub:"입소문 난 {지역} 폰가게에 다녀왔어요"},
+ {img:"ref/s03.jpg",t:"진열된 폰 가까이",sec:"5초",who:["찍는 사람"],
+  steps:["진열대에 있는 폰을 먼저 천으로 닦아요","폰 하나 앞에 서요","찍는 폰을 천천히 앞으로 밀면서 다가가요","가격표는 화면 밖으로 빼요"],
+  redo:"가격표나 지문이 보이면 다시",sub:"다녀왔어요"},
+ {img:"ref/s04.jpg",t:"폰 3대 손에 들기",sec:"5초",who:["손님 역","찍는 사람"],
+  steps:["색깔 다른 폰 3대를 부채처럼 겹쳐 들어요","뒷면(카메라 쪽)이 보이게","매장 간판이나 로고가 뒤에 보이면 더 좋아요","살짝 흔들어 보여줘요"],
+  redo:"폰에 지문·먼지가 보이거나 손 떨려서 흐리면 다시",sub:"요즘 다들 찾는 그 폰"},
+ {img:"ref/s05.jpg",t:"매장에 사람 있는 모습",sec:"5초",who:["찍는 사람"],
+  steps:["직원들이 일하고 손님 있는 매장을 멀리서 찍어요","진짜 손님은 뒷모습이나 아주 멀리만","손님이 없으면 직원 2~3명이 상담하는 척해도 돼요"],
+  redo:"진짜 손님 얼굴이 보이면 다시",sub:"낮에도 손님이 많았어요"},
+ {img:"ref/s06.jpg",t:"진열대 옆으로 훑기",sec:"5초",who:["찍는 사람"],
+  steps:["진열대 왼쪽 끝에서 시작해요","오른쪽으로 천천히 걸으면서 찍어요","폰 이름(갤럭시, 아이폰)이 보이면 좋아요"],
+  redo:"너무 빠르면 다시 (천천히 걷기)",sub:"일반적인 폰 매장은"},
+ {img:"ref/s08.jpg",t:"쇼핑백 줄 세운 것",sec:"5초",who:["직원","찍는 사람"],
+  steps:["쇼핑백을 바닥이나 선반에 쭉 줄 세워요","옆에서 낮게 찍으면서 천천히 지나가요","많아 보이게 최대한 길게"],
+  redo:"쇼핑백이 3개 이하면 더 놓고 다시",sub:"많이 팔아서 남기는 구조라"},
+ {img:"ref/s09.jpg",t:"폰 박스 들고 간판 배경",sec:"5초",who:["손님 역","찍는 사람"],
+  steps:["손님 역이 새 폰 박스를 한 손에 들어요","뒤에 매장 간판이나 로고가 보이게 서요","박스를 카메라 쪽으로 살짝 내밀어요"],
+  redo:"간판이 안 보이면 다시",sub:"많이 팔리니까 기계 순환이 빨라요"},
+ {img:"ref/s10.jpg",t:"직원이 종이 찢기",sec:"5초",who:["상담 직원","찍는 사람"],
+  steps:["직원이 테이블에 앉아 정면을 봐요","종이를 들고 웃으면서 반으로 쫙 찢어요","얼굴이 화면 가운데 나오게 찍어요"],
+  redo:"종이에 가격이 적혀 있으면 다른 종이로",sub:"비싼 요금제로 이익 내는 곳이 아니라서"},
+ {img:"ref/s11.jpg",t:"상담하는 정면 모습",sec:"5초",who:["상담 직원","손님 역","찍는 사람"],
+  steps:["찍는 사람은 테이블 옆에 서요","직원이 손님 역에게 설명하는 모습","손님 역은 뒷모습이나 옆 뒷모습만"],
+  redo:"손님 역 얼굴이 보이면 다시",sub:"고액 요금제 강요 안 하고"},
+ {img:"ref/s12.jpg",t:"형광펜 긋는 손",sec:"5초",who:["상담 직원","찍는 사람"],
+  steps:["요금제 안내 종이를 테이블에 놓아요","폰을 종이 바로 위에 가까이 대요","직원이 형광펜으로 한 줄 쭉 그어요"],
+  redo:"이름·전화번호가 보이면 다시",sub:"제 사용량 보고 딱 맞춰 주셨어요"},
+ {img:"ref/s13.jpg",t:"사은품 고르기",sec:"5초",who:["손님 역","찍는 사람"],
+  steps:["손님 역이 쇼핑백을 들고 액세서리 벽 앞에 서요","벽에서 필름이나 케이스를 하나 꺼내요","쇼핑백에 넣어요. 2~3개 반복"],
+  redo:"손님 역 얼굴이 보이면 다시",sub:"필름, 케이스, 충전기까지"},
+ {img:"ref/s14.jpg",t:"사은품 펼쳐 들기",sec:"5초",who:["손님 역","찍는 사람"],
+  steps:["사은품 여러 개를 두 손으로 부채처럼 펼쳐 들어요","아래에 쇼핑백이 같이 보이게","카메라 쪽으로 살짝 들어 올려요"],
+  redo:"흐리면 다시",sub:"쇼핑하듯이 챙겨 주셨어요"},
+ {img:"ref/s01.jpg",t:"나가면서 간판",sec:"5초",who:["손님 역","찍는 사람"],
+  steps:["매장 밖에서 찍어요","손님 역이 쇼핑백 들고 나와서 간판 쪽을 봐요","간판이 크게 보이게 올려다보며 찍어요","주변 거리(건물, 역 방향)도 3초 더 찍어요"],
+  redo:"간판 글씨가 잘리면 다시",sub:"{지역} 위치 · 궁금하면 DM 주세요"}
+];
+var store="파주", state={};
+function key(){return "shoot-"+store}
+function load(){try{state=JSON.parse(localStorage.getItem(key())||"{}")}catch(e){state={}}}
+function save(){try{localStorage.setItem(key(),JSON.stringify(state))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function renderShots(){
+  var html=SHOTS.map(function(s,i){
+    var n=i+1,done=!!state["s"+n];
+    return '<article class="shot'+(done?' done':'')+'" id="shot-'+n+'">'+
+      '<img src="'+s.img+'" alt="동탄 영상의 '+n+'번 장면" loading="lazy">'+
+      '<div class="body"><div class="head"><span class="num">'+n+'</span><h3>'+esc(s.t)+'</h3><span class="sec">'+s.sec+' · 2번</span></div>'+
+      '<div class="who">'+s.who.map(function(w){return '<span>'+esc(w)+'</span>'}).join("")+'</div>'+
+      '<ol class="steps">'+s.steps.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ol>'+
+      '<p class="redo">↻ '+esc(s.redo)+'</p>'+
+      '<label class="got"><input type="checkbox" id="got-'+n+'" data-k="s'+n+'"'+(done?' checked':'')+'> 찍었어요</label>'+
+      '<p class="sub-line">편집 때 들어갈 자막(참고만): '+esc(s.sub.replace(/\{지역\}/g,store))+'</p>'+
+      '</div></article>';
+  }).join("");
+  document.getElementById("shot-list").innerHTML=html;
+}
+function renderPrep(){document.querySelectorAll(".prep input").forEach(function(c){c.checked=!!state[c.dataset.k]})}
+function renderProgress(){
+  var got=[],miss=[];
+  SHOTS.forEach(function(s,i){(state["s"+(i+1)]?got:miss).push(i+1)});
+  document.getElementById("count").textContent=got.length+" / "+SHOTS.length;
+  document.getElementById("fill").style.width=(got.length/SHOTS.length*100)+"%";
+  var t="["+store+"] 매장 영상 촬영 "+(miss.length?"중간 보고":"끝!")+"\n찍은 장면: "+(got.length?got.join(", "):"아직 없음");
+  if(miss.length)t+="\n못 찍은 장면: "+miss.join(", ")+"\n(못 찍은 이유: )";
+  t+="\n영상은 원본으로 올렸어요 🙌";
+  document.getElementById("done-text").textContent=t;
+}
+function renderAll(){
+  document.querySelectorAll(".stores button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.store===store))});
+  renderPrep();renderShots();renderProgress();
+}
+document.addEventListener("change",function(e){
+  var k=e.target.dataset&&e.target.dataset.k;if(!k)return;
+  state[k]=e.target.checked;save();
+  if(k.charAt(0)==="s"){var card=e.target.closest(".shot");if(card)card.classList.toggle("done",e.target.checked)}
+  renderProgress();
+});
+document.querySelectorAll(".stores button").forEach(function(b){
+  b.addEventListener("click",function(){store=b.dataset.store;try{localStorage.setItem("shoot-store",store)}catch(e){}load();renderAll()});
+});
+document.getElementById("copy-done").addEventListener("click",function(){
+  var btn=this,el=document.getElementById("done-text");
+  function ok(){btn.textContent="복사됨";btn.classList.add("done");setTimeout(function(){btn.textContent="복사";btn.classList.remove("done")},1600)}
+  function fb(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="길게 눌러 복사"}
+  try{navigator.clipboard.writeText(el.textContent).then(ok,fb)}catch(e){fb()}
+});
+try{var sv=localStorage.getItem("shoot-store");if(sv)store=sv}catch(e){}
+load();renderAll();
+</script>
+
+</body></html>
