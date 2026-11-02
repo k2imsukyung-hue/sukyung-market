@@ -1,14 +1,14 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>매장 영상 촬영안</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap">
 <style>
 /* 레이아웃: 폰으로 위에서 아래로 넘기며 한 장면씩 찍고 체크하는 촬영 카드 */
 :root{
   --bg:#f3f5f8; --paper:#ffffff; --ink:#18223a; --sub:#5a6478; --line:#d9dee8;
   --accent:#2b57d6; --accent-soft:#e6ecfb; --mark:#ffe766; --warn:#b4371f; --warn-soft:#fbe9e4; --ok:#1f7a4d; --ok-soft:#e3f4ea;
   --f-sign:"Black Han Sans","Apple SD Gothic Neo",sans-serif;
-  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-body:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --f-mono:var(--f-body);
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
@@ -20,7 +20,7 @@ h1{font-size:clamp(28px,8vw,40px);line-height:1.15}
 h2{font-size:22px}
 p{margin:0}
 mark{background:var(--mark);color:inherit;padding:0 3px;border-radius:2px}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--sub)}
+.eyebrow{font-size:13px;color:var(--sub);font-weight:700}
 .muted{color:var(--sub);font-size:14px}
 header.top{padding-top:26px;display:flex;flex-direction:column;gap:10px}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
@@ -76,7 +76,7 @@ footer{font-size:13px;color:var(--sub);border-top:1px solid var(--line);padding-
 <header class="top">
   <span class="eyebrow">매장 영상 1편 · 장면 14개 · 30분이면 끝나요</span>
   <h1>매장 영상 촬영안</h1>
-  <p>사장님이 보내준 동탄 영상과 <mark>똑같이</mark> 찍으면 돼요. 생각할 필요 없이 아래 장면을 순서대로 찍고, 찍으면 체크만 해 주세요. 자막과 편집은 저희가 해요.</p>
+  <p>사장님이 보내준 동탄 영상과 <mark>똑같이</mark> 찍으면 돼요. 아래 장면을 순서대로 찍고, 찍으면 체크만 해 주세요. 자막과 편집은 저희가 해요.</p>
 </header>
 
 <div class="bar">
@@ -226,7 +226,6 @@ function renderShots(){
       '<ol class="steps">'+s.steps.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ol>'+
       '<p class="redo">↻ '+esc(s.redo)+'</p>'+
       '<label class="got"><input type="checkbox" id="got-'+n+'" data-k="s'+n+'"'+(done?' checked':'')+'> 찍었어요</label>'+
-      '<p class="sub-line">편집 때 들어갈 자막(참고만): '+esc(s.sub.replace(/\{지역\}/g,store))+'</p>'+
       '</div></article>';
   }).join("");
   document.getElementById("shot-list").innerHTML=html;
