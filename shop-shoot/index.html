@@ -153,8 +153,10 @@ footer{font-size:13px;color:var(--sub);border-top:1px solid var(--line);padding-
   <h2>다 찍었으면</h2>
   <div class="box">
     <ul class="rules">
-      <li><b>1</b><span>단톡방에 영상을 올려요. 카톡에서 보낼 때 <b>'원본'</b>을 꼭 눌러 주세요.</span></li>
-      <li><b>2</b><span>아래 글을 복사해서 같이 보내 주세요. 체크한 대로 자동으로 써져요.</span></li>
+      <li><b>1</b><span><b>샌드애니웨어</b> 앱을 깔아요 (로그인 필요 없어요)</span></li>
+      <li><b>2</b><span><b>보내기</b> → 찍은 영상 전부 선택</span></li>
+      <li><b>3</b><span><b>링크 공유</b>를 누르고 링크를 복사해요</span></li>
+      <li><b>4</b><span>아래 보고 글을 복사해서, 그 링크랑 같이 단톡방에 올려요. 영상을 단톡방에 직접 올리지는 않아요.</span></li>
     </ul>
   </div>
   <div class="copybox">
@@ -238,7 +240,7 @@ function renderProgress(){
   document.getElementById("fill").style.width=(got.length/SHOTS.length*100)+"%";
   var t="["+store+"] 매장 영상 촬영 "+(miss.length?"중간 보고":"끝!")+"\n찍은 장면: "+(got.length?got.join(", "):"아직 없음");
   if(miss.length)t+="\n못 찍은 장면: "+miss.join(", ")+"\n(못 찍은 이유: )";
-  t+="\n영상은 원본으로 올렸어요 🙌";
+  t+="\n영상 링크(샌드애니웨어): 여기에 붙여넣기 🙌";
   document.getElementById("done-text").textContent=t;
 }
 function renderAll(){
