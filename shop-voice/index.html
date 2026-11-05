@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>매장 릴스 목소리 비교 · 포지티 크리에이티브 스튜디오</title>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>매장 릴스 목소리 비교</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
@@ -34,12 +34,12 @@ video{display:block;width:100%;aspect-ratio:9/16;max-width:100%;background:#000}
 ul.pts{margin:0;padding-left:1.1em;font-size:.88rem;display:grid;gap:2px}
 .len{font-size:.8rem;color:var(--sub);font-variant-numeric:tabular-nums}
 footer{color:var(--sub);font-size:.85rem;text-align:center;border-top:1px solid var(--line);padding-top:16px}
-.studio{font-size:.78rem;letter-spacing:.12em;color:var(--sub);font-weight:700}
+.dl{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;padding:11px 14px;border-radius:10px;background:var(--fg);color:var(--card);font-weight:800;font-size:.92rem;text-decoration:none}
+.dl:hover{opacity:.88}.dl:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 </style>
 
 </head><body>
 <div class="wrap">
-  <div class="studio">POSITI CREATIVE STUDIO · 포지티 크리에이티브 스튜디오</div>
   <header>
     <h1>매장 릴스 <mark>목소리 3종</mark> 비교</h1>
     <p class="lead">지점을 고르면 같은 영상을 목소리만 바꾼 3편을 나란히 보실 수 있습니다. 하나를 재생하면 다른 영상은 멈춥니다.</p>
@@ -51,7 +51,7 @@ footer{color:var(--sub);font-size:.85rem;text-align:center;border-top:1px solid 
   </nav>
   <h2 class="store-title" id="stitle"></h2>
   <div class="grid" id="grid"></div>
-  <footer>매장 릴스 편집본 · 목소리 3종 비교<br>포지티 크리에이티브 스튜디오</footer>
+  <footer>매장 릴스 편집본 · 목소리 3종 비교</footer>
 </div>
 
 <script>
@@ -87,6 +87,7 @@ function show(s){
         <p class="desc">${v.desc}</p>
         <ul class="pts">${v.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
         ${LEN[s+'_'+v.id]?`<span class="len">길이 ${LEN[s+'_'+v.id]}초</span>`:''}
+        <a class="dl" href="d/${s}_${v.id}.mp4" download="${st.ko}_매장릴스_${v.name}.mp4">⬇ 원본 다운로드</a>
       </div>
     </article>`).join('');
   grid.querySelectorAll('video').forEach(vd=>vd.addEventListener('play',()=>{
