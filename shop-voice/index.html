@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>매장 릴스 목소리 비교 · 포지티 크리에이티브 스튜디오</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+*{box-sizing:border-box}body{margin:0}
+/* 레이아웃: 지점 탭 → 목소리 3개를 세로 영상 카드로 나란히(폰에선 한 줄씩) */
+:root{
+  --bg:#eceef2; --card:#ffffff; --fg:#17191d; --sub:#5d6470; --line:#dde0e5;
+  --yellow:#ffd400; --ink:#17191d; --chip:#eef0f3;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+header{display:grid;gap:6px}
+h1{font-size:1.55rem;font-weight:900;margin:0;text-wrap:balance}
+h1 mark{background:var(--yellow);color:var(--ink);padding:0 .2em;border-radius:3px}
+.lead{color:var(--sub);margin:0;font-size:.95rem}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav a{padding:9px 18px;border-radius:999px;background:var(--chip);color:var(--fg);text-decoration:none;font-weight:700;border:1px solid var(--line)}
+nav a[aria-current="page"]{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+nav a:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+.store-title{font-size:1.15rem;font-weight:800;margin:0}
+.store-title span{color:var(--sub);font-weight:500;font-size:.9rem;margin-left:8px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:820px){.grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;width:100%}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+video{display:block;width:100%;aspect-ratio:9/16;max-width:100%;background:#000}
+.info{padding:14px 16px 18px;display:grid;gap:8px;align-content:start}
+.feel{display:inline-block;justify-self:start;background:var(--yellow);color:var(--ink);font-weight:800;font-size:.82rem;padding:3px 10px;border-radius:6px;letter-spacing:.02em}
+.name{font-size:1.1rem;font-weight:800;margin:0}
+.name small{font-weight:500;color:var(--sub);font-size:.82rem;margin-left:6px}
+.desc{margin:0;color:var(--sub);font-size:.92rem}
+ul.pts{margin:0;padding-left:1.1em;font-size:.88rem;display:grid;gap:2px}
+.len{font-size:.8rem;color:var(--sub);font-variant-numeric:tabular-nums}
+footer{color:var(--sub);font-size:.85rem;text-align:center;border-top:1px solid var(--line);padding-top:16px}
+.studio{font-size:.78rem;letter-spacing:.12em;color:var(--sub);font-weight:700}
+</style>
+
+</head><body>
+<div class="wrap">
+  <div class="studio">POSITI CREATIVE STUDIO · 포지티 크리에이티브 스튜디오</div>
+  <header>
+    <h1>매장 릴스 <mark>목소리 3종</mark> 비교</h1>
+    <p class="lead">지점을 고르면 같은 영상을 목소리만 바꾼 3편을 나란히 보실 수 있습니다. 하나를 재생하면 다른 영상은 멈춥니다.</p>
+  </header>
+  <nav id="tabs" aria-label="지점">
+    <a href="#paju" data-s="paju">파주</a>
+    <a href="#gimpo" data-s="gimpo">김포</a>
+    <a href="#daegu" data-s="daegu">대구</a>
+  </nav>
+  <h2 class="store-title" id="stitle"></h2>
+  <div class="grid" id="grid"></div>
+  <footer>매장 릴스 편집본 · 목소리 3종 비교<br>포지티 크리에이티브 스튜디오</footer>
+</div>
+
+<script>
+const STORES={
+  paju:{ko:'파주',name:'파주 휴대폰성지',route:'서울 → 파주'},
+  gimpo:{ko:'김포',name:'휴대폰 가격파괴',route:'서울 → 김포'},
+  daegu:{ko:'대구',name:'핫폰 휴대폰성지 신월성점',route:'수성구 → 신월성'}
+};
+const VOICES=[
+  {id:'deok',name:'덕',en:'Deok Energetic',feel:'VJ특공대 느낌',
+   desc:'현장을 찾아가는 리포터처럼 밝고 힘 있는 톤으로 매장의 활기를 전해요.',
+   pts:['첫 장면부터 시선을 붙잡는 경쾌한 도입','줄 서는 성지 분위기를 생생하게 전달','빠른 컷 편집과 잘 어울리는 리듬']},
+  {id:'anna',name:'안나킴',en:'Anna Kim',feel:'브이로그 느낌',
+   desc:'직접 다녀온 이야기를 들려주듯 친근하고 따뜻한 톤으로 풀어가요.',
+   pts:['방문 후기처럼 자연스럽게 이어지는 흐름','매장의 편안하고 따뜻한 분위기를 강조','일상 콘텐츠를 즐겨 보는 시청자에게 친숙한 톤']},
+  {id:'seong',name:'성현',en:'Seonghyeon · Deep Narrator',feel:'신뢰 가는 IT 유튜버 느낌',
+   desc:'낮고 안정적인 목소리로 매장의 장점을 차근차근 짚어 줘요.',
+   pts:['박리다매 구조와 요금제 상담을 또렷하게 설명','전문 리뷰 채널 같은 믿음직한 분위기','정보를 꼼꼼히 보는 시청자에게 잘 맞는 톤']}
+];
+const LEN={"paju_deok":42,"paju_anna":45,"paju_seong":45,"gimpo_deok":41,"gimpo_anna":46,"gimpo_seong":45,"daegu_deok":43,"daegu_anna":46,"daegu_seong":46};
+const grid=document.getElementById('grid'), stitle=document.getElementById('stitle');
+function show(s){
+  if(!STORES[s]) s='paju';
+  const st=STORES[s];
+  document.querySelectorAll('#tabs a').forEach(a=>a.setAttribute('aria-current',a.dataset.s===s?'page':'false'));
+  stitle.innerHTML=`${st.ko} 편<span>${st.name} · ${st.route}</span>`;
+  grid.innerHTML=VOICES.map(v=>`
+    <article class="card">
+      <video id="v-${s}-${v.id}" src="v/${s}_${v.id}.mp4" controls playsinline preload="metadata"></video>
+      <div class="info">
+        <span class="feel">${v.feel}</span>
+        <h3 class="name">${v.name}<small>${v.en}</small></h3>
+        <p class="desc">${v.desc}</p>
+        <ul class="pts">${v.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
+        ${LEN[s+'_'+v.id]?`<span class="len">길이 ${LEN[s+'_'+v.id]}초</span>`:''}
+      </div>
+    </article>`).join('');
+  grid.querySelectorAll('video').forEach(vd=>vd.addEventListener('play',()=>{
+    grid.querySelectorAll('video').forEach(o=>{if(o!==vd)o.pause()});
+  }));
+}
+function route(){show((location.hash||'#paju').slice(1))}
+window.addEventListener('hashchange',route); route();
+</script>
+
+</body></html>
