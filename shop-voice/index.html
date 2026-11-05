@@ -88,12 +88,33 @@ function show(s){
         <ul class="pts">${v.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
         ${LEN[s+'_'+v.id]?`<span class="len">길이 ${LEN[s+'_'+v.id]}초</span>`:''}
         <a class="dl" href="d/${s}_${v.id}.mp4" download="${st.ko}_매장릴스_${v.name}.mp4">⬇ 원본 다운로드</a>
+        <span class="len dlhint">폰에서는 공유창의 ‘비디오 저장’을 누르면 사진첩에 저장돼요</span>
       </div>
     </article>`).join('');
   grid.querySelectorAll('video').forEach(vd=>vd.addEventListener('play',()=>{
     grid.querySelectorAll('video').forEach(o=>{if(o!==vd)o.pause()});
   }));
 }
+// 폰: 공유창 → '비디오 저장'으로 사진첩에 바로. 첫 탭에 받기, 받은 뒤 탭하면 공유창(아이폰은 탭 직후에만 공유창 허용)
+const CAN_SHARE=(()=>{try{return !!(navigator.canShare&&navigator.canShare({files:[new File([''],'a.mp4',{type:'video/mp4'})]}))&&matchMedia('(pointer:coarse)').matches}catch(e){return false}})();
+const ready={};
+document.addEventListener('click',async e=>{
+  const a=e.target.closest('a.dl'); if(!a||!CAN_SHARE) return;
+  e.preventDefault();
+  const key=a.getAttribute('href'), name=a.getAttribute('download');
+  if(ready[key]){
+    try{await navigator.share({files:[ready[key]]})}catch(err){}
+    return;
+  }
+  if(a.dataset.busy) return; a.dataset.busy='1';
+  const label=a.textContent; a.textContent='영상 받는 중…';
+  try{
+    const b=await (await fetch(key)).blob();
+    ready[key]=new File([b],name,{type:'video/mp4'});
+    a.textContent='📲 사진첩에 저장하기';
+  }catch(err){a.textContent=label; location.href=key}
+  delete a.dataset.busy;
+});
 function route(){show((location.hash||'#paju').slice(1))}
 window.addEventListener('hashchange',route); route();
 </script>
