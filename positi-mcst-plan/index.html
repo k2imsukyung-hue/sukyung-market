@@ -54,9 +54,6 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding-top:8px}
 .final video{width:100%;aspect-ratio:9/16;background:#000;border-radius:10px;display:block}
 .side{display:flex;flex-direction:column;gap:10px;min-width:0}
 .say{font-size:16px}
-.dl{display:flex;align-items:center;justify-content:center;padding:13px 16px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none}
-.dl:hover{opacity:.9}.dl:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
-.dlhint{font-size:12.5px;color:var(--muted);text-align:center}
 .done{margin-top:10px;padding-top:16px;border-top:1px solid var(--line)}
 .done h2{font-size:15px;margin:0 0 8px}.done ul{font-size:14px}
 .old{display:flex;flex-direction:column;gap:12px;padding-top:6px}
@@ -81,9 +78,7 @@ h3{font-size:15px;margin:0;color:var(--accent)}
 <section class="card final">
   <video id="film" src="v/final.mp4" poster="v/final.jpg" controls playsinline preload="metadata"></video>
   <div class="side">
-    <p class="say">11/6 주신 피드백을 반영한 최종본이에요. 바로 재생해 보시거나 원본을 다운로드하실 수 있어요.</p>
-    <a class="dl" href="d/final.mp4" download="우리아이자립펀드_릴스_최종본.mp4">⬇ 원본 다운로드</a>
-    <span class="dlhint">폰에서는 공유창의 ‘비디오 저장’을 누르면 사진첩에 저장돼요</span>
+    <p class="say">11/6 주신 피드백을 반영한 최종본이에요.</p>
     <div class="done">
       <h2>이번에 반영한 내용</h2>
       <ul>
@@ -163,24 +158,5 @@ h3{font-size:15px;margin:0;color:var(--accent)}
 
 <footer>포지티 크리에이티브 스튜디오 · 정시현 팀장 · 010-2192-3217 · contact@positi.kr</footer>
 </div>
-<script>
-// 폰: 첫 탭에 받고, 다시 탭하면 공유창 → '비디오 저장'으로 사진첩에 저장
-const CAN_SHARE=(()=>{try{return !!(navigator.canShare&&navigator.canShare({files:[new File([''],'a.mp4',{type:'video/mp4'})]}))&&matchMedia('(pointer:coarse)').matches}catch(e){return false}})();
-let ready=null;
-document.querySelector('a.dl').addEventListener('click',async e=>{
-  if(!CAN_SHARE) return;
-  e.preventDefault();
-  const a=e.currentTarget;
-  if(ready){try{await navigator.share({files:[ready]})}catch(err){} return;}
-  if(a.dataset.busy) return; a.dataset.busy='1';
-  const label=a.textContent; a.textContent='영상 받는 중…';
-  try{
-    const b=await (await fetch(a.getAttribute('href'))).blob();
-    ready=new File([b],a.getAttribute('download'),{type:'video/mp4'});
-    a.textContent='📲 사진첩에 저장하기';
-  }catch(err){a.textContent=label; location.href=a.getAttribute('href')}
-  delete a.dataset.busy;
-});
-</script>
 </body>
 </html>
