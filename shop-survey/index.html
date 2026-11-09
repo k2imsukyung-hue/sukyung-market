@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>신제품 정보 영상 설문</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+*{box-sizing:border-box}body{margin:0}
+:root{--bg:#eceef2;--card:#fff;--fg:#17191d;--sub:#5d6470;--line:#dde0e5;--yellow:#ffd400;--chip:#f3f4f6;--sans:"Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-left,0px)) 64px;display:grid;gap:16px}
+h1{font-size:1.5rem;font-weight:900;margin:0}
+h1 mark{background:var(--yellow);padding:0 .2em;border-radius:3px}
+.lead{color:var(--sub);margin:4px 0 0}
+.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;display:grid;gap:10px}
+.q h2{font-size:1.05rem;font-weight:800;margin:0}
+.q h2 b{display:inline-block;min-width:1.8em;background:var(--yellow);border-radius:6px;text-align:center;margin-right:6px;font-size:.9rem;padding:1px 6px}
+.hint{color:var(--sub);font-size:.88rem;margin:0}
+.opts{display:grid;gap:8px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--chip);cursor:pointer;font-size:.97rem}
+.opts label:has(input:checked){border-color:var(--fg);background:#fffbe0}
+.opts input{margin-top:4px;accent-color:#17191d;width:18px;height:18px;flex:none}
+.opts label>span{flex:1;min-width:0}
+.opts small{display:block;color:var(--sub);font-size:.84rem}
+input[type=text],input[type=date],textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+textarea{min-height:76px;resize:vertical}
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vids figure{min-width:0;margin:0;display:grid;gap:6px}
+.vids video{width:100%;aspect-ratio:9/16;background:#000;border-radius:10px;display:block}
+.vids figcaption{font-size:.86rem;color:var(--sub)}
+.vids figcaption strong{color:var(--fg)}
+.line{border-top:1px dashed var(--line);padding-top:10px;display:grid;gap:6px}
+.line:first-of-type{border-top:0;padding-top:0}
+.line p{margin:0;font-weight:700}
+.line p span{color:var(--sub);font-weight:500;margin-right:6px;font-variant-numeric:tabular-nums}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg label{padding:7px 12px;border:1.5px solid var(--line);border-radius:999px;font-size:.88rem;cursor:pointer;background:var(--chip)}
+.seg label:has(input:checked){background:var(--fg);color:#fff;border-color:var(--fg)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.line input[type=text]{display:none}
+.line.edit input[type=text]{display:block}
+button{font:inherit;font-weight:800;font-size:1.05rem;padding:15px;border-radius:12px;border:0;background:var(--fg);color:#fff;cursor:pointer;width:100%}
+button:focus-visible,label:focus-within{outline:3px solid #2a6df4;outline-offset:2px}
+#out{display:none;background:var(--card);border:2px solid var(--fg);border-radius:14px;padding:16px;gap:10px}
+#out.show{display:grid}
+#out pre{white-space:pre-wrap;margin:0;font-family:inherit;font-size:.9rem;background:var(--chip);padding:12px;border-radius:10px;max-height:320px;overflow:auto}
+#done{color:#1a7f37;font-weight:800;margin:0;min-height:1.4em}
+</style></head><body><main class="wrap">
+
+<header>
+<h1>신제품 정보 영상 <mark>설문</mark></h1>
+<p class="lead">보내주신 영상 2개 잘 받았어요. 원하시는 방향 그대로 만들 수 있게 몇 가지만 눌러주세요. 3분이면 끝나요. 다 누르고 맨 아래 버튼을 누르면 답이 정리돼요. 그 글을 카톡에 붙여넣어 보내주시면 돼요.</p>
+</header>
+
+<section class="q">
+<h2><b>0</b>보내주신 영상</h2>
+<div class="vids">
+<figure><video src="v/ref1.mp4" controls playsinline preload="metadata"></video><figcaption><strong>1번</strong> · 56초<br>밝고 빠른 여자 목소리, 끝에 "핫폰" 로고</figcaption></figure>
+<figure><video src="v/ref2.mp4" controls playsinline preload="metadata"></video><figcaption><strong>2번</strong> · 52초<br>차분한 남자 해설, 끝에 "사전예약 알림"</figcaption></figure>
+</div>
+</section>
+
+<section class="q" data-k="이 영상들은">
+<h2><b>1</b>이 두 영상은 어떤 영상인가요?</h2>
+<div class="opts">
+<label><input type="radio" name="q1" value="매장에서 직접 만든 영상"><span>매장에서 직접 만든 영상</span></label>
+<label><input type="radio" name="q1" value="다른 계정에서 본 영상 (이런 느낌 참고)"><span>다른 계정에서 본 영상<small>"이런 느낌으로" 참고용</small></span></label>
+<label><input type="radio" name="q1" value="업체·AI가 만들어 준 샘플"><span>업체나 AI가 만들어 준 샘플</span></label>
+<label><input type="radio" name="q1" value="기타"><span>기타 (아래에 적어주세요)</span></label>
+</div>
+<input type="text" name="q1x" placeholder="자유롭게 적어주세요 (선택)">
+</section>
+
+<section class="q" data-k="원하는 것">
+<h2><b>2</b>어떻게 해드리면 될까요?</h2>
+<div class="opts">
+<label><input type="radio" name="q2" value="두 영상 그대로 올리기 (끝 장면만 우리 매장으로)"><span>두 영상을 거의 그대로 올리기<small>끝 장면만 우리 매장으로 바꿔서</small></span></label>
+<label><input type="radio" name="q2" value="이런 느낌으로 새로 만들기"><span>이런 느낌(신제품 정보 영상)으로 새로 만들기</span></label>
+<label><input type="radio" name="q2" value="둘 중 하나 스타일로만"><span>둘 중 하나 스타일로만 만들기</span></label>
+<label><input type="radio" name="q2" value="기타"><span>기타</span></label>
+</div>
+<input type="text" name="q2x" placeholder="자유롭게 적어주세요 (선택)">
+</section>
+
+<section class="q" data-k="스타일">
+<h2><b>3</b>둘 중 더 마음에 드는 스타일은요?</h2>
+<div class="opts">
+<label><input type="radio" name="q3" value="1번 (밝고 빠르게)"><span>1번<small>밝고 빠르게, 자막 크게</small></span></label>
+<label><input type="radio" name="q3" value="2번 (차분한 해설)"><span>2번<small>차분한 해설, 그래픽 많이</small></span></label>
+<label><input type="radio" name="q3" value="상관없음"><span>상관없어요, 알아서</span></label>
+</div>
+</section>
+
+<section class="q" data-k="주제">
+<h2><b>4</b>어떤 폰 이야기를 하고 싶으세요?</h2>
+<p class="hint">여러 개 골라도 돼요.</p>
+<div class="opts">
+<label><input type="checkbox" name="q4" value="갤럭시 S27 출시 정보"><span>갤럭시 S27 출시 정보<small>보내주신 영상과 같은 주제</small></span></label>
+<label><input type="checkbox" name="q4" value="아이폰 신제품 정보"><span>아이폰 신제품 정보</span></label>
+<label><input type="checkbox" name="q4" value="폴드·플립"><span>갤럭시 폴드·플립</span></label>
+<label><input type="checkbox" name="q4" value="새 폰 사면 바로 바꿀 설정"><span>새 폰 사면 바로 바꿀 설정 3가지</span></label>
+<label><input type="checkbox" name="q4" value="효도폰·학생폰 고르는 법"><span>효도폰·학생폰 고르는 법</span></label>
+</div>
+<input type="text" name="q4x" placeholder="다른 폰·주제가 있으면 적어주세요">
+</section>
+
+<section class="q" data-k="올릴 계정">
+<h2><b>5</b>어느 매장 계정에 올릴까요?</h2>
+<div class="opts">
+<label><input type="radio" name="q5" value="세 매장 모두 (끝 장면만 매장별로)"><span>세 매장 모두<small>내용은 같고 끝 장면만 매장별로</small></span></label>
+<label><input type="radio" name="q5" value="파주"><span>파주</span></label>
+<label><input type="radio" name="q5" value="김포"><span>김포</span></label>
+<label><input type="radio" name="q5" value="대구 신월성"><span>대구 신월성</span></label>
+<label><input type="radio" name="q5" value="기타"><span>기타</span></label>
+</div>
+<input type="text" name="q5x" placeholder="기타 매장이면 적어주세요">
+</section>
+
+<section class="q" data-k="마지막 장면">
+<h2><b>6</b>영상 끝에서 보는 사람이 뭘 하면 좋을까요?</h2>
+<div class="opts">
+<label><input type="radio" name="q6" value="댓글 남기기"><span>댓글 남기기<small>예: "어떤 모델 사실 거예요? 댓글로!"</small></span></label>
+<label><input type="radio" name="q6" value="DM 보내기"><span>DM 보내기</span></label>
+<label><input type="radio" name="q6" value="프로필 링크로 사전예약 알림 신청"><span>프로필 링크로 사전예약 알림 신청<small>신청 받을 링크가 있어야 해요</small></span></label>
+<label><input type="radio" name="q6" value="매장 방문"><span>매장으로 오시라고만</span></label>
+</div>
+<input type="text" name="q6x" placeholder="링크가 있으면 붙여주세요 (선택)">
+</section>
+
+<section class="q" data-k="목소리">
+<h2><b>7</b>목소리는요?</h2>
+<div class="opts">
+<label><input type="radio" name="q7" value="지난번 매장 릴스와 같은 목소리"><span>지난번 매장 릴스와 같은 목소리</span></label>
+<label><input type="radio" name="q7" value="1번 영상 같은 목소리"><span>1번 영상 같은 목소리</span></label>
+<label><input type="radio" name="q7" value="2번 영상 같은 목소리"><span>2번 영상 같은 목소리</span></label>
+<label><input type="radio" name="q7" value="상관없음"><span>상관없어요</span></label>
+</div>
+</section>
+
+<section class="q" id="script">
+<h2><b>8</b>대본 초안이에요. 고칠 줄만 알려주세요</h2>
+<p class="hint">보내주신 영상 내용으로 먼저 써봤어요. 괜찮은 줄은 그대로 두시고, 바꿀 줄만 "고쳐주세요"를 눌러 적어주세요. 주제가 바뀌면 대본도 새로 써드려요.</p>
+</section>
+
+<section class="q" data-k="개수·일정">
+<h2><b>9</b>몇 개를 언제까지 올리면 좋을까요?</h2>
+<div class="opts">
+<label><input type="radio" name="q9" value="1개"><span>1개</span></label>
+<label><input type="radio" name="q9" value="2개"><span>2개 (이번 달 공통 영상 2개 자리로)</span></label>
+</div>
+<input type="date" name="q9d" aria-label="올리고 싶은 날짜">
+</section>
+
+<section class="q" data-k="하고 싶은 말">
+<h2><b>10</b>그 밖에 원하시는 게 있으면 적어주세요</h2>
+<textarea name="q10" placeholder="예: 이 문구는 꼭 넣어주세요 / 이 그래픽 좋았어요"></textarea>
+</section>
+
+<button id="go" type="button">답 정리하기</button>
+
+<section id="out" aria-live="polite">
+<p style="margin:0;font-weight:800">아래 글을 복사해서 카톡에 붙여넣어 주세요</p>
+<pre id="txt"></pre>
+<button id="copy" type="button">복사하기</button>
+<p id="done"></p>
+</section>
+
+</main>
+<script>
+const LINES=[
+"지금 폰 바꾸려는 분들, 딱 두 달만 기다리세요",
+"갤럭시 S27이 곧 나옵니다",
+"공개는 내년 1월 말에서 2월 초, 출시는 2월로 예상돼요",
+"이번엔 모델이 4개로 늘어난대요. 기본, 플러스, 프로, 울트라",
+"프로랑 울트라엔 2억 화소 카메라, 울트라는 5배 망원까지",
+"기본형이랑 플러스엔 엑시노스 2700, 울트라는 스냅드래곤이 유력해요",
+"배터리도 커지고, 충전도 더 빨라질 전망이에요",
+"진짜 하이라이트는 화면! 옆 사람은 내 화면을 못 보는 사생활 보호 화면이 처음 들어갈 수 있대요",
+"가격은 미국 기준 기본형 899달러, 전작이랑 비슷할 거라는 얘기가 많아요",
+"신제품은 사전예약 기간을 놓치지 않는 게 중요하죠",
+"여러분은 어떤 모델 사실 거예요? 댓글로 알려주세요",
+"휴대폰은 ○○ 핫폰에서!"
+];
+const box=document.getElementById('script');
+LINES.forEach((t,i)=>{
+  const d=document.createElement('div');d.className='line';
+  d.innerHTML=`<p><span>${i+1}</span>${t}</p><div class="seg" role="radiogroup" aria-label="${i+1}번 줄">
+  <label><input type="radio" name="L${i}" value="ok" checked>그대로</label>
+  <label><input type="radio" name="L${i}" value="edit">고쳐주세요</label>
+  <label><input type="radio" name="L${i}" value="del">빼주세요</label></div>
+  <input type="text" name="L${i}x" placeholder="이렇게 바꿔주세요">`;
+  d.addEventListener('change',()=>{d.classList.toggle('edit',d.querySelector(`[name=L${i}]:checked`).value==='edit')});
+  box.appendChild(d);
+});
+const val=n=>{const e=[...document.querySelectorAll(`[name="${n}"]`)];if(!e.length)return'';
+  if(e[0].type==='radio')return(e.find(x=>x.checked)||{}).value||'';
+  if(e[0].type==='checkbox')return e.filter(x=>x.checked).map(x=>x.value).join(', ');
+  return e[0].value.trim();};
+document.getElementById('go').onclick=()=>{
+  const r=[];const add=(k,a,b)=>{const s=[a,b].filter(Boolean).join(' / ');r.push(`${k}: ${s||'(안 고름)'}`)};
+  add('1. 영상 정체',val('q1'),val('q1x'));
+  add('2. 원하는 것',val('q2'),val('q2x'));
+  add('3. 스타일',val('q3'));
+  add('4. 주제',val('q4'),val('q4x'));
+  add('5. 올릴 계정',val('q5'),val('q5x'));
+  add('6. 마지막 행동',val('q6'),val('q6x'));
+  add('7. 목소리',val('q7'));
+  const ch=LINES.map((t,i)=>{const v=val('L'+i);if(v==='edit')return`  ${i+1}번 → ${val('L'+i+'x')||'(수정 내용 없음)'}`;if(v==='del')return`  ${i+1}번 → 빼기`;return null}).filter(Boolean);
+  r.push('8. 대본: '+(ch.length?'\n'+ch.join('\n'):'전부 그대로'));
+  add('9. 개수·날짜',val('q9'),val('q9d'));
+  add('10. 하고 싶은 말',val('q10'));
+  document.getElementById('txt').textContent='[신제품 정보 영상 설문 답]\n'+r.join('\n');
+  const o=document.getElementById('out');o.classList.add('show');o.scrollIntoView({behavior:'smooth'});
+  document.getElementById('done').textContent='';
+};
+document.getElementById('copy').onclick=async()=>{
+  const t=document.getElementById('txt').textContent;
+  try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}
+  document.getElementById('done').textContent='복사됐어요. 카톡에 붙여넣어 보내주세요';
+};
+</script>
+</body></html>
