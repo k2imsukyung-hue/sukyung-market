@@ -46,63 +46,35 @@ button:focus-visible,label:focus-within{outline:3px solid #2a6df4;outline-offset
 
 <header>
 <h1>신제품 정보 영상 <mark>설문</mark></h1>
-<p class="lead">보내주신 영상 2개 잘 받았어요. 원하시는 방향 그대로 만들 수 있게 몇 가지만 눌러주세요. 3분이면 끝나요. 다 누르고 맨 아래 버튼을 누르면 답이 정리돼요. 그 글을 카톡에 붙여넣어 보내주시면 돼요.</p>
+<p class="lead">보내주신 영상 2개 잘 받았어요. 원하시는 방향 그대로 만들 수 있게 몇 가지만 눌러주세요. 2분이면 끝나요. 다 누르고 맨 아래 버튼을 누르면 답이 정리돼요. 그 글을 카톡에 붙여넣어 보내주시면 돼요.</p>
 </header>
 
 <section class="q">
 <h2><b>0</b>보내주신 영상</h2>
 <div class="vids">
-<figure><video src="v/ref1.mp4" controls playsinline preload="metadata"></video><figcaption><strong>1번</strong> · 56초<br>밝고 빠른 여자 목소리, 끝에 "핫폰" 로고</figcaption></figure>
-<figure><video src="v/ref2.mp4" controls playsinline preload="metadata"></video><figcaption><strong>2번</strong> · 52초<br>차분한 남자 해설, 끝에 "사전예약 알림"</figcaption></figure>
+<figure><video src="v/ref1.mp4" controls playsinline preload="metadata"></video><figcaption><strong>A</strong> · 56초<br>밝고 빠른 여자 목소리, 끝에 "핫폰" 로고</figcaption></figure>
+<figure><video src="v/ref2.mp4" controls playsinline preload="metadata"></video><figcaption><strong>B</strong> · 52초<br>차분한 남자 해설, 끝에 "사전예약 알림"</figcaption></figure>
 </div>
 </section>
 
-<section class="q" data-k="이 영상들은">
-<h2><b>1</b>이 두 영상은 어떤 영상인가요?</h2>
+<section class="q">
+<h2><b>1</b>영상 속 폰 장면은 어디서 구하셨나요?</h2>
+<p class="hint">같은 화질로 작업하려면 원본 장면이 필요해요.</p>
 <div class="opts">
-<label><input type="radio" name="q1" value="매장에서 직접 만든 영상"><span>매장에서 직접 만든 영상</span></label>
-<label><input type="radio" name="q1" value="다른 계정에서 본 영상 (이런 느낌 참고)"><span>다른 계정에서 본 영상<small>"이런 느낌으로" 참고용</small></span></label>
-<label><input type="radio" name="q1" value="업체·AI가 만들어 준 샘플"><span>업체나 AI가 만들어 준 샘플</span></label>
-<label><input type="radio" name="q1" value="기타"><span>기타 (아래에 적어주세요)</span></label>
+<label><input type="radio" name="q1" value="공식 유튜브 영상 다운로드"><span>공식 유튜브 영상을 다운로드했어요<small>삼성 공식 채널 등</small></span></label>
+<label><input type="radio" name="q1" value="다른 곳에서 찾음"><span>다른 곳에서 찾았어요<small>어디서 찾을 수 있는지 아래에 알려주세요</small></span></label>
 </div>
-<input type="text" name="q1x" placeholder="자유롭게 적어주세요 (선택)">
+<input type="text" name="q1x" placeholder="영상 주소나 채널 이름을 붙여주세요">
 </section>
-
-<section class="q" data-k="원하는 것">
-<h2><b>2</b>어떻게 해드리면 될까요?</h2>
+<section class="q">
+<h2><b>2</b>거의 비슷하게 작업한다면, 어떤 느낌으로 할까요?</h2>
 <div class="opts">
-<label><input type="radio" name="q2" value="두 영상 그대로 올리기 (끝 장면만 우리 매장으로)"><span>두 영상을 거의 그대로 올리기<small>끝 장면만 우리 매장으로 바꿔서</small></span></label>
-<label><input type="radio" name="q2" value="이런 느낌으로 새로 만들기"><span>이런 느낌(신제품 정보 영상)으로 새로 만들기</span></label>
-<label><input type="radio" name="q2" value="둘 중 하나 스타일로만"><span>둘 중 하나 스타일로만 만들기</span></label>
-<label><input type="radio" name="q2" value="기타"><span>기타</span></label>
-</div>
-<input type="text" name="q2x" placeholder="자유롭게 적어주세요 (선택)">
-</section>
-
-<section class="q" data-k="스타일">
-<h2><b>3</b>둘 중 더 마음에 드는 스타일은요?</h2>
-<div class="opts">
-<label><input type="radio" name="q3" value="1번 (밝고 빠르게)"><span>1번<small>밝고 빠르게, 자막 크게</small></span></label>
-<label><input type="radio" name="q3" value="2번 (차분한 해설)"><span>2번<small>차분한 해설, 그래픽 많이</small></span></label>
-<label><input type="radio" name="q3" value="상관없음"><span>상관없어요, 알아서</span></label>
+<label><input type="radio" name="q2" value="A 느낌"><span>A 느낌<small>밝고 빠른 여자 목소리, 자막 크게</small></span></label>
+<label><input type="radio" name="q2" value="B 느낌"><span>B 느낌<small>차분한 남자 해설, 그래픽 많이</small></span></label>
 </div>
 </section>
-
-<section class="q" data-k="주제">
-<h2><b>4</b>어떤 폰 이야기를 하고 싶으세요?</h2>
-<p class="hint">여러 개 골라도 돼요.</p>
-<div class="opts">
-<label><input type="checkbox" name="q4" value="갤럭시 S27 출시 정보"><span>갤럭시 S27 출시 정보<small>보내주신 영상과 같은 주제</small></span></label>
-<label><input type="checkbox" name="q4" value="아이폰 신제품 정보"><span>아이폰 신제품 정보</span></label>
-<label><input type="checkbox" name="q4" value="폴드·플립"><span>갤럭시 폴드·플립</span></label>
-<label><input type="checkbox" name="q4" value="새 폰 사면 바로 바꿀 설정"><span>새 폰 사면 바로 바꿀 설정 3가지</span></label>
-<label><input type="checkbox" name="q4" value="효도폰·학생폰 고르는 법"><span>효도폰·학생폰 고르는 법</span></label>
-</div>
-<input type="text" name="q4x" placeholder="다른 폰·주제가 있으면 적어주세요">
-</section>
-
 <section class="q" data-k="올릴 계정">
-<h2><b>5</b>어느 매장 계정에 올릴까요?</h2>
+<h2><b>3</b>어느 매장 계정에 올릴까요?</h2>
 <div class="opts">
 <label><input type="radio" name="q5" value="세 매장 모두 (끝 장면만 매장별로)"><span>세 매장 모두<small>내용은 같고 끝 장면만 매장별로</small></span></label>
 <label><input type="radio" name="q5" value="파주"><span>파주</span></label>
@@ -114,7 +86,7 @@ button:focus-visible,label:focus-within{outline:3px solid #2a6df4;outline-offset
 </section>
 
 <section class="q" data-k="마지막 장면">
-<h2><b>6</b>영상 끝에서 보는 사람이 뭘 하면 좋을까요?</h2>
+<h2><b>4</b>영상 끝에서 보는 사람이 뭘 하면 좋을까요?</h2>
 <div class="opts">
 <label><input type="radio" name="q6" value="댓글 남기기"><span>댓글 남기기<small>예: "어떤 모델 사실 거예요? 댓글로!"</small></span></label>
 <label><input type="radio" name="q6" value="DM 보내기"><span>DM 보내기</span></label>
@@ -125,31 +97,22 @@ button:focus-visible,label:focus-within{outline:3px solid #2a6df4;outline-offset
 </section>
 
 <section class="q" data-k="목소리">
-<h2><b>7</b>목소리는요?</h2>
+<h2><b>5</b>목소리는요?</h2>
 <div class="opts">
 <label><input type="radio" name="q7" value="지난번 매장 릴스와 같은 목소리"><span>지난번 매장 릴스와 같은 목소리</span></label>
-<label><input type="radio" name="q7" value="1번 영상 같은 목소리"><span>1번 영상 같은 목소리</span></label>
-<label><input type="radio" name="q7" value="2번 영상 같은 목소리"><span>2번 영상 같은 목소리</span></label>
+<label><input type="radio" name="q7" value="A 영상 같은 목소리"><span>A 영상 같은 목소리</span></label>
+<label><input type="radio" name="q7" value="B 영상 같은 목소리"><span>B 영상 같은 목소리</span></label>
 <label><input type="radio" name="q7" value="상관없음"><span>상관없어요</span></label>
 </div>
 </section>
 
 <section class="q" id="script">
-<h2><b>8</b>대본 초안이에요. 고칠 줄만 알려주세요</h2>
+<h2><b>6</b>대본 초안이에요. 고칠 줄만 알려주세요</h2>
 <p class="hint">보내주신 영상 내용으로 먼저 써봤어요. 괜찮은 줄은 그대로 두시고, 바꿀 줄만 "고쳐주세요"를 눌러 적어주세요. 주제가 바뀌면 대본도 새로 써드려요.</p>
 </section>
 
-<section class="q" data-k="개수·일정">
-<h2><b>9</b>몇 개를 언제까지 올리면 좋을까요?</h2>
-<div class="opts">
-<label><input type="radio" name="q9" value="1개"><span>1개</span></label>
-<label><input type="radio" name="q9" value="2개"><span>2개 (이번 달 공통 영상 2개 자리로)</span></label>
-</div>
-<input type="date" name="q9d" aria-label="올리고 싶은 날짜">
-</section>
-
 <section class="q" data-k="하고 싶은 말">
-<h2><b>10</b>그 밖에 원하시는 게 있으면 적어주세요</h2>
+<h2><b>7</b>그 밖에 원하시는 게 있으면 적어주세요</h2>
 <textarea name="q10" placeholder="예: 이 문구는 꼭 넣어주세요 / 이 그래픽 좋았어요"></textarea>
 </section>
 
@@ -195,17 +158,14 @@ const val=n=>{const e=[...document.querySelectorAll(`[name="${n}"]`)];if(!e.leng
   return e[0].value.trim();};
 document.getElementById('go').onclick=()=>{
   const r=[];const add=(k,a,b)=>{const s=[a,b].filter(Boolean).join(' / ');r.push(`${k}: ${s||'(안 고름)'}`)};
-  add('1. 영상 정체',val('q1'),val('q1x'));
-  add('2. 원하는 것',val('q2'),val('q2x'));
-  add('3. 스타일',val('q3'));
-  add('4. 주제',val('q4'),val('q4x'));
-  add('5. 올릴 계정',val('q5'),val('q5x'));
-  add('6. 마지막 행동',val('q6'),val('q6x'));
-  add('7. 목소리',val('q7'));
+  add('1. 영상 출처',val('q1'),val('q1x'));
+  add('2. 느낌',val('q2'));
+  add('3. 올릴 계정',val('q5'),val('q5x'));
+  add('4. 마지막 행동',val('q6'),val('q6x'));
+  add('5. 목소리',val('q7'));
   const ch=LINES.map((t,i)=>{const v=val('L'+i);if(v==='edit')return`  ${i+1}번 → ${val('L'+i+'x')||'(수정 내용 없음)'}`;if(v==='del')return`  ${i+1}번 → 빼기`;return null}).filter(Boolean);
-  r.push('8. 대본: '+(ch.length?'\n'+ch.join('\n'):'전부 그대로'));
-  add('9. 개수·날짜',val('q9'),val('q9d'));
-  add('10. 하고 싶은 말',val('q10'));
+  r.push('6. 대본: '+(ch.length?'\n'+ch.join('\n'):'전부 그대로'));
+  add('7. 하고 싶은 말',val('q10'));
   document.getElementById('txt').textContent='[신제품 정보 영상 설문 답]\n'+r.join('\n');
   const o=document.getElementById('out');o.classList.add('show');o.scrollIntoView({behavior:'smooth'});
   document.getElementById('done').textContent='';
